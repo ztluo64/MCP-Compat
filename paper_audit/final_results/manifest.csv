@@ -1,0 +1,22 @@
+table,method,test,source
+Table 1,COinCO-VisualNet*,original,paper_audit/final_results/table1_comparison_sources/coinco_visualnet_original.json
+Table 1,COinCO-VisualNet*,balanced,paper_audit/final_results/table1_comparison_sources/coinco_visualnet_balanced.json
+Table 1,COinCO-SemanticNet*,original,paper_audit/final_results/table1_comparison_sources/coinco_semanticnet_original.json
+Table 1,COinCO-SemanticNet*,balanced,paper_audit/final_results/table1_comparison_sources/coinco_semanticnet_balanced.json
+Table 1,COinCO-VisSemanticNet*,original,paper_audit/final_results/table1_comparison_sources/coinco_vissemanticnet_original.json
+Table 1,COinCO-VisSemanticNet*,balanced,paper_audit/final_results/table1_comparison_sources/coinco_vissemanticnet_balanced.json
+Table 1,Tri-view + Text,original,paper_audit/final_results/table1_comparison_sources/triview_text_original.json
+Table 1,Tri-view + Text,balanced,paper_audit/final_results/table1_comparison_sources/triview_text_balanced.json
+Table 1,Ours,original,paper_audit/final_results/table1_comparison_sources/ours_original.json
+Table 1,Ours,balanced,paper_audit/final_results/table1_comparison_sources/ours_balanced.json
+Table 2,Full only,original,paper_audit/final_results/table2_input_ablation_sources/full_only_original.json
+Table 2,Object crop only,original,paper_audit/final_results/table2_input_ablation_sources/crop_only_original.json
+Table 2,Masked context only,original,paper_audit/final_results/table2_input_ablation_sources/masked_only_original.json
+Table 2,Tri-view,original,paper_audit/final_results/table2_input_ablation_sources/triview_original.json
+Table 2,Tri-view + Text,original,paper_audit/final_results/table2_input_ablation_sources/triview_text_original.json
+Table 2,Ours,original,paper_audit/final_results/table2_input_ablation_sources/ours_original.json
+Table 3,Tri-view + Text,balanced,paper_audit/final_results/table3_prior_ablation_sources/triview_text_balanced.json
+Table 3,+ Decoupled Prior Prediction,balanced,paper_audit/final_results/table3_prior_ablation_sources/decoupled_prior_prediction_balanced.json
+Table 3,+ Latent Prior Compat.,balanced,paper_audit/final_results/table3_prior_ablation_sources/latent_prior_lam01_balanced.json
+Table 3,+ Latent Prior Compat.,balanced,paper_audit/final_results/table3_prior_ablation_sources/latent_prior_lam02_balanced.json
+Table 3,Ours,balanced,paper_audit/final_results/table3_prior_ablation_sources/ours_balanced.json

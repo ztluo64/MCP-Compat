@@ -1,0 +1,24 @@
+{
+  "model": "COinCO-visual",
+  "mode": "visual",
+  "best_epoch": 3,
+  "best_threshold_from_val": 0.45,
+  "val_best": {
+    "threshold": 0.45,
+    "acc": 0.7056231640788921,
+    "balanced_acc": 0.5685149215569494,
+    "macro_f1": 0.5662678744406515,
+    "f1_label0": 0.32041656575441996,
+    "f1_label1": 0.8121191831268831,
+    "auc": 0.6144773313135912
+  },
+  "test_calibrated": {
+    "threshold": 0.45,
+    "acc": 0.5665467625899281,
+    "balanced_acc": 0.5665467625899281,
+    "macro_f1": 0.5389622901183595,
+    "f1_label0": 0.4261904761904762,
+    "f1_label1": 0.6517341040462428,
+    "auc": 0.6369364939702915
+  }
+}

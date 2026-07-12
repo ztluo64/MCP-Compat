@@ -1,0 +1,47 @@
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/triview_text_prior_aux_lam02_bs256",
+  "model_type": "prior_aux",
+  "selected_metric": "macro_f1",
+  "threshold_grid": "{0.01, 0.02, ..., 0.99}",
+  "best_threshold_from_val": 0.33,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.7764372639530004,
+    "balanced_acc": 0.7460988516334199,
+    "macro_f1": 0.706618836035154,
+    "f1_label0": 0.5634985661614093,
+    "f1_label1": 0.8497391059088986,
+    "auc": 0.8294009251826665,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4742    0.6942    0.5635      3963\n           1     0.9086    0.7980    0.8497     15101\n\n    accuracy                         0.7764     19064\n   macro avg     0.6914    0.7461    0.7066     19064\nweighted avg     0.8183    0.7764    0.7902     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.33,
+    "acc": 0.8046055392362568,
+    "balanced_acc": 0.7283314888264423,
+    "macro_f1": 0.7171399506072168,
+    "f1_label0": 0.5598487533971405,
+    "f1_label1": 0.8744311478172931,
+    "auc": 0.8294009251826665,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5264    0.5978    0.5598      3963\n           1     0.8906    0.8589    0.8744     15101\n\n    accuracy                         0.8046     19064\n   macro avg     0.7085    0.7283    0.7171     19064\nweighted avg     0.8149    0.8046    0.8090     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.7482014388489209,
+    "balanced_acc": 0.7482014388489209,
+    "macro_f1": 0.7481941079232808,
+    "f1_label0": 0.7495527728085868,
+    "f1_label1": 0.7468354430379747,
+    "auc": 0.8265132498317892,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.7456    0.7536    0.7496       556\n           1     0.7509    0.7428    0.7468       556\n\n    accuracy                         0.7482      1112\n   macro avg     0.7482    0.7482    0.7482      1112\nweighted avg     0.7482    0.7482    0.7482      1112\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.33,
+    "acc": 0.7383093525179856,
+    "balanced_acc": 0.7383093525179856,
+    "macro_f1": 0.7360447332036364,
+    "f1_label0": 0.711595639246779,
+    "f1_label1": 0.7604938271604939,
+    "auc": 0.8265132498317892,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.7925    0.6457    0.7116       556\n           1     0.7011    0.8309    0.7605       556\n\n    accuracy                         0.7383      1112\n   macro avg     0.7468    0.7383    0.7360      1112\nweighted avg     0.7468    0.7383    0.7360      1112\n"
+  }
+}

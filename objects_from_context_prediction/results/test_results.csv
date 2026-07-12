@@ -1,0 +1,2 @@
+embedding_dim,category_top1_accuracy,category_top3_accuracy,category_top5_accuracy,category_top10_accuracy,supercategory_top1_accuracy,supercategory_top3_accuracy,supercategory_top5_accuracy,supercategory_top10_accuracy
+4096,16.319733555370526,31.89009159034138,42.79766860949209,58.86761032472939,35.09575353871774,61.407160699417155,78.30974188176519,96.9608659450458

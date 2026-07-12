@@ -1,0 +1,4907 @@
+TRI-VIEW COMPATIBILITY PROJECT CODE AUDIT
+Generated at: Sun Jul 12 12:35:07 AM CST 2026
+Working directory: /home/ubuntu/ztl/COinCO
+
+==================== GIT INFORMATION ====================
+
+==================== PROJECT TREE ====================
+tri_view_compat/datasets/coinco_triview_dataset.py
+tri_view_compat/datasets/coinco_triview_dataset_v2.py
+tri_view_compat/datasets/__init__.py
+tri_view_compat/datasets/__pycache__/coinco_triview_dataset.cpython-310.pyc
+tri_view_compat/datasets/__pycache__/coinco_triview_dataset_v2.cpython-310.pyc
+tri_view_compat/datasets/__pycache__/__init__.cpython-310.pyc
+tri_view_compat/__init__.py
+tri_view_compat/logs/balanced_full_only_bs256.log
+tri_view_compat/logs/balanced_triview_no_geo_text_bs256.log
+tri_view_compat/logs/balanced_triview_text_no_geo_bs256.log
+tri_view_compat/logs/balanced_triview_text_prior_lam01_bs256.log
+tri_view_compat/logs/balanced_triview_text_prior_lam02_bs256.log
+tri_view_compat/logs/balanced_triview_text_prior_v2_lam02_bs256.log
+tri_view_compat/logs/bootstrap_balanced_triview_text_vs_ours.log
+tri_view_compat/logs/bootstrap_original_triview_text_vs_ours.log
+tri_view_compat/logs/original_eval/original_crop_only_bs256.log
+tri_view_compat/logs/original_eval/original_full_only_bs256.log
+tri_view_compat/logs/original_eval/original_masked_only_bs256.log
+tri_view_compat/logs/original_eval/original_triview_no_geo_text_bs256.log
+tri_view_compat/logs/original_eval/original_triview_text_no_geo_bs256.log
+tri_view_compat/logs/original_eval/original_triview_text_prior_v2_lam02_bs256.log
+tri_view_compat/models/clip_triview_baseline.py
+tri_view_compat/models/clip_triview_text_prior.py
+tri_view_compat/models/clip_triview_text_prior_v2.py
+tri_view_compat/models/__init__.py
+tri_view_compat/models/__pycache__/clip_triview_baseline.cpython-310.pyc
+tri_view_compat/models/__pycache__/clip_triview_text_prior.cpython-310.pyc
+tri_view_compat/models/__pycache__/clip_triview_text_prior_v2.cpython-310.pyc
+tri_view_compat/models/__pycache__/__init__.cpython-310.pyc
+tri_view_compat/outputs/bootstrap/bootstrap_balanced_triview_text_vs_ours.json
+tri_view_compat/outputs/bootstrap/bootstrap_original_triview_text_vs_ours.json
+tri_view_compat/outputs/splits_balanced/test_balanced_seed777.csv
+tri_view_compat/outputs/splits/test.csv
+tri_view_compat/outputs/splits/train.csv
+tri_view_compat/outputs/splits/val.csv
+tri_view_compat/outputs/vis_triview_test/000_idx3677_label0.jpg
+tri_view_compat/outputs/vis_triview_test/001_idx4519_label0.jpg
+tri_view_compat/outputs/vis_triview_test/002_idx2589_label0.jpg
+tri_view_compat/outputs/vis_triview_test/003_idx2258_label0.jpg
+tri_view_compat/outputs/vis_triview_test/004_idx1876_label0.jpg
+tri_view_compat/outputs/vis_triview_test/005_idx2662_label0.jpg
+tri_view_compat/outputs/vis_triview_test/006_idx360_label0.jpg
+tri_view_compat/outputs/vis_triview_test/007_idx254_label0.jpg
+tri_view_compat/outputs/vis_triview_test/008_idx1135_label0.jpg
+tri_view_compat/outputs/vis_triview_test/009_idx1552_label0.jpg
+tri_view_compat/outputs/vis_triview_test/010_idx911_label0.jpg
+tri_view_compat/outputs/vis_triview_test/011_idx2486_label0.jpg
+tri_view_compat/outputs/vis_triview_test/012_idx2154_label1.jpg
+tri_view_compat/outputs/vis_triview_test/013_idx3051_label1.jpg
+tri_view_compat/outputs/vis_triview_test/014_idx4618_label1.jpg
+tri_view_compat/outputs/vis_triview_test/015_idx4735_label1.jpg
+tri_view_compat/outputs/vis_triview_test/016_idx4915_label1.jpg
+tri_view_compat/outputs/vis_triview_test/017_idx3100_label1.jpg
+tri_view_compat/outputs/vis_triview_test/018_idx432_label1.jpg
+tri_view_compat/outputs/vis_triview_test/019_idx1339_label1.jpg
+tri_view_compat/outputs/vis_triview_test/020_idx368_label1.jpg
+tri_view_compat/outputs/vis_triview_test/021_idx635_label1.jpg
+tri_view_compat/outputs/vis_triview_test/022_idx4976_label1.jpg
+tri_view_compat/outputs/vis_triview_test/023_idx4837_label1.jpg
+tri_view_compat/__pycache__/__init__.cpython-310.pyc
+tri_view_compat/__pycache__/__init__.cpython-313.pyc
+tri_view_compat/__pycache__/train_triview.cpython-310.pyc
+tri_view_compat/__pycache__/train_triview_prior.cpython-310.pyc
+tri_view_compat/__pycache__/train_triview_prior.cpython-313.pyc
+tri_view_compat/__pycache__/train_triview_prior_v2.cpython-310.pyc
+tri_view_compat/tools/add_replacement_label.py
+tri_view_compat/tools/bootstrap_ci.py
+tri_view_compat/tools/build_balanced_test_split.py
+tri_view_compat/tools/build_triview_splits.py
+tri_view_compat/tools/eval_threshold_calibrated.py
+tri_view_compat/tools/inspect_task1_data.py
+tri_view_compat/tools/__pycache__/bootstrap_ci.cpython-310.pyc
+tri_view_compat/tools/__pycache__/eval_threshold_calibrated.cpython-310.pyc
+tri_view_compat/tools/__pycache__/render_prior_cases_paper_layout.cpython-310.pyc
+tri_view_compat/tools/__pycache__/visualize_prior_cases.cpython-310.pyc
+tri_view_compat/tools/render_prior_cases_paper_layout.py
+tri_view_compat/tools/visualize_prior_cases.py
+tri_view_compat/tools/visualize_triview_samples.py
+tri_view_compat/train_triview_prior.py
+tri_view_compat/train_triview_prior_v2.py
+tri_view_compat/train_triview.py
+tri_view_compat/tri_view_compat_README_updated.md
+
+================================================================================
+FILE: tri_view_compat/datasets/coinco_triview_dataset.py
+================================================================================
+import os
+import pandas as pd
+import numpy as np
+from PIL import Image
+import torch
+from torch.utils.data import Dataset
+import torchvision.transforms as T
+
+
+CLIP_MEAN = (0.48145466, 0.4578275, 0.40821073)
+CLIP_STD = (0.26862954, 0.26130258, 0.27577711)
+
+
+def get_bbox_from_mask(mask):
+    arr = np.array(mask)
+    ys, xs = np.where(arr > 0)
+    if len(xs) == 0:
+        return None
+    return int(xs.min()), int(ys.min()), int(xs.max()), int(ys.max())
+
+
+def crop_with_padding(img, bbox, pad_ratio=0.08):
+    w, h = img.size
+    x1, y1, x2, y2 = bbox
+
+    bw = x2 - x1 + 1
+    bh = y2 - y1 + 1
+    pad_x = int(bw * pad_ratio)
+    pad_y = int(bh * pad_ratio)
+
+    x1 = max(0, x1 - pad_x)
+    y1 = max(0, y1 - pad_y)
+    x2 = min(w - 1, x2 + pad_x)
+    y2 = min(h - 1, y2 + pad_y)
+
+    return img.crop((x1, y1, x2 + 1, y2 + 1))
+
+
+def make_masked_context(img, mask, fill=(127, 127, 127)):
+    img_arr = np.array(img).copy()
+    mask_arr = np.array(mask)
+    img_arr[mask_arr > 0] = np.array(fill, dtype=np.uint8)
+    return Image.fromarray(img_arr)
+
+
+def geometry_from_bbox(bbox, image_size):
+    x1, y1, x2, y2 = bbox
+    W, H = image_size
+
+    bw = x2 - x1 + 1
+    bh = y2 - y1 + 1
+    cx = x1 + bw / 2.0
+    cy = y1 + bh / 2.0
+    area_ratio = (bw * bh) / float(W * H)
+    aspect_ratio = bw / max(bh, 1)
+
+    geom = [
+        x1 / W,
+        y1 / H,
+        x2 / W,
+        y2 / H,
+        cx / W,
+        cy / H,
+        bw / W,
+        bh / H,
+        area_ratio,
+        aspect_ratio,
+    ]
+    return torch.tensor(geom, dtype=torch.float32)
+
+
+class COinCOTriViewDataset(Dataset):
+    def __init__(
+        self,
+        csv_path,
+        image_size=224,
+        crop_pad_ratio=0.08,
+        masked_fill=(127, 127, 127),
+    ):
+        self.csv_path = csv_path
+        self.df = pd.read_csv(csv_path, dtype={"coco_index": str})
+        self.crop_pad_ratio = crop_pad_ratio
+        self.masked_fill = masked_fill
+
+        self.transform = T.Compose([
+            T.Resize((image_size, image_size), interpolation=T.InterpolationMode.BICUBIC),
+            T.ToTensor(),
+            T.Normalize(CLIP_MEAN, CLIP_STD),
+        ])
+
+    def __len__(self):
+        return len(self.df)
+
+    def __getitem__(self, idx):
+        row = self.df.iloc[idx]
+
+        image = Image.open(row["image_path"]).convert("RGB")
+        mask = Image.open(row["mask_path"]).convert("L")
+
+        bbox = get_bbox_from_mask(mask)
+        if bbox is None:
+            bbox = (0, 0, image.size[0] - 1, image.size[1] - 1)
+
+        object_crop = crop_with_padding(image, bbox, self.crop_pad_ratio)
+        masked_context = make_masked_context(image, mask, self.masked_fill)
+        geometry = geometry_from_bbox(bbox, image.size)
+
+        replacement_object = str(row["replacement_object"])
+        class_name = str(row["class_name"])
+        text_prompt = f"a photo of a {replacement_object}"
+
+        sample = {
+            "coco_index": str(row["coco_index"]),
+            "full_image": self.transform(image),
+            "object_crop": self.transform(object_crop),
+            "masked_context": self.transform(masked_context),
+            "geometry": geometry,
+            "label": torch.tensor(int(row["label"]), dtype=torch.long),
+            "prior_label": torch.tensor(int(row["prior_label"]), dtype=torch.long),
+            "replacement_object": replacement_object,
+            "class_name": class_name,
+            "text_prompt": text_prompt,
+        }
+        return sample
+
+================================================================================
+FILE: tri_view_compat/datasets/coinco_triview_dataset_v2.py
+================================================================================
+import torch
+from tri_view_compat.datasets.coinco_triview_dataset import COinCOTriViewDataset
+
+
+class COinCOTriViewDatasetV2(COinCOTriViewDataset):
+    """
+    Same as COinCOTriViewDataset, but additionally returns replacement_label.
+    """
+    def __getitem__(self, idx):
+        item = super().__getitem__(idx)
+
+        if hasattr(self, "df"):
+            row = self.df.iloc[idx]
+        elif hasattr(self, "data"):
+            row = self.data.iloc[idx]
+        else:
+            raise AttributeError("Dataset has neither self.df nor self.data.")
+
+        if "replacement_label" not in row:
+            raise KeyError("replacement_label not found in csv. Run add_replacement_label.py first.")
+
+        item["replacement_label"] = torch.tensor(int(row["replacement_label"]), dtype=torch.long)
+        return item
+
+================================================================================
+FILE: tri_view_compat/models/clip_triview_baseline.py
+================================================================================
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from transformers import CLIPModel
+
+
+class CLIPTriViewBaseline(nn.Module):
+    def __init__(
+        self,
+        clip_name="openai/clip-vit-base-patch32",
+        num_classes=2,
+        geo_dim=10,
+        geo_hidden=128,
+        fusion_hidden=512,
+        dropout=0.2,
+        use_full=True,
+        use_crop=True,
+        use_masked=True,
+        use_geo=True,
+        use_text=True,
+    ):
+        super().__init__()
+
+        self.use_full = use_full
+        self.use_crop = use_crop
+        self.use_masked = use_masked
+        self.use_geo = use_geo
+        self.use_text = use_text
+
+        self.clip = CLIPModel.from_pretrained(clip_name)
+        for p in self.clip.parameters():
+            p.requires_grad = False
+        self.clip.eval()
+
+        clip_dim = self.clip.config.projection_dim
+
+        self.geo_mlp = nn.Sequential(
+            nn.Linear(geo_dim, geo_hidden),
+            nn.ReLU(inplace=True),
+            nn.Dropout(dropout),
+            nn.Linear(geo_hidden, geo_hidden),
+            nn.ReLU(inplace=True),
+        )
+
+        fusion_dim = 0
+        if use_full:
+            fusion_dim += clip_dim
+        if use_crop:
+            fusion_dim += clip_dim
+        if use_masked:
+            fusion_dim += clip_dim
+        if use_text:
+            fusion_dim += clip_dim
+        if use_geo:
+            fusion_dim += geo_hidden
+
+        self.classifier = nn.Sequential(
+            nn.Linear(fusion_dim, fusion_hidden),
+            nn.ReLU(inplace=True),
+            nn.Dropout(dropout),
+            nn.Linear(fusion_hidden, fusion_hidden // 2),
+            nn.ReLU(inplace=True),
+            nn.Dropout(dropout),
+            nn.Linear(fusion_hidden // 2, num_classes),
+        )
+
+    @torch.no_grad()
+    def encode_image(self, pixel_values):
+        # Compatible with different transformers versions.
+        feat = self.clip.get_image_features(pixel_values=pixel_values)
+
+        # Some newer/changed versions may return BaseModelOutputWithPooling
+        # instead of a projected tensor.
+        if hasattr(feat, "pooler_output"):
+            feat = feat.pooler_output
+            if feat.shape[-1] != self.clip.config.projection_dim:
+                feat = self.clip.visual_projection(feat)
+
+        feat = F.normalize(feat, dim=-1)
+        return feat
+
+    @torch.no_grad()
+    def encode_text(self, input_ids, attention_mask):
+        # Compatible with different transformers versions.
+        feat = self.clip.get_text_features(
+            input_ids=input_ids,
+            attention_mask=attention_mask,
+        )
+
+        # Some newer/changed versions may return BaseModelOutputWithPooling
+        # instead of a projected tensor.
+        if hasattr(feat, "pooler_output"):
+            feat = feat.pooler_output
+            if feat.shape[-1] != self.clip.config.projection_dim:
+                feat = self.clip.text_projection(feat)
+
+        feat = F.normalize(feat, dim=-1)
+        return feat
+
+    def forward(self, batch, text_inputs=None):
+        feats = []
+
+        if self.use_full:
+            feats.append(self.encode_image(batch["full_image"]))
+
+        if self.use_crop:
+            feats.append(self.encode_image(batch["object_crop"]))
+
+        if self.use_masked:
+            feats.append(self.encode_image(batch["masked_context"]))
+
+        if self.use_text:
+            if text_inputs is None:
+                raise ValueError("text_inputs is required when use_text=True")
+            feats.append(self.encode_text(
+                input_ids=text_inputs["input_ids"],
+                attention_mask=text_inputs["attention_mask"],
+            ))
+
+        if self.use_geo:
+            feats.append(self.geo_mlp(batch["geometry"]))
+
+        z = torch.cat(feats, dim=-1)
+        logits = self.classifier(z)
+        return logits
+
+================================================================================
+FILE: tri_view_compat/models/clip_triview_text_prior.py
+================================================================================
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from transformers import CLIPModel
+
+
+class MLP(nn.Module):
+    def __init__(self, in_dim, hidden_dims, out_dim, dropout=0.1):
+        super().__init__()
+        dims = [in_dim] + list(hidden_dims)
+        layers = []
+        for i in range(len(dims) - 1):
+            layers.append(nn.Linear(dims[i], dims[i + 1]))
+            layers.append(nn.ReLU(inplace=True))
+            layers.append(nn.Dropout(dropout))
+        layers.append(nn.Linear(dims[-1], out_dim))
+        self.net = nn.Sequential(*layers)
+
+    def forward(self, x):
+        return self.net(x)
+
+
+class CLIPTriViewTextPrior(nn.Module):
+    """
+    Tri-view + Text + Masked-context Object Prior.
+
+    Frozen CLIP encodes:
+      - full image
+      - object crop
+      - masked context
+      - replacement object text
+
+    Prior branch:
+      - masked context feature -> 80-way expected object prior
+      - prior distribution -> expected-object feature
+      - replacement text feature -> inserted-object feature
+      - compatibility feature = [expected, inserted, expected*inserted, |expected-inserted|]
+      - final classifier uses both tri-view features and compatibility feature
+    """
+    def __init__(
+        self,
+        clip_name,
+        num_classes=2,
+        num_prior_classes=80,
+        use_full=True,
+        use_crop=True,
+        use_masked=True,
+        use_text=True,
+        use_geo=False,
+        prior_dim=128,
+        geo_dim=128,
+        dropout=0.1,
+        freeze_clip=True,
+    ):
+        super().__init__()
+
+        self.use_full = use_full
+        self.use_crop = use_crop
+        self.use_masked = use_masked
+        self.use_text = use_text
+        self.use_geo = use_geo
+        self.freeze_clip = freeze_clip
+
+        try:
+            self.clip = CLIPModel.from_pretrained(clip_name, use_safetensors=True)
+        except Exception:
+            self.clip = CLIPModel.from_pretrained(clip_name)
+
+        if freeze_clip:
+            for p in self.clip.parameters():
+                p.requires_grad = False
+            self.clip.eval()
+
+        self.clip_dim = self.clip.config.projection_dim
+
+        # Optional geometry encoder.
+        if use_geo:
+            self.geo_mlp = MLP(10, [128], geo_dim, dropout=dropout)
+        else:
+            self.geo_mlp = None
+            geo_dim = 0
+
+        # Prior branch: masked context -> expected object distribution.
+        self.prior_head = MLP(
+            self.clip_dim,
+            [512, 256],
+            num_prior_classes,
+            dropout=dropout,
+        )
+
+        # Turn 80-way prior distribution into a compact expected-object feature.
+        self.prior_proj = MLP(
+            num_prior_classes,
+            [256],
+            prior_dim,
+            dropout=dropout,
+        )
+
+        # Project replacement object text feature into the same prior space.
+        self.text_prior_proj = MLP(
+            self.clip_dim,
+            [256],
+            prior_dim,
+            dropout=dropout,
+        )
+
+        # Compatibility feature:
+        # expected prior, inserted text, element-wise product, absolute difference.
+        compat_dim = prior_dim * 4
+
+        fusion_dim = 0
+        if use_full:
+            fusion_dim += self.clip_dim
+        if use_crop:
+            fusion_dim += self.clip_dim
+        if use_masked:
+            fusion_dim += self.clip_dim
+        if use_text:
+            fusion_dim += self.clip_dim
+        if use_geo:
+            fusion_dim += geo_dim
+
+        fusion_dim += compat_dim
+
+        self.classifier = MLP(
+            fusion_dim,
+            [512, 256],
+            num_classes,
+            dropout=dropout,
+        )
+
+    def train(self, mode=True):
+        super().train(mode)
+        if self.freeze_clip:
+            self.clip.eval()
+        return self
+
+    @torch.no_grad()
+    def encode_image(self, pixel_values):
+        self.clip.eval()
+        out = self.clip.vision_model(pixel_values=pixel_values)
+        pooled = out.pooler_output
+        feat = self.clip.visual_projection(pooled)
+        feat = F.normalize(feat, dim=-1)
+        return feat
+
+    @torch.no_grad()
+    def encode_text(self, input_ids, attention_mask):
+        self.clip.eval()
+        out = self.clip.text_model(
+            input_ids=input_ids,
+            attention_mask=attention_mask,
+        )
+        pooled = out.pooler_output
+        feat = self.clip.text_projection(pooled)
+        feat = F.normalize(feat, dim=-1)
+        return feat
+
+    def forward(
+        self,
+        full_image=None,
+        object_crop=None,
+        masked_context=None,
+        input_ids=None,
+        attention_mask=None,
+        geometry=None,
+    ):
+        feats = []
+
+        full_feat = None
+        crop_feat = None
+        masked_feat = None
+        text_feat = None
+
+        if self.use_full:
+            full_feat = self.encode_image(full_image)
+            feats.append(full_feat)
+
+        if self.use_crop:
+            crop_feat = self.encode_image(object_crop)
+            feats.append(crop_feat)
+
+        # Prior branch always needs masked context.
+        masked_feat = self.encode_image(masked_context)
+
+        if self.use_masked:
+            feats.append(masked_feat)
+
+        if self.use_text:
+            text_feat = self.encode_text(input_ids, attention_mask)
+            feats.append(text_feat)
+        else:
+            # If text is disabled, use zeros so compatibility branch still has a stable shape.
+            text_feat = torch.zeros(
+                masked_feat.shape[0],
+                self.clip_dim,
+                device=masked_feat.device,
+                dtype=masked_feat.dtype,
+            )
+
+        if self.use_geo:
+            geo_feat = self.geo_mlp(geometry)
+            feats.append(geo_feat)
+
+        prior_logits = self.prior_head(masked_feat)
+        prior_prob = torch.softmax(prior_logits, dim=-1)
+
+        expected_feat = self.prior_proj(prior_prob)
+        inserted_feat = self.text_prior_proj(text_feat)
+
+        compat_feat = torch.cat(
+            [
+                expected_feat,
+                inserted_feat,
+                expected_feat * inserted_feat,
+                torch.abs(expected_feat - inserted_feat),
+            ],
+            dim=-1,
+        )
+
+        feats.append(compat_feat)
+
+        fusion = torch.cat(feats, dim=-1)
+        logits = self.classifier(fusion)
+
+        return {
+            "logits": logits,
+            "prior_logits": prior_logits,
+        }
+
+================================================================================
+FILE: tri_view_compat/models/clip_triview_text_prior_v2.py
+================================================================================
+import math
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from transformers import CLIPModel
+
+
+class MLP(nn.Module):
+    def __init__(self, in_dim, hidden_dims, out_dim, dropout=0.1):
+        super().__init__()
+        dims = [in_dim] + list(hidden_dims)
+        layers = []
+        for i in range(len(dims) - 1):
+            layers.append(nn.Linear(dims[i], dims[i + 1]))
+            layers.append(nn.ReLU(inplace=True))
+            layers.append(nn.Dropout(dropout))
+        layers.append(nn.Linear(dims[-1], out_dim))
+        self.net = nn.Sequential(*layers)
+
+    def forward(self, x):
+        return self.net(x)
+
+
+class CLIPTriViewTextPriorV2(nn.Module):
+    """
+    V2: Explicit Prior-Text Compatibility.
+
+    Key feature:
+      p_replacement = P(replacement_object | masked_context)
+
+    The model uses:
+      - tri-view CLIP features
+      - replacement object text feature
+      - masked-context object prior
+      - explicit compatibility scalars:
+          p_replacement, log_p_replacement, max_prior_prob,
+          margin=max_prior_prob-p_replacement, entropy, ratio
+    """
+
+    def __init__(
+        self,
+        clip_name,
+        num_classes=2,
+        num_prior_classes=80,
+        use_full=True,
+        use_crop=True,
+        use_masked=True,
+        use_text=True,
+        use_geo=False,
+        prior_dim=128,
+        scalar_dim=32,
+        geo_dim=128,
+        dropout=0.1,
+        freeze_clip=True,
+    ):
+        super().__init__()
+
+        self.use_full = use_full
+        self.use_crop = use_crop
+        self.use_masked = use_masked
+        self.use_text = use_text
+        self.use_geo = use_geo
+        self.freeze_clip = freeze_clip
+        self.num_prior_classes = num_prior_classes
+
+        try:
+            self.clip = CLIPModel.from_pretrained(clip_name, use_safetensors=True)
+        except Exception:
+            self.clip = CLIPModel.from_pretrained(clip_name)
+
+        if freeze_clip:
+            for p in self.clip.parameters():
+                p.requires_grad = False
+            self.clip.eval()
+
+        self.clip_dim = self.clip.config.projection_dim
+
+        if use_geo:
+            self.geo_mlp = MLP(10, [128], geo_dim, dropout=dropout)
+        else:
+            self.geo_mlp = None
+            geo_dim = 0
+
+        self.prior_head = MLP(
+            self.clip_dim,
+            [512, 256],
+            num_prior_classes,
+            dropout=dropout,
+        )
+
+        self.prior_proj = MLP(
+            num_prior_classes,
+            [256],
+            prior_dim,
+            dropout=dropout,
+        )
+
+        self.text_prior_proj = MLP(
+            self.clip_dim,
+            [256],
+            prior_dim,
+            dropout=dropout,
+        )
+
+        self.scalar_mlp = MLP(
+            6,
+            [64],
+            scalar_dim,
+            dropout=dropout,
+        )
+
+        compat_dim = prior_dim * 4 + scalar_dim
+
+        fusion_dim = 0
+        if use_full:
+            fusion_dim += self.clip_dim
+        if use_crop:
+            fusion_dim += self.clip_dim
+        if use_masked:
+            fusion_dim += self.clip_dim
+        if use_text:
+            fusion_dim += self.clip_dim
+        if use_geo:
+            fusion_dim += geo_dim
+
+        fusion_dim += compat_dim
+
+        self.classifier = MLP(
+            fusion_dim,
+            [512, 256],
+            num_classes,
+            dropout=dropout,
+        )
+
+    def train(self, mode=True):
+        super().train(mode)
+        if self.freeze_clip:
+            self.clip.eval()
+        return self
+
+    @torch.no_grad()
+    def encode_image(self, pixel_values):
+        self.clip.eval()
+        out = self.clip.vision_model(pixel_values=pixel_values)
+        pooled = out.pooler_output
+        feat = self.clip.visual_projection(pooled)
+        feat = F.normalize(feat, dim=-1)
+        return feat
+
+    @torch.no_grad()
+    def encode_text(self, input_ids, attention_mask):
+        self.clip.eval()
+        out = self.clip.text_model(input_ids=input_ids, attention_mask=attention_mask)
+        pooled = out.pooler_output
+        feat = self.clip.text_projection(pooled)
+        feat = F.normalize(feat, dim=-1)
+        return feat
+
+    def forward(
+        self,
+        full_image=None,
+        object_crop=None,
+        masked_context=None,
+        input_ids=None,
+        attention_mask=None,
+        geometry=None,
+        replacement_label=None,
+    ):
+        feats = []
+
+        if self.use_full:
+            full_feat = self.encode_image(full_image)
+            feats.append(full_feat)
+
+        if self.use_crop:
+            crop_feat = self.encode_image(object_crop)
+            feats.append(crop_feat)
+
+        # Prior branch always uses masked context.
+        masked_feat = self.encode_image(masked_context)
+
+        if self.use_masked:
+            feats.append(masked_feat)
+
+        if self.use_text:
+            text_feat = self.encode_text(input_ids, attention_mask)
+            feats.append(text_feat)
+        else:
+            text_feat = torch.zeros(
+                masked_feat.shape[0],
+                self.clip_dim,
+                device=masked_feat.device,
+                dtype=masked_feat.dtype,
+            )
+
+        if self.use_geo:
+            geo_feat = self.geo_mlp(geometry)
+            feats.append(geo_feat)
+
+        prior_logits = self.prior_head(masked_feat)
+        prior_prob = torch.softmax(prior_logits, dim=-1)
+
+        if replacement_label is None:
+            replacement_label = torch.zeros(
+                prior_prob.shape[0],
+                device=prior_prob.device,
+                dtype=torch.long,
+            )
+
+        replacement_label = replacement_label.long().clamp(0, self.num_prior_classes - 1)
+        rep_prob = prior_prob.gather(1, replacement_label.view(-1, 1))
+
+        eps = 1e-8
+        max_prob = prior_prob.max(dim=1, keepdim=True).values
+        log_rep_prob = torch.log(rep_prob + eps)
+        margin = max_prob - rep_prob
+        entropy = -(prior_prob * torch.log(prior_prob + eps)).sum(dim=1, keepdim=True)
+        entropy = entropy / math.log(self.num_prior_classes)
+        ratio = rep_prob / (max_prob + eps)
+
+        scalar_feat = torch.cat(
+            [
+                rep_prob,
+                log_rep_prob,
+                max_prob,
+                margin,
+                entropy,
+                ratio,
+            ],
+            dim=1,
+        )
+        scalar_feat = self.scalar_mlp(scalar_feat)
+
+        expected_feat = self.prior_proj(prior_prob)
+        inserted_feat = self.text_prior_proj(text_feat)
+
+        compat_feat = torch.cat(
+            [
+                expected_feat,
+                inserted_feat,
+                expected_feat * inserted_feat,
+                torch.abs(expected_feat - inserted_feat),
+                scalar_feat,
+            ],
+            dim=-1,
+        )
+
+        feats.append(compat_feat)
+
+        fusion = torch.cat(feats, dim=-1)
+        logits = self.classifier(fusion)
+
+        return {
+            "logits": logits,
+            "prior_logits": prior_logits,
+            "rep_prob": rep_prob.detach(),
+            "max_prior_prob": max_prob.detach(),
+            "prior_entropy": entropy.detach(),
+        }
+
+================================================================================
+FILE: tri_view_compat/train_triview.py
+================================================================================
+import os
+import json
+import argparse
+import random
+import numpy as np
+import pandas as pd
+from tqdm import tqdm
+
+import torch
+from torch.utils.data import DataLoader, Subset
+import torch.nn as nn
+
+from sklearn.metrics import (
+    accuracy_score,
+    balanced_accuracy_score,
+    f1_score,
+    roc_auc_score,
+    classification_report,
+)
+
+from transformers import CLIPTokenizer
+
+from tri_view_compat.datasets.coinco_triview_dataset import COinCOTriViewDataset
+from tri_view_compat.models.clip_triview_baseline import CLIPTriViewBaseline
+
+
+def set_seed(seed):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+
+
+def move_batch_to_device(batch, device):
+    out = {}
+    for k, v in batch.items():
+        if torch.is_tensor(v):
+            out[k] = v.to(device, non_blocking=True)
+        else:
+            out[k] = v
+    return out
+
+
+def make_subset(dataset, max_samples, seed):
+    if max_samples is None or max_samples <= 0 or max_samples >= len(dataset):
+        return dataset
+    rng = np.random.default_rng(seed)
+    indices = rng.choice(len(dataset), size=max_samples, replace=False)
+    return Subset(dataset, indices.tolist())
+
+
+def evaluate(model, tokenizer, loader, device, criterion=None, desc="Eval"):
+    model.eval()
+
+    all_labels = []
+    all_preds = []
+    all_scores = []
+    total_loss = 0.0
+    total_count = 0
+
+    with torch.no_grad():
+        for batch in tqdm(loader, desc=desc):
+            batch = move_batch_to_device(batch, device)
+
+            text_inputs = None
+            if model.use_text:
+                text_inputs = tokenizer(
+                    batch["text_prompt"],
+                    padding=True,
+                    truncation=True,
+                    return_tensors="pt",
+                ).to(device)
+
+            logits = model(batch, text_inputs=text_inputs)
+            labels = batch["label"]
+
+            if criterion is not None:
+                loss = criterion(logits, labels)
+                total_loss += loss.item() * labels.size(0)
+                total_count += labels.size(0)
+
+            probs = torch.softmax(logits, dim=-1)
+            scores = probs[:, 1].detach().cpu().numpy()
+            preds = torch.argmax(logits, dim=-1).detach().cpu().numpy()
+            labels_np = labels.detach().cpu().numpy()
+
+            all_scores.extend(scores.tolist())
+            all_preds.extend(preds.tolist())
+            all_labels.extend(labels_np.tolist())
+
+    metrics = {}
+    metrics["loss"] = total_loss / max(total_count, 1) if criterion is not None else None
+    metrics["acc"] = accuracy_score(all_labels, all_preds)
+    metrics["balanced_acc"] = balanced_accuracy_score(all_labels, all_preds)
+    metrics["macro_f1"] = f1_score(all_labels, all_preds, average="macro")
+    metrics["f1_label0"] = f1_score(all_labels, all_preds, pos_label=0)
+    metrics["f1_label1"] = f1_score(all_labels, all_preds, pos_label=1)
+
+    try:
+        metrics["auc"] = roc_auc_score(all_labels, all_scores)
+    except Exception:
+        metrics["auc"] = None
+
+    metrics["report"] = classification_report(all_labels, all_preds, digits=4)
+
+    return metrics
+
+
+def main():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("--train_csv", default="tri_view_compat/outputs/splits/train.csv")
+    parser.add_argument("--val_csv", default="tri_view_compat/outputs/splits/val.csv")
+    parser.add_argument("--test_csv", default="tri_view_compat/outputs/splits/test.csv")
+
+    parser.add_argument("--clip_name", default="openai/clip-vit-base-patch32")
+    parser.add_argument("--output_dir", default="tri_view_compat/outputs/checkpoints/clip_triview_full")
+
+    parser.add_argument("--epochs", type=int, default=5)
+    parser.add_argument("--batch_size", type=int, default=64)
+    parser.add_argument("--num_workers", type=int, default=4)
+    parser.add_argument("--lr", type=float, default=1e-3)
+    parser.add_argument("--weight_decay", type=float, default=1e-4)
+    parser.add_argument("--seed", type=int, default=777)
+
+    parser.add_argument("--max_train_samples", type=int, default=0)
+    parser.add_argument("--max_val_samples", type=int, default=0)
+    parser.add_argument("--max_test_samples", type=int, default=0)
+
+    parser.add_argument("--no_full", action="store_true")
+    parser.add_argument("--no_crop", action="store_true")
+    parser.add_argument("--no_masked", action="store_true")
+    parser.add_argument("--no_geo", action="store_true")
+    parser.add_argument("--no_text", action="store_true")
+
+    args = parser.parse_args()
+
+    set_seed(args.seed)
+    os.makedirs(args.output_dir, exist_ok=True)
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print("device:", device)
+    print("args:", vars(args))
+
+    train_dataset = COinCOTriViewDataset(args.train_csv)
+    val_dataset = COinCOTriViewDataset(args.val_csv)
+    test_dataset = COinCOTriViewDataset(args.test_csv)
+
+    train_dataset = make_subset(train_dataset, args.max_train_samples, args.seed)
+    val_dataset = make_subset(val_dataset, args.max_val_samples, args.seed + 1)
+    test_dataset = make_subset(test_dataset, args.max_test_samples, args.seed + 2)
+
+    train_loader = DataLoader(
+        train_dataset,
+        batch_size=args.batch_size,
+        shuffle=True,
+        num_workers=args.num_workers,
+        pin_memory=True,
+    )
+    val_loader = DataLoader(
+        val_dataset,
+        batch_size=args.batch_size,
+        shuffle=False,
+        num_workers=args.num_workers,
+        pin_memory=True,
+    )
+    test_loader = DataLoader(
+        test_dataset,
+        batch_size=args.batch_size,
+        shuffle=False,
+        num_workers=args.num_workers,
+        pin_memory=True,
+    )
+
+    train_df = pd.read_csv(args.train_csv)
+    counts = train_df["label"].value_counts().sort_index()
+    total = counts.sum()
+    weights = [total / (2.0 * counts.get(i, 1)) for i in range(2)]
+    class_weight = torch.tensor(weights, dtype=torch.float32).to(device)
+    print("class counts:", counts.to_dict())
+    print("class weight:", weights)
+
+    tokenizer = CLIPTokenizer.from_pretrained(args.clip_name)
+
+    model = CLIPTriViewBaseline(
+        clip_name=args.clip_name,
+        use_full=not args.no_full,
+        use_crop=not args.no_crop,
+        use_masked=not args.no_masked,
+        use_geo=not args.no_geo,
+        use_text=not args.no_text,
+    ).to(device)
+
+    criterion = nn.CrossEntropyLoss(weight=class_weight)
+
+    trainable_params = [p for p in model.parameters() if p.requires_grad]
+    print("trainable params:", sum(p.numel() for p in trainable_params))
+    optimizer = torch.optim.AdamW(trainable_params, lr=args.lr, weight_decay=args.weight_decay)
+
+    best_macro_f1 = -1.0
+    history = []
+
+    for epoch in range(args.epochs):
+        model.train()
+        total_loss = 0.0
+        total_seen = 0
+
+        pbar = tqdm(train_loader, desc=f"Train epoch {epoch}")
+        for batch in pbar:
+            batch = move_batch_to_device(batch, device)
+
+            text_inputs = None
+            if model.use_text:
+                text_inputs = tokenizer(
+                    batch["text_prompt"],
+                    padding=True,
+                    truncation=True,
+                    return_tensors="pt",
+                ).to(device)
+
+            logits = model(batch, text_inputs=text_inputs)
+            labels = batch["label"]
+            loss = criterion(logits, labels)
+
+            optimizer.zero_grad(set_to_none=True)
+            loss.backward()
+            optimizer.step()
+
+            total_loss += loss.item() * labels.size(0)
+            total_seen += labels.size(0)
+
+            pbar.set_postfix(loss=total_loss / max(total_seen, 1))
+
+        val_metrics = evaluate(model, tokenizer, val_loader, device, criterion, desc=f"Val epoch {epoch}")
+        print(f"\nEpoch {epoch} val metrics:")
+        for k, v in val_metrics.items():
+            if k != "report":
+                print(f"{k}: {v}")
+        print(val_metrics["report"])
+
+        record = {"epoch": epoch, "val": val_metrics}
+        history.append(record)
+
+        if val_metrics["macro_f1"] > best_macro_f1:
+            best_macro_f1 = val_metrics["macro_f1"]
+            ckpt_path = os.path.join(args.output_dir, "best.pt")
+            torch.save({
+                "model": model.state_dict(),
+                "args": vars(args),
+                "best_macro_f1": best_macro_f1,
+                "epoch": epoch,
+            }, ckpt_path)
+            print("saved best:", ckpt_path)
+
+        with open(os.path.join(args.output_dir, "history.json"), "w") as f:
+            json.dump(history, f, indent=2)
+
+    best_path = os.path.join(args.output_dir, "best.pt")
+    if os.path.exists(best_path):
+        ckpt = torch.load(best_path, map_location=device)
+        model.load_state_dict(ckpt["model"])
+        print("loaded best checkpoint:", best_path)
+
+    test_metrics = evaluate(model, tokenizer, test_loader, device, criterion, desc="Test")
+    print("\nFinal test metrics:")
+    for k, v in test_metrics.items():
+        if k != "report":
+            print(f"{k}: {v}")
+    print(test_metrics["report"])
+
+    with open(os.path.join(args.output_dir, "test_metrics.json"), "w") as f:
+        json.dump(test_metrics, f, indent=2)
+
+    print("results saved to:", args.output_dir)
+
+
+if __name__ == "__main__":
+    main()
+
+================================================================================
+FILE: tri_view_compat/train_triview_prior.py
+================================================================================
+import argparse
+import json
+import os
+import random
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+import torch
+import torch.nn as nn
+from sklearn.metrics import (
+    accuracy_score,
+    balanced_accuracy_score,
+    classification_report,
+    f1_score,
+    roc_auc_score,
+)
+from torch.utils.data import DataLoader, Subset
+from tqdm import tqdm
+from transformers import CLIPTokenizer
+
+from tri_view_compat.datasets.coinco_triview_dataset import COinCOTriViewDataset
+from tri_view_compat.models.clip_triview_text_prior import CLIPTriViewTextPrior
+
+
+def set_seed(seed):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+
+
+def limit_dataset(ds, max_samples):
+    if max_samples is None or max_samples <= 0:
+        return ds
+    n = min(len(ds), max_samples)
+    return Subset(ds, list(range(n)))
+
+
+def compute_class_weight(csv_path):
+    df = pd.read_csv(csv_path)
+    counts = df["label"].value_counts().to_dict()
+    total = len(df)
+    weights = []
+    for i in range(2):
+        c = counts.get(i, 1)
+        weights.append(float(total / (2.0 * c)))
+    return weights, counts
+
+
+def prior_topk(prior_logits, prior_labels, k):
+    pred = torch.topk(prior_logits, k=k, dim=1).indices
+    hit = pred.eq(prior_labels.view(-1, 1)).any(dim=1).float()
+    return hit.mean().item()
+
+
+def run_eval(model, loader, tokenizer, device, ce_ooc, ce_prior, prior_loss_weight, desc):
+    model.eval()
+
+    total_loss = 0.0
+    total_ooc_loss = 0.0
+    total_prior_loss = 0.0
+    total_n = 0
+
+    all_labels = []
+    all_probs = []
+    all_preds = []
+
+    prior_top1_sum = 0.0
+    prior_top3_sum = 0.0
+    prior_top5_sum = 0.0
+    prior_batches = 0
+
+    with torch.no_grad():
+        for batch in tqdm(loader, desc=desc):
+            full_image = batch["full_image"].to(device, non_blocking=True)
+            object_crop = batch["object_crop"].to(device, non_blocking=True)
+            masked_context = batch["masked_context"].to(device, non_blocking=True)
+            labels = batch["label"].to(device, non_blocking=True)
+            prior_labels = batch["prior_label"].to(device, non_blocking=True)
+
+            geometry = batch["geometry"].to(device, non_blocking=True)
+
+            text_inputs = tokenizer(
+                list(batch["text_prompt"]),
+                padding=True,
+                truncation=True,
+                return_tensors="pt",
+            )
+            input_ids = text_inputs["input_ids"].to(device, non_blocking=True)
+            attention_mask = text_inputs["attention_mask"].to(device, non_blocking=True)
+
+            out = model(
+                full_image=full_image,
+                object_crop=object_crop,
+                masked_context=masked_context,
+                input_ids=input_ids,
+                attention_mask=attention_mask,
+                geometry=geometry,
+            )
+
+            logits = out["logits"]
+            prior_logits = out["prior_logits"]
+
+            ooc_loss = ce_ooc(logits, labels)
+            prior_loss = ce_prior(prior_logits, prior_labels)
+            loss = ooc_loss + prior_loss_weight * prior_loss
+
+            bsz = labels.size(0)
+            total_loss += loss.item() * bsz
+            total_ooc_loss += ooc_loss.item() * bsz
+            total_prior_loss += prior_loss.item() * bsz
+            total_n += bsz
+
+            probs = torch.softmax(logits, dim=1)[:, 1]
+            preds = torch.argmax(logits, dim=1)
+
+            all_labels.extend(labels.detach().cpu().numpy().tolist())
+            all_probs.extend(probs.detach().cpu().numpy().tolist())
+            all_preds.extend(preds.detach().cpu().numpy().tolist())
+
+            prior_top1_sum += prior_topk(prior_logits, prior_labels, 1)
+            prior_top3_sum += prior_topk(prior_logits, prior_labels, 3)
+            prior_top5_sum += prior_topk(prior_logits, prior_labels, 5)
+            prior_batches += 1
+
+    metrics = {}
+    metrics["loss"] = total_loss / max(total_n, 1)
+    metrics["ooc_loss"] = total_ooc_loss / max(total_n, 1)
+    metrics["prior_loss"] = total_prior_loss / max(total_n, 1)
+
+    metrics["acc"] = float(accuracy_score(all_labels, all_preds))
+    metrics["balanced_acc"] = float(balanced_accuracy_score(all_labels, all_preds))
+    metrics["macro_f1"] = float(f1_score(all_labels, all_preds, average="macro"))
+    metrics["f1_label0"] = float(f1_score(all_labels, all_preds, pos_label=0))
+    metrics["f1_label1"] = float(f1_score(all_labels, all_preds, pos_label=1))
+
+    try:
+        metrics["auc"] = float(roc_auc_score(all_labels, all_probs))
+    except Exception:
+        metrics["auc"] = None
+
+    metrics["prior_top1"] = prior_top1_sum / max(prior_batches, 1)
+    metrics["prior_top3"] = prior_top3_sum / max(prior_batches, 1)
+    metrics["prior_top5"] = prior_top5_sum / max(prior_batches, 1)
+
+    metrics["report"] = classification_report(
+        all_labels,
+        all_preds,
+        digits=4,
+    )
+
+    return metrics
+
+
+def main():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("--train_csv", default="tri_view_compat/outputs/splits/train.csv")
+    parser.add_argument("--val_csv", default="tri_view_compat/outputs/splits/val.csv")
+    parser.add_argument("--test_csv", default="tri_view_compat/outputs/splits/test.csv")
+
+    parser.add_argument("--clip_name", required=True)
+    parser.add_argument("--output_dir", required=True)
+
+    parser.add_argument("--epochs", type=int, default=10)
+    parser.add_argument("--batch_size", type=int, default=256)
+    parser.add_argument("--num_workers", type=int, default=8)
+    parser.add_argument("--lr", type=float, default=1e-3)
+    parser.add_argument("--weight_decay", type=float, default=1e-4)
+    parser.add_argument("--seed", type=int, default=777)
+
+    parser.add_argument("--prior_loss_weight", type=float, default=0.1)
+
+    parser.add_argument("--max_train_samples", type=int, default=0)
+    parser.add_argument("--max_val_samples", type=int, default=0)
+    parser.add_argument("--max_test_samples", type=int, default=0)
+
+    parser.add_argument("--no_full", action="store_true")
+    parser.add_argument("--no_crop", action="store_true")
+    parser.add_argument("--no_masked", action="store_true")
+    parser.add_argument("--no_text", action="store_true")
+    parser.add_argument("--no_geo", action="store_true")
+
+    args = parser.parse_args()
+
+    set_seed(args.seed)
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print("device:", device)
+    print("args:", vars(args))
+
+    os.makedirs(args.output_dir, exist_ok=True)
+
+    train_ds = COinCOTriViewDataset(args.train_csv)
+    val_ds = COinCOTriViewDataset(args.val_csv)
+    test_ds = COinCOTriViewDataset(args.test_csv)
+
+    train_ds = limit_dataset(train_ds, args.max_train_samples)
+    val_ds = limit_dataset(val_ds, args.max_val_samples)
+    test_ds = limit_dataset(test_ds, args.max_test_samples)
+
+    train_loader = DataLoader(
+        train_ds,
+        batch_size=args.batch_size,
+        shuffle=True,
+        num_workers=args.num_workers,
+        pin_memory=True,
+        persistent_workers=args.num_workers > 0,
+    )
+    val_loader = DataLoader(
+        val_ds,
+        batch_size=args.batch_size,
+        shuffle=False,
+        num_workers=args.num_workers,
+        pin_memory=True,
+        persistent_workers=args.num_workers > 0,
+    )
+    test_loader = DataLoader(
+        test_ds,
+        batch_size=args.batch_size,
+        shuffle=False,
+        num_workers=args.num_workers,
+        pin_memory=True,
+        persistent_workers=args.num_workers > 0,
+    )
+
+    class_weight, class_counts = compute_class_weight(args.train_csv)
+    print("class counts:", class_counts)
+    print("class weight:", class_weight)
+
+    class_weight = torch.tensor(class_weight, dtype=torch.float32, device=device)
+
+    ce_ooc = nn.CrossEntropyLoss(weight=class_weight)
+    ce_prior = nn.CrossEntropyLoss()
+
+    tokenizer = CLIPTokenizer.from_pretrained(args.clip_name)
+
+    model = CLIPTriViewTextPrior(
+        clip_name=args.clip_name,
+        use_full=not args.no_full,
+        use_crop=not args.no_crop,
+        use_masked=not args.no_masked,
+        use_text=not args.no_text,
+        use_geo=not args.no_geo,
+        num_prior_classes=80,
+        dropout=0.1,
+        freeze_clip=True,
+    ).to(device)
+
+    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    print("trainable params:", trainable_params)
+
+    optimizer = torch.optim.AdamW(
+        [p for p in model.parameters() if p.requires_grad],
+        lr=args.lr,
+        weight_decay=args.weight_decay,
+    )
+
+    history = []
+    best_macro_f1 = -1.0
+    best_path = os.path.join(args.output_dir, "best.pt")
+
+    for epoch in range(args.epochs):
+        model.train()
+
+        total_loss = 0.0
+        total_ooc_loss = 0.0
+        total_prior_loss = 0.0
+        total_n = 0
+
+        pbar = tqdm(train_loader, desc=f"Train epoch {epoch}")
+
+        for batch in pbar:
+            full_image = batch["full_image"].to(device, non_blocking=True)
+            object_crop = batch["object_crop"].to(device, non_blocking=True)
+            masked_context = batch["masked_context"].to(device, non_blocking=True)
+            labels = batch["label"].to(device, non_blocking=True)
+            prior_labels = batch["prior_label"].to(device, non_blocking=True)
+
+            geometry = batch["geometry"].to(device, non_blocking=True)
+
+            text_inputs = tokenizer(
+                list(batch["text_prompt"]),
+                padding=True,
+                truncation=True,
+                return_tensors="pt",
+            )
+            input_ids = text_inputs["input_ids"].to(device, non_blocking=True)
+            attention_mask = text_inputs["attention_mask"].to(device, non_blocking=True)
+
+            out = model(
+                full_image=full_image,
+                object_crop=object_crop,
+                masked_context=masked_context,
+                input_ids=input_ids,
+                attention_mask=attention_mask,
+                geometry=geometry,
+            )
+
+            logits = out["logits"]
+            prior_logits = out["prior_logits"]
+
+            ooc_loss = ce_ooc(logits, labels)
+            prior_loss = ce_prior(prior_logits, prior_labels)
+            loss = ooc_loss + args.prior_loss_weight * prior_loss
+
+            optimizer.zero_grad(set_to_none=True)
+            loss.backward()
+            optimizer.step()
+
+            bsz = labels.size(0)
+            total_loss += loss.item() * bsz
+            total_ooc_loss += ooc_loss.item() * bsz
+            total_prior_loss += prior_loss.item() * bsz
+            total_n += bsz
+
+            pbar.set_postfix({
+                "loss": f"{total_loss / max(total_n, 1):.4f}",
+                "ooc": f"{total_ooc_loss / max(total_n, 1):.4f}",
+                "prior": f"{total_prior_loss / max(total_n, 1):.4f}",
+            })
+
+        val_metrics = run_eval(
+            model,
+            val_loader,
+            tokenizer,
+            device,
+            ce_ooc,
+            ce_prior,
+            args.prior_loss_weight,
+            desc=f"Val epoch {epoch}",
+        )
+
+        print(f"\nEpoch {epoch} val metrics:")
+        for k, v in val_metrics.items():
+            if k != "report":
+                print(f"{k}: {v}")
+        print(val_metrics["report"])
+
+        record = {
+            "epoch": epoch,
+            "train_loss": total_loss / max(total_n, 1),
+            "train_ooc_loss": total_ooc_loss / max(total_n, 1),
+            "train_prior_loss": total_prior_loss / max(total_n, 1),
+            "val": val_metrics,
+        }
+        history.append(record)
+
+        with open(os.path.join(args.output_dir, "history.json"), "w") as f:
+            json.dump(history, f, indent=2)
+
+        if val_metrics["macro_f1"] > best_macro_f1:
+            best_macro_f1 = val_metrics["macro_f1"]
+            torch.save(
+                {
+                    "model": model.state_dict(),
+                    "args": vars(args),
+                    "epoch": epoch,
+                    "val": val_metrics,
+                },
+                best_path,
+            )
+            print("saved best:", best_path)
+
+    ckpt = torch.load(best_path, map_location=device)
+    model.load_state_dict(ckpt["model"])
+    print("loaded best checkpoint:", best_path)
+
+    test_metrics = run_eval(
+        model,
+        test_loader,
+        tokenizer,
+        device,
+        ce_ooc,
+        ce_prior,
+        args.prior_loss_weight,
+        desc="Test",
+    )
+
+    print("\nFinal test metrics:")
+    for k, v in test_metrics.items():
+        if k != "report":
+            print(f"{k}: {v}")
+    print(test_metrics["report"])
+
+    with open(os.path.join(args.output_dir, "test_metrics.json"), "w") as f:
+        json.dump(test_metrics, f, indent=2)
+
+    print("results saved to:", args.output_dir)
+
+
+if __name__ == "__main__":
+    main()
+
+================================================================================
+FILE: tri_view_compat/train_triview_prior_v2.py
+================================================================================
+import argparse
+import json
+import os
+import random
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+import torch
+import torch.nn as nn
+from sklearn.metrics import (
+    accuracy_score,
+    balanced_accuracy_score,
+    classification_report,
+    f1_score,
+    roc_auc_score,
+)
+from torch.utils.data import DataLoader, Subset
+from tqdm import tqdm
+from transformers import CLIPTokenizer
+
+from tri_view_compat.datasets.coinco_triview_dataset_v2 import COinCOTriViewDatasetV2
+from tri_view_compat.models.clip_triview_text_prior_v2 import CLIPTriViewTextPriorV2
+
+
+def set_seed(seed):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+
+
+def limit_dataset(ds, max_samples):
+    if max_samples is None or max_samples <= 0:
+        return ds
+    n = min(len(ds), max_samples)
+    return Subset(ds, list(range(n)))
+
+
+def compute_class_weight(csv_path):
+    df = pd.read_csv(csv_path)
+    counts = df["label"].value_counts().to_dict()
+    total = len(df)
+    weights = []
+    for i in range(2):
+        c = counts.get(i, 1)
+        weights.append(float(total / (2.0 * c)))
+    return weights, counts
+
+
+def prior_topk(prior_logits, prior_labels, k):
+    pred = torch.topk(prior_logits, k=k, dim=1).indices
+    hit = pred.eq(prior_labels.view(-1, 1)).any(dim=1).float()
+    return hit.mean().item()
+
+
+def run_eval(model, loader, tokenizer, device, ce_ooc, ce_prior, prior_loss_weight, desc):
+    model.eval()
+
+    total_loss = 0.0
+    total_ooc_loss = 0.0
+    total_prior_loss = 0.0
+    total_n = 0
+
+    all_labels = []
+    all_probs = []
+    all_preds = []
+
+    prior_top1_sum = 0.0
+    prior_top3_sum = 0.0
+    prior_top5_sum = 0.0
+    prior_batches = 0
+
+    with torch.no_grad():
+        for batch in tqdm(loader, desc=desc):
+            full_image = batch["full_image"].to(device, non_blocking=True)
+            object_crop = batch["object_crop"].to(device, non_blocking=True)
+            masked_context = batch["masked_context"].to(device, non_blocking=True)
+            labels = batch["label"].to(device, non_blocking=True)
+            prior_labels = batch["prior_label"].to(device, non_blocking=True)
+            replacement_labels = batch["replacement_label"].to(device, non_blocking=True)
+
+            geometry = batch["geometry"].to(device, non_blocking=True)
+
+            text_inputs = tokenizer(
+                list(batch["text_prompt"]),
+                padding=True,
+                truncation=True,
+                return_tensors="pt",
+            )
+            input_ids = text_inputs["input_ids"].to(device, non_blocking=True)
+            attention_mask = text_inputs["attention_mask"].to(device, non_blocking=True)
+
+            out = model(
+                full_image=full_image,
+                object_crop=object_crop,
+                masked_context=masked_context,
+                input_ids=input_ids,
+                attention_mask=attention_mask,
+                geometry=geometry,
+                replacement_label=replacement_labels,
+            )
+
+            logits = out["logits"]
+            prior_logits = out["prior_logits"]
+
+            ooc_loss = ce_ooc(logits, labels)
+            prior_loss = ce_prior(prior_logits, prior_labels)
+            loss = ooc_loss + prior_loss_weight * prior_loss
+
+            bsz = labels.size(0)
+            total_loss += loss.item() * bsz
+            total_ooc_loss += ooc_loss.item() * bsz
+            total_prior_loss += prior_loss.item() * bsz
+            total_n += bsz
+
+            probs = torch.softmax(logits, dim=1)[:, 1]
+            preds = torch.argmax(logits, dim=1)
+
+            all_labels.extend(labels.detach().cpu().numpy().tolist())
+            all_probs.extend(probs.detach().cpu().numpy().tolist())
+            all_preds.extend(preds.detach().cpu().numpy().tolist())
+
+            prior_top1_sum += prior_topk(prior_logits, prior_labels, 1)
+            prior_top3_sum += prior_topk(prior_logits, prior_labels, 3)
+            prior_top5_sum += prior_topk(prior_logits, prior_labels, 5)
+            prior_batches += 1
+
+    metrics = {}
+    metrics["loss"] = total_loss / max(total_n, 1)
+    metrics["ooc_loss"] = total_ooc_loss / max(total_n, 1)
+    metrics["prior_loss"] = total_prior_loss / max(total_n, 1)
+
+    metrics["acc"] = float(accuracy_score(all_labels, all_preds))
+    metrics["balanced_acc"] = float(balanced_accuracy_score(all_labels, all_preds))
+    metrics["macro_f1"] = float(f1_score(all_labels, all_preds, average="macro"))
+    metrics["f1_label0"] = float(f1_score(all_labels, all_preds, pos_label=0))
+    metrics["f1_label1"] = float(f1_score(all_labels, all_preds, pos_label=1))
+
+    try:
+        metrics["auc"] = float(roc_auc_score(all_labels, all_probs))
+    except Exception:
+        metrics["auc"] = None
+
+    metrics["prior_top1"] = prior_top1_sum / max(prior_batches, 1)
+    metrics["prior_top3"] = prior_top3_sum / max(prior_batches, 1)
+    metrics["prior_top5"] = prior_top5_sum / max(prior_batches, 1)
+
+    metrics["report"] = classification_report(
+        all_labels,
+        all_preds,
+        digits=4,
+    )
+
+    return metrics
+
+
+def main():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("--train_csv", default="tri_view_compat/outputs/splits/train.csv")
+    parser.add_argument("--val_csv", default="tri_view_compat/outputs/splits/val.csv")
+    parser.add_argument("--test_csv", default="tri_view_compat/outputs/splits/test.csv")
+
+    parser.add_argument("--clip_name", required=True)
+    parser.add_argument("--output_dir", required=True)
+
+    parser.add_argument("--epochs", type=int, default=10)
+    parser.add_argument("--batch_size", type=int, default=256)
+    parser.add_argument("--num_workers", type=int, default=8)
+    parser.add_argument("--lr", type=float, default=1e-3)
+    parser.add_argument("--weight_decay", type=float, default=1e-4)
+    parser.add_argument("--seed", type=int, default=777)
+
+    parser.add_argument("--prior_loss_weight", type=float, default=0.1)
+
+    parser.add_argument("--max_train_samples", type=int, default=0)
+    parser.add_argument("--max_val_samples", type=int, default=0)
+    parser.add_argument("--max_test_samples", type=int, default=0)
+
+    parser.add_argument("--no_full", action="store_true")
+    parser.add_argument("--no_crop", action="store_true")
+    parser.add_argument("--no_masked", action="store_true")
+    parser.add_argument("--no_text", action="store_true")
+    parser.add_argument("--no_geo", action="store_true")
+
+    args = parser.parse_args()
+
+    set_seed(args.seed)
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print("device:", device)
+    print("args:", vars(args))
+
+    os.makedirs(args.output_dir, exist_ok=True)
+
+    train_ds = COinCOTriViewDatasetV2(args.train_csv)
+    val_ds = COinCOTriViewDatasetV2(args.val_csv)
+    test_ds = COinCOTriViewDatasetV2(args.test_csv)
+
+    train_ds = limit_dataset(train_ds, args.max_train_samples)
+    val_ds = limit_dataset(val_ds, args.max_val_samples)
+    test_ds = limit_dataset(test_ds, args.max_test_samples)
+
+    train_loader = DataLoader(
+        train_ds,
+        batch_size=args.batch_size,
+        shuffle=True,
+        num_workers=args.num_workers,
+        pin_memory=True,
+        persistent_workers=args.num_workers > 0,
+    )
+    val_loader = DataLoader(
+        val_ds,
+        batch_size=args.batch_size,
+        shuffle=False,
+        num_workers=args.num_workers,
+        pin_memory=True,
+        persistent_workers=args.num_workers > 0,
+    )
+    test_loader = DataLoader(
+        test_ds,
+        batch_size=args.batch_size,
+        shuffle=False,
+        num_workers=args.num_workers,
+        pin_memory=True,
+        persistent_workers=args.num_workers > 0,
+    )
+
+    class_weight, class_counts = compute_class_weight(args.train_csv)
+    print("class counts:", class_counts)
+    print("class weight:", class_weight)
+
+    class_weight = torch.tensor(class_weight, dtype=torch.float32, device=device)
+
+    ce_ooc = nn.CrossEntropyLoss(weight=class_weight)
+    ce_prior = nn.CrossEntropyLoss()
+
+    tokenizer = CLIPTokenizer.from_pretrained(args.clip_name)
+
+    model = CLIPTriViewTextPriorV2(
+        clip_name=args.clip_name,
+        use_full=not args.no_full,
+        use_crop=not args.no_crop,
+        use_masked=not args.no_masked,
+        use_text=not args.no_text,
+        use_geo=not args.no_geo,
+        num_prior_classes=80,
+        dropout=0.1,
+        freeze_clip=True,
+    ).to(device)
+
+    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    print("trainable params:", trainable_params)
+
+    optimizer = torch.optim.AdamW(
+        [p for p in model.parameters() if p.requires_grad],
+        lr=args.lr,
+        weight_decay=args.weight_decay,
+    )
+
+    history = []
+    best_macro_f1 = -1.0
+    best_path = os.path.join(args.output_dir, "best.pt")
+
+    for epoch in range(args.epochs):
+        model.train()
+
+        total_loss = 0.0
+        total_ooc_loss = 0.0
+        total_prior_loss = 0.0
+        total_n = 0
+
+        pbar = tqdm(train_loader, desc=f"Train epoch {epoch}")
+
+        for batch in pbar:
+            full_image = batch["full_image"].to(device, non_blocking=True)
+            object_crop = batch["object_crop"].to(device, non_blocking=True)
+            masked_context = batch["masked_context"].to(device, non_blocking=True)
+            labels = batch["label"].to(device, non_blocking=True)
+            prior_labels = batch["prior_label"].to(device, non_blocking=True)
+            replacement_labels = batch["replacement_label"].to(device, non_blocking=True)
+
+            geometry = batch["geometry"].to(device, non_blocking=True)
+
+            text_inputs = tokenizer(
+                list(batch["text_prompt"]),
+                padding=True,
+                truncation=True,
+                return_tensors="pt",
+            )
+            input_ids = text_inputs["input_ids"].to(device, non_blocking=True)
+            attention_mask = text_inputs["attention_mask"].to(device, non_blocking=True)
+
+            out = model(
+                full_image=full_image,
+                object_crop=object_crop,
+                masked_context=masked_context,
+                input_ids=input_ids,
+                attention_mask=attention_mask,
+                geometry=geometry,
+                replacement_label=replacement_labels,
+            )
+
+            logits = out["logits"]
+            prior_logits = out["prior_logits"]
+
+            ooc_loss = ce_ooc(logits, labels)
+            prior_loss = ce_prior(prior_logits, prior_labels)
+            loss = ooc_loss + args.prior_loss_weight * prior_loss
+
+            optimizer.zero_grad(set_to_none=True)
+            loss.backward()
+            optimizer.step()
+
+            bsz = labels.size(0)
+            total_loss += loss.item() * bsz
+            total_ooc_loss += ooc_loss.item() * bsz
+            total_prior_loss += prior_loss.item() * bsz
+            total_n += bsz
+
+            pbar.set_postfix({
+                "loss": f"{total_loss / max(total_n, 1):.4f}",
+                "ooc": f"{total_ooc_loss / max(total_n, 1):.4f}",
+                "prior": f"{total_prior_loss / max(total_n, 1):.4f}",
+            })
+
+        val_metrics = run_eval(
+            model,
+            val_loader,
+            tokenizer,
+            device,
+            ce_ooc,
+            ce_prior,
+            args.prior_loss_weight,
+            desc=f"Val epoch {epoch}",
+        )
+
+        print(f"\nEpoch {epoch} val metrics:")
+        for k, v in val_metrics.items():
+            if k != "report":
+                print(f"{k}: {v}")
+        print(val_metrics["report"])
+
+        record = {
+            "epoch": epoch,
+            "train_loss": total_loss / max(total_n, 1),
+            "train_ooc_loss": total_ooc_loss / max(total_n, 1),
+            "train_prior_loss": total_prior_loss / max(total_n, 1),
+            "val": val_metrics,
+        }
+        history.append(record)
+
+        with open(os.path.join(args.output_dir, "history.json"), "w") as f:
+            json.dump(history, f, indent=2)
+
+        if val_metrics["macro_f1"] > best_macro_f1:
+            best_macro_f1 = val_metrics["macro_f1"]
+            torch.save(
+                {
+                    "model": model.state_dict(),
+                    "args": vars(args),
+                    "epoch": epoch,
+                    "val": val_metrics,
+                },
+                best_path,
+            )
+            print("saved best:", best_path)
+
+    ckpt = torch.load(best_path, map_location=device)
+    model.load_state_dict(ckpt["model"])
+    print("loaded best checkpoint:", best_path)
+
+    test_metrics = run_eval(
+        model,
+        test_loader,
+        tokenizer,
+        device,
+        ce_ooc,
+        ce_prior,
+        args.prior_loss_weight,
+        desc="Test",
+    )
+
+    print("\nFinal test metrics:")
+    for k, v in test_metrics.items():
+        if k != "report":
+            print(f"{k}: {v}")
+    print(test_metrics["report"])
+
+    with open(os.path.join(args.output_dir, "test_metrics.json"), "w") as f:
+        json.dump(test_metrics, f, indent=2)
+
+    print("results saved to:", args.output_dir)
+
+
+if __name__ == "__main__":
+    main()
+
+================================================================================
+FILE: tri_view_compat/tools/build_triview_splits.py
+================================================================================
+import os
+import pandas as pd
+
+ROOT = "/home/ubuntu/ztl/COinCO"
+OUT_DIR = os.path.join(ROOT, "tri_view_compat/outputs/splits")
+os.makedirs(OUT_DIR, exist_ok=True)
+
+# Main Task 1 labels
+context_train_path = os.path.join(ROOT, "task_data/context_prediction/inpainting_only/training_val_data.csv")
+context_test_path = os.path.join(ROOT, "task_data/context_prediction/testing_data.csv")
+
+# Replacement metadata
+inpaint_train_path = os.path.join(ROOT, "task_data/inpainting_info/training_inpainting_info.csv")
+inpaint_test_path = os.path.join(ROOT, "task_data/inpainting_info/testing_inpainting_info.csv")
+
+# Task 2 prior labels, used here mainly for splitting and future prior branch
+prior_train_path = os.path.join(ROOT, "task_data/objects_from_context_prediction/training_data.csv")
+prior_val_path = os.path.join(ROOT, "task_data/objects_from_context_prediction/validation_data.csv")
+prior_test_path = os.path.join(ROOT, "task_data/objects_from_context_prediction/testing_data.csv")
+
+def read_csv(path):
+    return pd.read_csv(path, dtype={"coco_index": str})
+
+def build_split(context_df, inpaint_df, prior_df, split_name, image_dir, mask_dir):
+    context_df = context_df.copy()
+    inpaint_df = inpaint_df.copy()
+    prior_df = prior_df.copy()
+
+    context_df["coco_index"] = context_df["coco_index"].astype(str)
+    inpaint_df["coco_index"] = inpaint_df["coco_index"].astype(str)
+    prior_df["coco_index"] = prior_df["coco_index"].astype(str)
+
+    # Rename Task 2 label as prior_label
+    prior_df = prior_df.rename(columns={"label": "prior_label"})
+
+    # Keep only samples that have context label + replacement metadata + prior label
+    df = context_df.merge(inpaint_df, on="coco_index", how="inner")
+    df = df.merge(prior_df[["coco_index", "prior_label"]], on="coco_index", how="inner")
+
+    df["image_path"] = df["coco_index"].apply(lambda x: os.path.join(image_dir, f"{x}.png"))
+    df["mask_path"] = df["coco_index"].apply(lambda x: os.path.join(mask_dir, f"{x}.png"))
+    df["split"] = split_name
+
+    # Check image and mask existence
+    df["image_exists"] = df["image_path"].apply(os.path.exists)
+    df["mask_exists"] = df["mask_path"].apply(os.path.exists)
+
+    missing_img = (~df["image_exists"]).sum()
+    missing_mask = (~df["mask_exists"]).sum()
+
+    if missing_img > 0 or missing_mask > 0:
+        print(f"[WARN] {split_name}: missing_img={missing_img}, missing_mask={missing_mask}")
+        df = df[df["image_exists"] & df["mask_exists"]].copy()
+
+    keep_cols = [
+        "coco_index",
+        "label",
+        "class_name",
+        "object_index",
+        "replacement_object",
+        "prior_label",
+        "image_path",
+        "mask_path",
+        "split",
+    ]
+    df = df[keep_cols].reset_index(drop=True)
+
+    return df
+
+context_train = read_csv(context_train_path)
+context_test = read_csv(context_test_path)
+
+inpaint_train = read_csv(inpaint_train_path)
+inpaint_test = read_csv(inpaint_test_path)
+
+prior_train = read_csv(prior_train_path)
+prior_val = read_csv(prior_val_path)
+prior_test = read_csv(prior_test_path)
+
+train_df = build_split(
+    context_train,
+    inpaint_train,
+    prior_train,
+    "train",
+    os.path.join(ROOT, "task_data/images/training_val_images"),
+    os.path.join(ROOT, "task_data/masks/bbox_masks_training_val"),
+)
+
+val_df = build_split(
+    context_train,
+    inpaint_train,
+    prior_val,
+    "val",
+    os.path.join(ROOT, "task_data/images/training_val_images"),
+    os.path.join(ROOT, "task_data/masks/bbox_masks_training_val"),
+)
+
+test_df = build_split(
+    context_test,
+    inpaint_test,
+    prior_test,
+    "test",
+    os.path.join(ROOT, "task_data/images/testing_images"),
+    os.path.join(ROOT, "task_data/masks/bbox_masks_testing"),
+)
+
+for name, df in [("train", train_df), ("val", val_df), ("test", test_df)]:
+    out_path = os.path.join(OUT_DIR, f"{name}.csv")
+    df.to_csv(out_path, index=False)
+
+    print(f"\n===== {name} =====")
+    print("saved:", out_path)
+    print("shape:", df.shape)
+    print("label counts:")
+    print(df["label"].value_counts().sort_index().to_string())
+    print("prior_label unique:", df["prior_label"].nunique())
+    print("head:")
+    print(df.head(5).to_string(index=False))
+
+print("\nDone.")
+
+================================================================================
+FILE: tri_view_compat/tools/add_replacement_label.py
+================================================================================
+import os
+import pandas as pd
+
+split_dir = "tri_view_compat/outputs/splits"
+splits = ["train", "val", "test"]
+
+dfs = []
+for s in splits:
+    path = os.path.join(split_dir, f"{s}.csv")
+    df = pd.read_csv(path)
+    df["split_name"] = s
+    dfs.append(df)
+
+all_df = pd.concat(dfs, ignore_index=True)
+
+def norm_name(x):
+    return str(x).strip().lower()
+
+# Build class_name -> prior_label mapping.
+mapping = {}
+conflicts = []
+
+for _, row in all_df.iterrows():
+    name = norm_name(row["class_name"])
+    label = int(row["prior_label"])
+    if name in mapping and mapping[name] != label:
+        conflicts.append((name, mapping[name], label))
+    mapping[name] = label
+
+print("num class_name mappings:", len(mapping))
+if conflicts:
+    print("WARNING: conflicting mappings found:")
+    for c in conflicts[:20]:
+        print(c)
+    raise RuntimeError("Conflicting class_name -> prior_label mappings.")
+
+missing = sorted(set(norm_name(x) for x in all_df["replacement_object"]) - set(mapping.keys()))
+print("missing replacement names:", missing)
+
+if missing:
+    raise RuntimeError(
+        "Some replacement_object names are not found in class_name -> prior_label mapping. "
+        "Need fallback COCO category mapping."
+    )
+
+for s in splits:
+    path = os.path.join(split_dir, f"{s}.csv")
+    df = pd.read_csv(path)
+    df["replacement_label"] = df["replacement_object"].apply(lambda x: mapping[norm_name(x)]).astype(int)
+    df.to_csv(path, index=False)
+    print(f"saved {path}, shape={df.shape}")
+    print(df[["coco_index", "class_name", "prior_label", "replacement_object", "replacement_label", "label"]].head())
+
+print("done")
+
+================================================================================
+FILE: tri_view_compat/tools/build_balanced_test_split.py
+================================================================================
+import os
+import pandas as pd
+
+SEED = 777
+
+def build_one(in_csv, out_csv):
+    df = pd.read_csv(in_csv)
+
+    print("\nInput:", in_csv)
+    print("shape:", df.shape)
+    print("label counts:")
+    print(df["label"].value_counts().sort_index())
+
+    df0 = df[df["label"] == 0]
+    df1 = df[df["label"] == 1]
+
+    n = min(len(df0), len(df1))
+
+    df0_bal = df0.sample(n=n, random_state=SEED)
+    df1_bal = df1.sample(n=n, random_state=SEED)
+
+    out = pd.concat([df0_bal, df1_bal], axis=0)
+    out = out.sample(frac=1.0, random_state=SEED).reset_index(drop=True)
+
+    os.makedirs(os.path.dirname(out_csv), exist_ok=True)
+    out.to_csv(out_csv, index=False)
+
+    print("Output:", out_csv)
+    print("shape:", out.shape)
+    print("label counts:")
+    print(out["label"].value_counts().sort_index())
+
+
+def main():
+    build_one(
+        "tri_view_compat/outputs/splits/test.csv",
+        "tri_view_compat/outputs/splits_balanced/test_balanced_seed777.csv",
+    )
+
+    # 如果 Qwen tri-view / canvas split 已存在，也顺手生成对应 balanced split。
+    if os.path.exists("qwen_lora/outputs/splits_triview/test.csv"):
+        build_one(
+            "qwen_lora/outputs/splits_triview/test.csv",
+            "qwen_lora/outputs/splits_triview/test_balanced_seed777.csv",
+        )
+
+    if os.path.exists("qwen_lora/outputs/splits_canvas/test.csv"):
+        build_one(
+            "qwen_lora/outputs/splits_canvas/test.csv",
+            "qwen_lora/outputs/splits_canvas/test_balanced_seed777.csv",
+        )
+
+
+if __name__ == "__main__":
+    main()
+
+================================================================================
+FILE: tri_view_compat/tools/eval_threshold_calibrated.py
+================================================================================
+import argparse
+import inspect
+import json
+import os
+import random
+
+import numpy as np
+import torch
+from sklearn.metrics import (
+    accuracy_score,
+    balanced_accuracy_score,
+    f1_score,
+    roc_auc_score,
+    classification_report,
+)
+from torch.utils.data import DataLoader
+from tqdm import tqdm
+from transformers import CLIPTokenizer
+
+from tri_view_compat.datasets.coinco_triview_dataset import COinCOTriViewDataset
+from tri_view_compat.datasets.coinco_triview_dataset_v2 import COinCOTriViewDatasetV2
+from tri_view_compat.models.clip_triview_baseline import CLIPTriViewBaseline
+from tri_view_compat.models.clip_triview_text_prior import CLIPTriViewTextPrior
+from tri_view_compat.models.clip_triview_text_prior_v2 import CLIPTriViewTextPriorV2
+
+
+def set_seed(seed):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+
+
+def filtered_kwargs(cls, kwargs):
+    sig = inspect.signature(cls.__init__)
+    valid = set(sig.parameters.keys())
+    return {k: v for k, v in kwargs.items() if k in valid}
+
+
+def build_model(model_type, ckpt_args, device):
+    clip_name = ckpt_args["clip_name"]
+
+    common_kwargs = dict(
+        clip_name=clip_name,
+        use_full=not ckpt_args.get("no_full", False),
+        use_crop=not ckpt_args.get("no_crop", False),
+        use_masked=not ckpt_args.get("no_masked", False),
+        use_text=not ckpt_args.get("no_text", False),
+        use_geo=not ckpt_args.get("no_geo", False),
+        num_classes=2,
+        dropout=0.1,
+        freeze_clip=True,
+    )
+
+    if model_type == "baseline":
+        cls = CLIPTriViewBaseline
+    elif model_type == "prior_v1":
+        cls = CLIPTriViewTextPrior
+        common_kwargs["num_prior_classes"] = 80
+    elif model_type == "prior_v2":
+        cls = CLIPTriViewTextPriorV2
+        common_kwargs["num_prior_classes"] = 80
+    else:
+        raise ValueError(f"Unknown model_type: {model_type}")
+
+    model = cls(**filtered_kwargs(cls, common_kwargs))
+    return model.to(device)
+
+
+def metrics_from_probs(labels, probs, threshold):
+    labels = np.asarray(labels)
+    probs = np.asarray(probs)
+    preds = (probs >= threshold).astype(np.int64)
+
+    out = {
+        "threshold": float(threshold),
+        "acc": float(accuracy_score(labels, preds)),
+        "balanced_acc": float(balanced_accuracy_score(labels, preds)),
+        "macro_f1": float(f1_score(labels, preds, average="macro")),
+        "f1_label0": float(f1_score(labels, preds, pos_label=0)),
+        "f1_label1": float(f1_score(labels, preds, pos_label=1)),
+    }
+
+    try:
+        out["auc"] = float(roc_auc_score(labels, probs))
+    except Exception:
+        out["auc"] = None
+
+    out["report"] = classification_report(labels, preds, digits=4)
+    return out
+
+
+def search_best_threshold(labels, probs, metric="macro_f1"):
+    best = None
+
+    # Dense enough for stable macro-F1 selection.
+    thresholds = np.linspace(0.01, 0.99, 99)
+
+    for t in thresholds:
+        m = metrics_from_probs(labels, probs, t)
+
+        if best is None:
+            best = m
+            continue
+
+        # Primary metric: macro-F1. Tie-breaker: balanced acc, then acc.
+        if m[metric] > best[metric]:
+            best = m
+        elif abs(m[metric] - best[metric]) < 1e-12:
+            if m["balanced_acc"] > best["balanced_acc"]:
+                best = m
+            elif abs(m["balanced_acc"] - best["balanced_acc"]) < 1e-12:
+                if m["acc"] > best["acc"]:
+                    best = m
+
+    return best
+
+
+@torch.no_grad()
+def collect_probs(model, model_type, loader, tokenizer, device, desc):
+    model.eval()
+
+    all_labels = []
+    all_probs = []
+
+    for batch in tqdm(loader, desc=desc):
+        full_image = batch["full_image"].to(device, non_blocking=True)
+        object_crop = batch["object_crop"].to(device, non_blocking=True)
+        masked_context = batch["masked_context"].to(device, non_blocking=True)
+        geometry = batch["geometry"].to(device, non_blocking=True)
+        labels = batch["label"].to(device, non_blocking=True)
+
+        text_inputs = tokenizer(
+            list(batch["text_prompt"]),
+            padding=True,
+            truncation=True,
+            return_tensors="pt",
+        )
+        input_ids = text_inputs["input_ids"].to(device, non_blocking=True)
+        attention_mask = text_inputs["attention_mask"].to(device, non_blocking=True)
+
+        kwargs = dict(
+            full_image=full_image,
+            object_crop=object_crop,
+            masked_context=masked_context,
+            input_ids=input_ids,
+            attention_mask=attention_mask,
+            geometry=geometry,
+        )
+
+        if model_type == "prior_v2":
+            kwargs["replacement_label"] = batch["replacement_label"].to(device, non_blocking=True)
+
+        try:
+            out = model(**kwargs)
+        except TypeError as e:
+            # Compatibility fallback for the original CLIPTriViewBaseline:
+            # forward(self, batch, text_inputs=None)
+            if model_type == "baseline":
+                batch_for_model = {}
+                for k, v in batch.items():
+                    if torch.is_tensor(v):
+                        batch_for_model[k] = v.to(device, non_blocking=True)
+                    else:
+                        batch_for_model[k] = v
+
+                text_inputs_for_model = {
+                    "input_ids": input_ids,
+                    "attention_mask": attention_mask,
+                }
+
+                out = model(batch_for_model, text_inputs_for_model)
+            else:
+                raise e
+
+        if isinstance(out, dict):
+            logits = out["logits"]
+        else:
+            logits = out
+
+        probs = torch.softmax(logits, dim=1)[:, 1]
+
+        all_labels.extend(labels.detach().cpu().numpy().tolist())
+        all_probs.extend(probs.detach().cpu().numpy().tolist())
+
+    return all_labels, all_probs
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--ckpt_dir", required=True)
+    parser.add_argument("--model_type", required=True, choices=["baseline", "prior_v1", "prior_v2"])
+    parser.add_argument("--val_csv", default="tri_view_compat/outputs/splits/val.csv")
+    parser.add_argument("--test_csv", default="tri_view_compat/outputs/splits/test.csv")
+    parser.add_argument("--batch_size", type=int, default=256)
+    parser.add_argument("--num_workers", type=int, default=8)
+    parser.add_argument("--seed", type=int, default=777)
+    parser.add_argument("--metric", default="macro_f1")
+    args = parser.parse_args()
+
+    set_seed(args.seed)
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print("device:", device)
+    print("args:", vars(args))
+
+    ckpt_path = os.path.join(args.ckpt_dir, "best.pt")
+    if not os.path.exists(ckpt_path):
+        raise FileNotFoundError(ckpt_path)
+
+    ckpt = torch.load(ckpt_path, map_location=device)
+    ckpt_args = ckpt.get("args", {})
+    print("checkpoint epoch:", ckpt.get("epoch"))
+    print("checkpoint args:", ckpt_args)
+
+    tokenizer = CLIPTokenizer.from_pretrained(ckpt_args["clip_name"])
+
+    dataset_cls = COinCOTriViewDatasetV2 if args.model_type == "prior_v2" else COinCOTriViewDataset
+
+    val_ds = dataset_cls(args.val_csv)
+    test_ds = dataset_cls(args.test_csv)
+
+    val_loader = DataLoader(
+        val_ds,
+        batch_size=args.batch_size,
+        shuffle=False,
+        num_workers=args.num_workers,
+        pin_memory=True,
+        persistent_workers=args.num_workers > 0,
+    )
+    test_loader = DataLoader(
+        test_ds,
+        batch_size=args.batch_size,
+        shuffle=False,
+        num_workers=args.num_workers,
+        pin_memory=True,
+        persistent_workers=args.num_workers > 0,
+    )
+
+    model = build_model(args.model_type, ckpt_args, device)
+    model.load_state_dict(ckpt["model"], strict=True)
+    model.eval()
+
+    val_labels, val_probs = collect_probs(
+        model, args.model_type, val_loader, tokenizer, device, desc="Collect val probs"
+    )
+    test_labels, test_probs = collect_probs(
+        model, args.model_type, test_loader, tokenizer, device, desc="Collect test probs"
+    )
+
+    val_default = metrics_from_probs(val_labels, val_probs, 0.5)
+    test_default = metrics_from_probs(test_labels, test_probs, 0.5)
+
+    val_best = search_best_threshold(val_labels, val_probs, metric=args.metric)
+    best_t = val_best["threshold"]
+
+    test_calibrated = metrics_from_probs(test_labels, test_probs, best_t)
+
+    result = {
+        "ckpt_dir": args.ckpt_dir,
+        "model_type": args.model_type,
+        "selected_metric": args.metric,
+        "best_threshold_from_val": best_t,
+        "val_default": val_default,
+        "val_best": val_best,
+        "test_default": test_default,
+        "test_calibrated": test_calibrated,
+    }
+
+    out_path = os.path.join(args.ckpt_dir, "threshold_metrics.json")
+    with open(out_path, "w") as f:
+        json.dump(result, f, indent=2)
+
+    print("\n[Val default threshold=0.5]")
+    for k, v in val_default.items():
+        if k != "report":
+            print(f"{k}: {v}")
+
+    print("\n[Val best threshold]")
+    for k, v in val_best.items():
+        if k != "report":
+            print(f"{k}: {v}")
+
+    print("\n[Test default threshold=0.5]")
+    for k, v in test_default.items():
+        if k != "report":
+            print(f"{k}: {v}")
+
+    print("\n[Test calibrated by val threshold]")
+    for k, v in test_calibrated.items():
+        if k != "report":
+            print(f"{k}: {v}")
+    print(test_calibrated["report"])
+
+    print("\nsaved to:", out_path)
+
+
+if __name__ == "__main__":
+    main()
+
+================================================================================
+FILE: tri_view_compat/tools/bootstrap_ci.py
+================================================================================
+import argparse
+import json
+import os
+import random
+
+import numpy as np
+import torch
+from torch.utils.data import DataLoader
+from sklearn.metrics import (
+    accuracy_score,
+    balanced_accuracy_score,
+    f1_score,
+    roc_auc_score,
+)
+from transformers import CLIPTokenizer
+
+from tri_view_compat.tools import eval_threshold_calibrated as ev
+from tri_view_compat.datasets.coinco_triview_dataset import COinCOTriViewDataset
+
+try:
+    from tri_view_compat.datasets.coinco_triview_dataset_v2 import COinCOTriViewDatasetV2
+except Exception:
+    COinCOTriViewDatasetV2 = COinCOTriViewDataset
+
+
+def set_seed(seed):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+
+
+def make_dataset(model_type, csv_path):
+    cls = COinCOTriViewDatasetV2 if model_type in ["prior_v1", "prior_v2"] else COinCOTriViewDataset
+
+    # Robust constructor fallback.
+    for kwargs in [
+        {"csv_path": csv_path},
+        {"data_csv": csv_path},
+        {"csv_file": csv_path},
+    ]:
+        try:
+            return cls(**kwargs)
+        except TypeError:
+            pass
+
+    return cls(csv_path)
+
+
+def load_state_dict_flexible(model, ckpt):
+    state = None
+    for key in ["model", "model_state_dict", "state_dict"]:
+        if key in ckpt:
+            state = ckpt[key]
+            break
+
+    if state is None:
+        raise KeyError(f"Cannot find model state in checkpoint. Keys: {list(ckpt.keys())}")
+
+    # Remove DataParallel / DDP prefix if needed.
+    if any(k.startswith("module.") for k in state.keys()):
+        state = {k.replace("module.", "", 1): v for k, v in state.items()}
+
+    missing, unexpected = model.load_state_dict(state, strict=False)
+    print(f"load_state_dict: missing={len(missing)}, unexpected={len(unexpected)}")
+    if len(missing) > 0:
+        print("  first missing:", missing[:5])
+    if len(unexpected) > 0:
+        print("  first unexpected:", unexpected[:5])
+
+    return model
+
+
+def load_model_and_probs(ckpt_dir, model_type, val_csv, test_csv, batch_size, num_workers, device, metric):
+    ckpt_path = os.path.join(ckpt_dir, "best.pt")
+    print("\n== Loading model ==")
+    print("ckpt_dir:", ckpt_dir)
+    print("model_type:", model_type)
+    print("ckpt_path:", ckpt_path)
+
+    ckpt = torch.load(ckpt_path, map_location=device)
+    ckpt_args = ckpt.get("args", {})
+    print("checkpoint epoch:", ckpt.get("epoch", "NA"))
+    print("clip_name:", ckpt_args.get("clip_name"))
+
+    model = ev.build_model(model_type, ckpt_args, device)
+    model = load_state_dict_flexible(model, ckpt)
+    model.to(device)
+    model.eval()
+
+    tokenizer = CLIPTokenizer.from_pretrained(ckpt_args["clip_name"])
+
+    val_ds = make_dataset(model_type, val_csv)
+    test_ds = make_dataset(model_type, test_csv)
+
+    val_loader = DataLoader(
+        val_ds,
+        batch_size=batch_size,
+        shuffle=False,
+        num_workers=num_workers,
+        pin_memory=True,
+    )
+
+    test_loader = DataLoader(
+        test_ds,
+        batch_size=batch_size,
+        shuffle=False,
+        num_workers=num_workers,
+        pin_memory=True,
+    )
+
+    val_labels, val_probs = ev.collect_probs(
+        model, model_type, val_loader, tokenizer, device, desc=f"Val probs {os.path.basename(ckpt_dir)}"
+    )
+    test_labels, test_probs = ev.collect_probs(
+        model, model_type, test_loader, tokenizer, device, desc=f"Test probs {os.path.basename(ckpt_dir)}"
+    )
+
+    val_best = ev.search_best_threshold(val_labels, val_probs, metric=metric)
+    threshold = float(val_best["threshold"])
+    print("selected threshold:", threshold)
+    print("val_best", {k: v for k, v in val_best.items() if k != "report"})
+
+    return {
+        "ckpt_dir": ckpt_dir,
+        "model_type": model_type,
+        "threshold": threshold,
+        "labels": np.asarray(test_labels, dtype=np.int64),
+        "probs": np.asarray(test_probs, dtype=np.float64),
+    }
+
+
+def compute_metrics(labels, probs, threshold):
+    labels = np.asarray(labels)
+    probs = np.asarray(probs)
+    preds = (probs >= threshold).astype(np.int64)
+
+    out = {
+        "acc": accuracy_score(labels, preds),
+        "balanced_acc": balanced_accuracy_score(labels, preds),
+        "macro_f1": f1_score(labels, preds, average="macro", zero_division=0),
+        "f1_label0": f1_score(labels, preds, pos_label=0, zero_division=0),
+        "f1_label1": f1_score(labels, preds, pos_label=1, zero_division=0),
+    }
+
+    try:
+        out["auc"] = roc_auc_score(labels, probs)
+    except Exception:
+        out["auc"] = np.nan
+
+    return out
+
+
+def summarize(values):
+    values = np.asarray(values, dtype=np.float64)
+    values = values[~np.isnan(values)]
+    return {
+        "mean": float(np.mean(values)),
+        "std": float(np.std(values, ddof=1)),
+        "ci95_low": float(np.percentile(values, 2.5)),
+        "ci95_high": float(np.percentile(values, 97.5)),
+    }
+
+
+def bootstrap_pair(a, b, n_boot, seed):
+    labels_a = a["labels"]
+    labels_b = b["labels"]
+
+    if len(labels_a) != len(labels_b):
+        raise ValueError(f"Different test lengths: {len(labels_a)} vs {len(labels_b)}")
+    if not np.array_equal(labels_a, labels_b):
+        raise ValueError("Labels are not aligned between model A and B. Use the same test CSV/order.")
+
+    labels = labels_a
+    n = len(labels)
+    rng = np.random.default_rng(seed)
+
+    metrics = ["acc", "balanced_acc", "macro_f1", "f1_label0", "f1_label1", "auc"]
+
+    base_a = compute_metrics(labels, a["probs"], a["threshold"])
+    base_b = compute_metrics(labels, b["probs"], b["threshold"])
+    base_diff = {k: base_b[k] - base_a[k] for k in metrics}
+
+    dist_a = {k: [] for k in metrics}
+    dist_b = {k: [] for k in metrics}
+    dist_diff = {k: [] for k in metrics}
+
+    for _ in range(n_boot):
+        idx = rng.integers(0, n, size=n)
+        y = labels[idx]
+
+        # Very rare, but skip AUC if bootstrap sample contains one class only.
+        ma = compute_metrics(y, a["probs"][idx], a["threshold"])
+        mb = compute_metrics(y, b["probs"][idx], b["threshold"])
+
+        for k in metrics:
+            dist_a[k].append(ma[k])
+            dist_b[k].append(mb[k])
+            dist_diff[k].append(mb[k] - ma[k])
+
+    out = {
+        "n": int(n),
+        "n_boot": int(n_boot),
+        "base_a": {k: float(v) for k, v in base_a.items()},
+        "base_b": {k: float(v) for k, v in base_b.items()},
+        "base_diff_b_minus_a": {k: float(v) for k, v in base_diff.items()},
+        "bootstrap_a": {k: summarize(v) for k, v in dist_a.items()},
+        "bootstrap_b": {k: summarize(v) for k, v in dist_b.items()},
+        "bootstrap_diff_b_minus_a": {k: summarize(v) for k, v in dist_diff.items()},
+    }
+
+    return out
+
+
+def pct(x):
+    return 100.0 * x
+
+
+def print_summary(name_a, name_b, result):
+    print("\n================ Bootstrap Summary ================")
+    print("Model A:", name_a)
+    print("Model B:", name_b)
+    print("B - A means improvement of Model B over Model A.")
+    print("N:", result["n"], "n_boot:", result["n_boot"])
+
+    print("\n[Point estimate on full test]")
+    for k, v in result["base_a"].items():
+        print(f"A {k:>12}: {pct(v):.2f}")
+    for k, v in result["base_b"].items():
+        print(f"B {k:>12}: {pct(v):.2f}")
+
+    print("\n[Bootstrap 95% CI: Model A]")
+    for k, s in result["bootstrap_a"].items():
+        print(f"{k:>12}: {pct(s['mean']):.2f} ± {pct(s['std']):.2f} | [{pct(s['ci95_low']):.2f}, {pct(s['ci95_high']):.2f}]")
+
+    print("\n[Bootstrap 95% CI: Model B]")
+    for k, s in result["bootstrap_b"].items():
+        print(f"{k:>12}: {pct(s['mean']):.2f} ± {pct(s['std']):.2f} | [{pct(s['ci95_low']):.2f}, {pct(s['ci95_high']):.2f}]")
+
+    print("\n[Bootstrap 95% CI: B - A]")
+    for k, s in result["bootstrap_diff_b_minus_a"].items():
+        print(f"{k:>12}: {pct(s['mean']):+.2f} ± {pct(s['std']):.2f} | [{pct(s['ci95_low']):+.2f}, {pct(s['ci95_high']):+.2f}]")
+
+
+def main():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("--model_a_name", default="Tri-view + Text")
+    parser.add_argument("--model_a_ckpt_dir", required=True)
+    parser.add_argument("--model_a_type", choices=["baseline", "prior_v1", "prior_v2"], required=True)
+
+    parser.add_argument("--model_b_name", default="Ours")
+    parser.add_argument("--model_b_ckpt_dir", required=True)
+    parser.add_argument("--model_b_type", choices=["baseline", "prior_v1", "prior_v2"], required=True)
+
+    parser.add_argument("--val_csv", default="tri_view_compat/outputs/splits/val.csv")
+    parser.add_argument("--test_csv", required=True)
+    parser.add_argument("--output_json", required=True)
+
+    parser.add_argument("--batch_size", type=int, default=256)
+    parser.add_argument("--num_workers", type=int, default=8)
+    parser.add_argument("--n_boot", type=int, default=1000)
+    parser.add_argument("--seed", type=int, default=777)
+    parser.add_argument("--metric", default="macro_f1")
+
+    args = parser.parse_args()
+    set_seed(args.seed)
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print("device:", device)
+    print("args:", vars(args))
+
+    model_a = load_model_and_probs(
+        ckpt_dir=args.model_a_ckpt_dir,
+        model_type=args.model_a_type,
+        val_csv=args.val_csv,
+        test_csv=args.test_csv,
+        batch_size=args.batch_size,
+        num_workers=args.num_workers,
+        device=device,
+        metric=args.metric,
+    )
+
+    model_b = load_model_and_probs(
+        ckpt_dir=args.model_b_ckpt_dir,
+        model_type=args.model_b_type,
+        val_csv=args.val_csv,
+        test_csv=args.test_csv,
+        batch_size=args.batch_size,
+        num_workers=args.num_workers,
+        device=device,
+        metric=args.metric,
+    )
+
+    result = bootstrap_pair(model_a, model_b, n_boot=args.n_boot, seed=args.seed)
+
+    result["model_a_name"] = args.model_a_name
+    result["model_b_name"] = args.model_b_name
+    result["model_a_ckpt_dir"] = args.model_a_ckpt_dir
+    result["model_b_ckpt_dir"] = args.model_b_ckpt_dir
+    result["val_csv"] = args.val_csv
+    result["test_csv"] = args.test_csv
+
+    os.makedirs(os.path.dirname(args.output_json), exist_ok=True)
+    with open(args.output_json, "w") as f:
+        json.dump(result, f, indent=2)
+
+    print_summary(args.model_a_name, args.model_b_name, result)
+    print("\nsaved to:", args.output_json)
+
+
+if __name__ == "__main__":
+    main()
+
+================================================================================
+FILE: tri_view_compat/tools/visualize_triview_samples.py
+================================================================================
+import os
+import argparse
+import random
+import pandas as pd
+import numpy as np
+from PIL import Image, ImageDraw
+import matplotlib.pyplot as plt
+
+ROOT = "/home/ubuntu/ztl/COinCO"
+
+def get_bbox_from_mask(mask):
+    arr = np.array(mask)
+    ys, xs = np.where(arr > 0)
+    if len(xs) == 0:
+        return None
+    return int(xs.min()), int(ys.min()), int(xs.max()), int(ys.max())
+
+def make_object_crop(img, bbox, pad_ratio=0.08):
+    w, h = img.size
+    x1, y1, x2, y2 = bbox
+
+    bw = x2 - x1 + 1
+    bh = y2 - y1 + 1
+    pad_x = int(bw * pad_ratio)
+    pad_y = int(bh * pad_ratio)
+
+    x1 = max(0, x1 - pad_x)
+    y1 = max(0, y1 - pad_y)
+    x2 = min(w - 1, x2 + pad_x)
+    y2 = min(h - 1, y2 + pad_y)
+
+    return img.crop((x1, y1, x2 + 1, y2 + 1))
+
+def make_masked_context(img, mask, fill=(127, 127, 127)):
+    img_arr = np.array(img).copy()
+    mask_arr = np.array(mask)
+    img_arr[mask_arr > 0] = np.array(fill, dtype=np.uint8)
+    return Image.fromarray(img_arr)
+
+def draw_bbox(img, bbox):
+    out = img.copy()
+    draw = ImageDraw.Draw(out)
+    x1, y1, x2, y2 = bbox
+    draw.rectangle([x1, y1, x2, y2], outline=(255, 0, 0), width=4)
+    return out
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--csv", default="tri_view_compat/outputs/splits/test.csv")
+    parser.add_argument("--out_dir", default="tri_view_compat/outputs/vis_triview")
+    parser.add_argument("--num", type=int, default=24)
+    parser.add_argument("--seed", type=int, default=777)
+    args = parser.parse_args()
+
+    random.seed(args.seed)
+    os.makedirs(args.out_dir, exist_ok=True)
+
+    df = pd.read_csv(os.path.join(ROOT, args.csv), dtype={"coco_index": str})
+
+    # sample balanced if possible
+    df0 = df[df["label"] == 0]
+    df1 = df[df["label"] == 1]
+    n_each = args.num // 2
+
+    samples = []
+    if len(df0) > 0:
+        samples.extend(df0.sample(min(n_each, len(df0)), random_state=args.seed).to_dict("records"))
+    if len(df1) > 0:
+        samples.extend(df1.sample(min(args.num - len(samples), len(df1)), random_state=args.seed).to_dict("records"))
+
+    if len(samples) < args.num:
+        remain = df.sample(args.num - len(samples), random_state=args.seed + 1).to_dict("records")
+        samples.extend(remain)
+
+    print(f"Loaded {len(df)} rows from {args.csv}")
+    print(f"Visualizing {len(samples)} samples to {args.out_dir}")
+
+    for i, row in enumerate(samples):
+        idx = str(row["coco_index"])
+        label = int(row["label"])
+        original = str(row["class_name"])
+        repl = str(row["replacement_object"])
+        prior = int(row["prior_label"])
+
+        img = Image.open(row["image_path"]).convert("RGB")
+        mask = Image.open(row["mask_path"]).convert("L")
+
+        bbox = get_bbox_from_mask(mask)
+        if bbox is None:
+            print(f"[WARN] empty mask: {idx}")
+            continue
+
+        full_bbox = draw_bbox(img, bbox)
+        crop = make_object_crop(img, bbox)
+        masked_context = make_masked_context(img, mask)
+
+        # mask visualization
+        mask_rgb = Image.fromarray(np.stack([np.array(mask)] * 3, axis=-1))
+
+        x1, y1, x2, y2 = bbox
+        W, H = img.size
+        area_ratio = ((x2 - x1 + 1) * (y2 - y1 + 1)) / (W * H)
+
+        fig = plt.figure(figsize=(16, 5))
+        title = (
+            f"idx={idx} | label={label} | original={original} | replacement={repl} | "
+            f"prior_label={prior} | bbox={bbox} | area={area_ratio:.3f}"
+        )
+        fig.suptitle(title, fontsize=11)
+
+        axes = [
+            ("Full + bbox", full_bbox),
+            ("Mask", mask_rgb),
+            ("Object crop", crop),
+            ("Masked context", masked_context),
+        ]
+
+        for j, (name, im) in enumerate(axes):
+            ax = plt.subplot(1, 4, j + 1)
+            ax.imshow(im)
+            ax.set_title(name)
+            ax.axis("off")
+
+        out_path = os.path.join(args.out_dir, f"{i:03d}_idx{idx}_label{label}.jpg")
+        plt.tight_layout()
+        plt.savefig(out_path, dpi=160)
+        plt.close(fig)
+
+        print(out_path)
+
+if __name__ == "__main__":
+    main()
+
+================================================================================
+FILE: tri_view_compat/tools/visualize_prior_cases.py
+================================================================================
+import argparse
+import os
+import json
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+import torch
+from PIL import Image, ImageDraw
+import matplotlib.pyplot as plt
+from torch.utils.data import DataLoader
+from transformers import CLIPTokenizer
+
+from tri_view_compat.tools import eval_threshold_calibrated as ev
+from tri_view_compat.datasets.coinco_triview_dataset_v2 import COinCOTriViewDatasetV2
+
+
+def load_state_dict_flexible(model, ckpt):
+    state = None
+    for key in ["model", "model_state_dict", "state_dict"]:
+        if key in ckpt:
+            state = ckpt[key]
+            break
+
+    if state is None:
+        raise KeyError(f"Cannot find model weights. Checkpoint keys: {list(ckpt.keys())}")
+
+    if any(k.startswith("module.") for k in state.keys()):
+        state = {k.replace("module.", "", 1): v for k, v in state.items()}
+
+    missing, unexpected = model.load_state_dict(state, strict=False)
+    print(f"load_state_dict: missing={len(missing)}, unexpected={len(unexpected)}")
+    if missing:
+        print("first missing:", missing[:5])
+    if unexpected:
+        print("first unexpected:", unexpected[:5])
+    return model
+
+
+def move_batch_to_device(batch, device):
+    out = {}
+    for k, v in batch.items():
+        if torch.is_tensor(v):
+            out[k] = v.to(device)
+        else:
+            out[k] = v
+    return out
+
+
+def extract_logits(output):
+    """
+    Compatible with dict / tuple / tensor outputs.
+    Need final binary logits [B,2] and prior logits [B,80].
+    """
+    logits = None
+    prior_logits = None
+
+    if isinstance(output, dict):
+        for k in ["logits", "cls_logits", "context_logits", "binary_logits"]:
+            if k in output:
+                logits = output[k]
+                break
+
+        for k in ["prior_logits", "prior", "object_prior_logits", "expected_object_logits"]:
+            if k in output:
+                prior_logits = output[k]
+                break
+
+    elif isinstance(output, (tuple, list)):
+        for item in output:
+            if torch.is_tensor(item):
+                if item.ndim == 2 and item.shape[-1] == 2 and logits is None:
+                    logits = item
+                elif item.ndim == 2 and item.shape[-1] >= 70 and prior_logits is None:
+                    prior_logits = item
+
+    elif torch.is_tensor(output):
+        logits = output
+
+    if logits is None:
+        raise RuntimeError(
+            "Cannot find binary logits from model output. "
+            f"Output type={type(output)}"
+        )
+
+    if prior_logits is None:
+        raise RuntimeError(
+            "Cannot find prior_logits from model output. "
+            "Please inspect model output keys."
+        )
+
+    return logits, prior_logits
+
+
+def forward_with_prior(model, batch, tokenizer, device):
+    batch = move_batch_to_device(batch, device)
+
+    prompts = batch.get("text_prompt", None)
+    if prompts is None:
+        repl = batch.get("replacement_object", None)
+        if repl is not None:
+            prompts = [f"a photo of a {x}" for x in repl]
+
+    if prompts is None:
+        raise RuntimeError("Cannot find text_prompt or replacement_object in batch.")
+
+    if isinstance(prompts, str):
+        prompts = [prompts]
+
+    text_inputs = tokenizer(
+        list(prompts),
+        padding=True,
+        truncation=True,
+        return_tensors="pt",
+    ).to(device)
+
+    # Your prior_v2 model signature:
+    # forward(full_image=None, object_crop=None, masked_context=None,
+    #         input_ids=None, attention_mask=None, geometry=None,
+    #         replacement_label=None)
+    output = model(
+        full_image=batch["full_image"],
+        object_crop=batch["object_crop"],
+        masked_context=batch["masked_context"],
+        input_ids=text_inputs["input_ids"],
+        attention_mask=text_inputs["attention_mask"],
+        geometry=batch.get("geometry", None),
+        replacement_label=batch.get("replacement_label", None),
+    )
+
+    return extract_logits(output)
+
+def get_bbox_from_mask(mask_path):
+    mask = Image.open(mask_path).convert("L")
+    arr = np.array(mask)
+    ys, xs = np.where(arr > 10)
+
+    if len(xs) == 0 or len(ys) == 0:
+        return None
+
+    x1, x2 = int(xs.min()), int(xs.max())
+    y1, y2 = int(ys.min()), int(ys.max())
+    return x1, y1, x2, y2
+
+
+def crop_with_padding(img, bbox, pad_ratio=0.10):
+    w, h = img.size
+    x1, y1, x2, y2 = bbox
+    bw = x2 - x1 + 1
+    bh = y2 - y1 + 1
+
+    pad = int(max(bw, bh) * pad_ratio)
+    x1 = max(0, x1 - pad)
+    y1 = max(0, y1 - pad)
+    x2 = min(w - 1, x2 + pad)
+    y2 = min(h - 1, y2 + pad)
+
+    return img.crop((x1, y1, x2 + 1, y2 + 1))
+
+
+def make_masked_context(img, mask_path, fill=(127, 127, 127)):
+    mask = Image.open(mask_path).convert("L")
+    mask = mask.resize(img.size, Image.NEAREST)
+    arr = np.array(mask)
+
+    img_arr = np.array(img).copy()
+    img_arr[arr > 10] = np.array(fill, dtype=np.uint8)
+
+    return Image.fromarray(img_arr)
+
+
+def draw_bbox(img, bbox):
+    img = img.copy()
+    draw = ImageDraw.Draw(img)
+    if bbox is not None:
+        x1, y1, x2, y2 = bbox
+        # red bbox
+        for t in range(4):
+            draw.rectangle([x1 - t, y1 - t, x2 + t, y2 + t], outline=(255, 0, 0))
+    return img
+
+
+def build_label_maps(train_csv, val_csv, test_csv):
+    dfs = []
+    for p in [train_csv, val_csv, test_csv]:
+        if os.path.exists(p):
+            dfs.append(pd.read_csv(p))
+
+    all_df = pd.concat(dfs, axis=0, ignore_index=True)
+
+    prior_to_name = {}
+    if "prior_label" in all_df.columns and "class_name" in all_df.columns:
+        for lab, sub in all_df.groupby("prior_label"):
+            name = sub["class_name"].value_counts().idxmax()
+            prior_to_name[int(lab)] = str(name)
+
+    name_to_prior = {}
+    if "class_name" in all_df.columns and "prior_label" in all_df.columns:
+        for _, row in all_df[["class_name", "prior_label"]].drop_duplicates().iterrows():
+            name_to_prior[str(row["class_name"])] = int(row["prior_label"])
+
+    # fallback for replacement labels if replacement_label exists
+    if "replacement_label" in all_df.columns and "replacement_object" in all_df.columns:
+        for _, row in all_df[["replacement_object", "replacement_label"]].dropna().drop_duplicates().iterrows():
+            name_to_prior[str(row["replacement_object"])] = int(row["replacement_label"])
+
+    return prior_to_name, name_to_prior
+
+
+def collect_predictions(args, model, tokenizer, device):
+    ds = COinCOTriViewDatasetV2(args.test_csv)
+    loader = DataLoader(
+        ds,
+        batch_size=args.batch_size,
+        shuffle=False,
+        num_workers=args.num_workers,
+        pin_memory=True,
+    )
+
+    all_probs = []
+    all_labels = []
+    all_prior_probs = []
+
+    model.eval()
+    with torch.no_grad():
+        for batch in loader:
+            logits, prior_logits = forward_with_prior(model, batch, tokenizer, device)
+
+            probs = torch.softmax(logits, dim=-1)[:, 1]
+            prior_probs = torch.softmax(prior_logits, dim=-1)
+
+            labels = batch["label"]
+            if torch.is_tensor(labels):
+                labels = labels.cpu().numpy().tolist()
+
+            all_probs.extend(probs.detach().cpu().float().numpy().tolist())
+            all_labels.extend([int(x) for x in labels])
+            all_prior_probs.extend(prior_probs.detach().cpu().float().numpy())
+
+    return np.asarray(all_labels), np.asarray(all_probs), np.asarray(all_prior_probs)
+
+
+def select_cases(df, labels, probs, prior_probs, prior_to_name, name_to_prior, threshold, max_cases):
+    preds = (probs >= threshold).astype(np.int64)
+
+    records = []
+
+    for i, row in df.iterrows():
+        label = int(labels[i])
+        pred = int(preds[i])
+        prob_ooc = float(probs[i])
+
+        repl = str(row["replacement_object"])
+        repl_label = None
+
+        if "replacement_label" in row and not pd.isna(row["replacement_label"]):
+            repl_label = int(row["replacement_label"])
+        elif repl in name_to_prior:
+            repl_label = int(name_to_prior[repl])
+
+        p_repl = None
+        repl_rank = None
+
+        prior = prior_probs[i]
+        order = np.argsort(-prior)
+
+        if repl_label is not None and 0 <= repl_label < len(prior):
+            p_repl = float(prior[repl_label])
+            repl_rank = int(np.where(order == repl_label)[0][0]) + 1
+
+        top5 = []
+        for lab in order[:5]:
+            lab = int(lab)
+            top5.append((prior_to_name.get(lab, f"class_{lab}"), float(prior[lab])))
+
+        correct = int(label == pred)
+        confidence = abs(prob_ooc - threshold)
+
+        # Prefer correct examples with interpretable prior.
+        score = confidence
+        if p_repl is not None:
+            if label == 1:
+                score += max(0.0, 0.25 - p_repl)
+            else:
+                score += p_repl
+
+        records.append({
+            "idx": i,
+            "coco_index": row["coco_index"],
+            "label": label,
+            "pred": pred,
+            "correct": correct,
+            "prob_ooc": prob_ooc,
+            "confidence": confidence,
+            "replacement_object": repl,
+            "p_replacement": p_repl,
+            "replacement_rank": repl_rank,
+            "top5": top5,
+            "score": score,
+        })
+
+    # Select a balanced set: correct OOC, correct IC, and some failure cases.
+    correct_ooc = [r for r in records if r["label"] == 1 and r["pred"] == 1]
+    correct_ic = [r for r in records if r["label"] == 0 and r["pred"] == 0]
+    errors = [r for r in records if r["label"] != r["pred"]]
+
+    correct_ooc = sorted(correct_ooc, key=lambda x: -x["score"])
+    correct_ic = sorted(correct_ic, key=lambda x: -x["score"])
+    errors = sorted(errors, key=lambda x: -x["confidence"])
+
+    selected = []
+    k = max_cases // 3
+    selected.extend(correct_ooc[:k])
+    selected.extend(correct_ic[:k])
+    selected.extend(errors[:max_cases - len(selected)])
+
+    return selected
+
+
+def render_case(row, rec, prior_to_name, out_path):
+    img = Image.open(row["image_path"]).convert("RGB")
+    bbox = get_bbox_from_mask(row["mask_path"])
+
+    full_with_bbox = draw_bbox(img, bbox)
+    crop = crop_with_padding(img, bbox) if bbox is not None else img.copy()
+    masked = make_masked_context(img, row["mask_path"])
+
+    gt = "out-of-context" if rec["label"] == 1 else "in-context"
+    pred = "out-of-context" if rec["pred"] == 1 else "in-context"
+
+    top5_text = "\n".join([
+        f"{j+1}. {name}: {prob*100:.1f}%"
+        for j, (name, prob) in enumerate(rec["top5"])
+    ])
+
+    p_repl = rec["p_replacement"]
+    if p_repl is None:
+        p_repl_text = "N/A"
+    else:
+        p_repl_text = f"{p_repl*100:.2f}%"
+
+    repl_rank = rec["replacement_rank"]
+    repl_rank_text = "N/A" if repl_rank is None else str(repl_rank)
+
+    title_color = "green" if rec["correct"] else "red"
+
+    fig = plt.figure(figsize=(15, 7))
+
+    ax1 = plt.subplot(2, 3, 1)
+    ax1.imshow(full_with_bbox)
+    ax1.set_title("Full image + target box")
+    ax1.axis("off")
+
+    ax2 = plt.subplot(2, 3, 2)
+    ax2.imshow(crop)
+    ax2.set_title("Object crop")
+    ax2.axis("off")
+
+    ax3 = plt.subplot(2, 3, 3)
+    ax3.imshow(masked)
+    ax3.set_title("Masked context")
+    ax3.axis("off")
+
+    ax4 = plt.subplot(2, 3, 4)
+    ax4.axis("off")
+    ax4.text(
+        0.0, 1.0,
+        f"Replacement object:\n{rec['replacement_object']}\n\n"
+        f"GT: {gt}\n"
+        f"Prediction: {pred}\n"
+        f"P(out-of-context): {rec['prob_ooc']*100:.1f}%\n"
+        f"Correct: {bool(rec['correct'])}",
+        va="top",
+        fontsize=13,
+        color=title_color,
+    )
+
+    ax5 = plt.subplot(2, 3, 5)
+    ax5.axis("off")
+    ax5.text(
+        0.0, 1.0,
+        "Top-5 expected objects\nfrom masked context:\n\n" + top5_text,
+        va="top",
+        fontsize=13,
+    )
+
+    ax6 = plt.subplot(2, 3, 6)
+    ax6.axis("off")
+    ax6.text(
+        0.0, 1.0,
+        f"Prior compatibility:\n\n"
+        f"p(replacement | context): {p_repl_text}\n"
+        f"replacement rank: {repl_rank_text}\n\n"
+        f"Interpretation:\n"
+        f"Low p(replacement | context)\n"
+        f"usually indicates a context\n"
+        f"mismatch for the inserted object.",
+        va="top",
+        fontsize=13,
+    )
+
+    fig.suptitle(
+        f"Case idx={rec['idx']} | coco_index={rec['coco_index']}",
+        fontsize=15,
+    )
+
+    plt.tight_layout()
+    Path(out_path).parent.mkdir(parents=True, exist_ok=True)
+    plt.savefig(out_path, dpi=180)
+    plt.close(fig)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--ckpt_dir", default="tri_view_compat/outputs/checkpoints/triview_text_prior_v2_lam02_bs256")
+    parser.add_argument("--model_type", default="prior_v2")
+    parser.add_argument("--train_csv", default="tri_view_compat/outputs/splits/train.csv")
+    parser.add_argument("--val_csv", default="tri_view_compat/outputs/splits/val.csv")
+    parser.add_argument("--test_csv", default="tri_view_compat/outputs/splits/test.csv")
+    parser.add_argument("--out_dir", default="tri_view_compat/outputs/case_vis/prior_v2_original")
+    parser.add_argument("--batch_size", type=int, default=128)
+    parser.add_argument("--num_workers", type=int, default=8)
+    parser.add_argument("--max_cases", type=int, default=12)
+    parser.add_argument("--threshold", type=float, default=None)
+    args = parser.parse_args()
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print("device:", device)
+    print("args:", vars(args))
+
+    ckpt_path = os.path.join(args.ckpt_dir, "best.pt")
+    ckpt = torch.load(ckpt_path, map_location=device)
+    ckpt_args = ckpt.get("args", {})
+
+    model = ev.build_model(args.model_type, ckpt_args, device)
+    model = load_state_dict_flexible(model, ckpt)
+    model.to(device)
+    model.eval()
+
+    tokenizer = CLIPTokenizer.from_pretrained(ckpt_args["clip_name"])
+
+    prior_to_name, name_to_prior = build_label_maps(args.train_csv, args.val_csv, args.test_csv)
+
+    labels, probs, prior_probs = collect_predictions(args, model, tokenizer, device)
+
+    if args.threshold is None:
+        metric_path = os.path.join(args.ckpt_dir, "threshold_metrics.json")
+        if os.path.exists(metric_path):
+            with open(metric_path, "r") as f:
+                m = json.load(f)
+            threshold = float(m["best_threshold_from_val"])
+        else:
+            threshold = 0.37
+    else:
+        threshold = float(args.threshold)
+
+    print("using threshold:", threshold)
+
+    df = pd.read_csv(args.test_csv)
+    cases = select_cases(df, labels, probs, prior_probs, prior_to_name, name_to_prior, threshold, args.max_cases)
+
+    Path(args.out_dir).mkdir(parents=True, exist_ok=True)
+
+    rows = []
+    for j, rec in enumerate(cases):
+        row = df.iloc[rec["idx"]]
+        out_path = os.path.join(args.out_dir, f"case_{j:02d}_idx{rec['idx']}_label{rec['label']}_pred{rec['pred']}.png")
+        render_case(row, rec, prior_to_name, out_path)
+
+        rows.append({
+            "case_id": j,
+            "idx": rec["idx"],
+            "coco_index": rec["coco_index"],
+            "label": rec["label"],
+            "pred": rec["pred"],
+            "correct": rec["correct"],
+            "prob_ooc": rec["prob_ooc"],
+            "replacement_object": rec["replacement_object"],
+            "p_replacement": rec["p_replacement"],
+            "replacement_rank": rec["replacement_rank"],
+            "top5": "; ".join([f"{n}:{p:.4f}" for n, p in rec["top5"]]),
+            "figure_path": out_path,
+        })
+
+    summary_csv = os.path.join(args.out_dir, "case_summary.csv")
+    pd.DataFrame(rows).to_csv(summary_csv, index=False)
+
+    print("saved figures to:", args.out_dir)
+    print("saved summary to:", summary_csv)
+
+
+if __name__ == "__main__":
+    main()
+
+================================================================================
+FILE: tri_view_compat/README.md
+================================================================================
+[MISSING FILE]
+
+================================================================================
+SPLIT FILE INSPECTION
+================================================================================
+
+--------------------------------------------------------------------------------
+FILE: tri_view_compat/outputs/splits/train.csv
+--------------------------------------------------------------------------------
+[LINE COUNT]
+76257 tri_view_compat/outputs/splits/train.csv
+
+[FIRST 6 LINES]
+coco_index,label,class_name,object_index,replacement_object,prior_label,image_path,mask_path,split,replacement_label
+1012,1,suitcase,4,bear,28,/home/ubuntu/ztl/COinCO/task_data/images/training_val_images/1012.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_training_val/1012.png,train,21
+1013,0,bird,0,boat,14,/home/ubuntu/ztl/COinCO/task_data/images/training_val_images/1013.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_training_val/1013.png,train,8
+1015,0,elephant,0,suitcase,20,/home/ubuntu/ztl/COinCO/task_data/images/training_val_images/1015.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_training_val/1015.png,train,28
+1016,0,bottle,4,cup,39,/home/ubuntu/ztl/COinCO/task_data/images/training_val_images/1016.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_training_val/1016.png,train,41
+1020,1,car,3,handbag,2,/home/ubuntu/ztl/COinCO/task_data/images/training_val_images/1020.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_training_val/1020.png,train,26
+
+--------------------------------------------------------------------------------
+FILE: tri_view_compat/outputs/splits/val.csv
+--------------------------------------------------------------------------------
+[LINE COUNT]
+19065 tri_view_compat/outputs/splits/val.csv
+
+[FIRST 6 LINES]
+coco_index,label,class_name,object_index,replacement_object,prior_label,image_path,mask_path,split,replacement_label
+1014,1,baseball glove,7,giraffe,35,/home/ubuntu/ztl/COinCO/task_data/images/training_val_images/1014.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_training_val/1014.png,val,23
+1019,1,bed,4,tennis racket,59,/home/ubuntu/ztl/COinCO/task_data/images/training_val_images/1019.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_training_val/1019.png,val,38
+1030,0,car,11,fire hydrant,2,/home/ubuntu/ztl/COinCO/task_data/images/training_val_images/1030.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_training_val/1030.png,val,10
+1034,1,microwave,9,tennis racket,68,/home/ubuntu/ztl/COinCO/task_data/images/training_val_images/1034.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_training_val/1034.png,val,38
+1036,1,frisbee,2,surfboard,29,/home/ubuntu/ztl/COinCO/task_data/images/training_val_images/1036.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_training_val/1036.png,val,37
+
+--------------------------------------------------------------------------------
+FILE: tri_view_compat/outputs/splits/test.csv
+--------------------------------------------------------------------------------
+[LINE COUNT]
+2403 tri_view_compat/outputs/splits/test.csv
+
+[FIRST 6 LINES]
+coco_index,label,class_name,object_index,replacement_object,prior_label,image_path,mask_path,split,replacement_label
+0,1,clock,13,baseball bat,74,/home/ubuntu/ztl/COinCO/task_data/images/testing_images/0.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_testing/0.png,test,34
+1,0,bear,0,train,21,/home/ubuntu/ztl/COinCO/task_data/images/testing_images/1.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_testing/1.png,test,6
+4,0,teddy bear,1,suitcase,77,/home/ubuntu/ztl/COinCO/task_data/images/testing_images/4.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_testing/4.png,test,28
+8,1,tennis racket,5,bowl,38,/home/ubuntu/ztl/COinCO/task_data/images/testing_images/8.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_testing/8.png,test,45
+9,1,handbag,2,skateboard,26,/home/ubuntu/ztl/COinCO/task_data/images/testing_images/9.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_testing/9.png,test,36
+
+--------------------------------------------------------------------------------
+FILE: tri_view_compat/outputs/splits_balanced/test_balanced_seed777.csv
+--------------------------------------------------------------------------------
+[LINE COUNT]
+1113 tri_view_compat/outputs/splits_balanced/test_balanced_seed777.csv
+
+[FIRST 6 LINES]
+coco_index,label,class_name,object_index,replacement_object,prior_label,image_path,mask_path,split,replacement_label
+4111,1,person,3,toothbrush,0,/home/ubuntu/ztl/COinCO/task_data/images/testing_images/4111.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_testing/4111.png,test,79
+2779,1,vase,9,truck,75,/home/ubuntu/ztl/COinCO/task_data/images/testing_images/2779.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_testing/2779.png,test,7
+4207,1,apple,3,umbrella,47,/home/ubuntu/ztl/COinCO/task_data/images/testing_images/4207.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_testing/4207.png,test,25
+1932,0,bottle,0,sports ball,39,/home/ubuntu/ztl/COinCO/task_data/images/testing_images/1932.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_testing/1932.png,test,32
+4028,1,remote,8,bench,65,/home/ubuntu/ztl/COinCO/task_data/images/testing_images/4028.png,/home/ubuntu/ztl/COinCO/task_data/masks/bbox_masks_testing/4028.png,test,13
+
+================================================================================
+FILE: tri_view_compat/outputs/bootstrap/bootstrap_balanced_triview_text_vs_ours.json
+================================================================================
+{
+  "n": 1112,
+  "n_boot": 1000,
+  "base_a": {
+    "acc": 0.7428057553956835,
+    "balanced_acc": 0.7428057553956835,
+    "macro_f1": 0.7406234198378652,
+    "f1_label0": 0.7168316831683168,
+    "f1_label1": 0.7644151565074135,
+    "auc": 0.8351793385435538
+  },
+  "base_b": {
+    "acc": 0.7598920863309353,
+    "balanced_acc": 0.7598920863309353,
+    "macro_f1": 0.7582008233603036,
+    "f1_label0": 0.7379784102060843,
+    "f1_label1": 0.7784232365145228,
+    "auc": 0.8405426737746493
+  },
+  "base_diff_b_minus_a": {
+    "acc": 0.017086330935251803,
+    "balanced_acc": 0.017086330935251803,
+    "macro_f1": 0.017577403522438417,
+    "f1_label0": 0.021146727037767543,
+    "f1_label1": 0.014008080007109291,
+    "auc": 0.005363335231095556
+  },
+  "bootstrap_a": {
+    "acc": {
+      "mean": 0.7424910071942447,
+      "std": 0.013122732823540576,
+      "ci95_low": 0.716726618705036,
+      "ci95_high": 0.7671088129496403
+    },
+    "balanced_acc": {
+      "mean": 0.7423146419506802,
+      "std": 0.012876067183853993,
+      "ci95_low": 0.7176213254240411,
+      "ci95_high": 0.7663238207481688
+    },
+    "macro_f1": {
+      "mean": 0.7400078275839628,
+      "std": 0.013271597718776082,
+      "ci95_low": 0.7137897992439522,
+      "ci95_high": 0.7659077561640143
+    },
+    "f1_label0": {
+      "mean": 0.715511823068293,
+      "std": 0.016380351198593792,
+      "ci95_low": 0.6819556502493049,
+      "ci95_high": 0.7467565834312732
+    },
+    "f1_label1": {
+      "mean": 0.7645038320996325,
+      "std": 0.013448815533113587,
+      "ci95_low": 0.7371067793178346,
+      "ci95_high": 0.7912554024843037
+    },
+    "auc": {
+      "mean": 0.8351666486159002,
+      "std": 0.011671083499368013,
+      "ci95_low": 0.8114849823001832,
+      "ci95_high": 0.8569485081959474
+    }
+  },
+  "bootstrap_b": {
+    "acc": {
+      "mean": 0.7595296762589928,
+      "std": 0.01271674819479278,
+      "ci95_low": 0.7356115107913669,
+      "ci95_high": 0.7841726618705036
+    },
+    "balanced_acc": {
+      "mean": 0.7593626742510364,
+      "std": 0.012470083536590399,
+      "ci95_low": 0.7355509870964383,
+      "ci95_high": 0.7834348141216277
+    },
+    "macro_f1": {
+      "mean": 0.7575647987789529,
+      "std": 0.012810215066002969,
+      "ci95_low": 0.7332736920239473,
+      "ci95_high": 0.7822855745673895
+    },
+    "f1_label0": {
+      "mean": 0.7367023779810808,
+      "std": 0.015460436416008704,
+      "ci95_low": 0.7069464421428168,
+      "ci95_high": 0.766647115231547
+    },
+    "f1_label1": {
+      "mean": 0.7784272195768248,
+      "std": 0.013238258683971625,
+      "ci95_low": 0.7527589885291143,
+      "ci95_high": 0.8019351300743224
+    },
+    "auc": {
+      "mean": 0.840393475049272,
+      "std": 0.011658460983138297,
+      "ci95_low": 0.8174204862757785,
+      "ci95_high": 0.8630122287653333
+    }
+  },
+  "bootstrap_diff_b_minus_a": {
+    "acc": {
+      "mean": 0.017038669064748206,
+      "std": 0.01041716221409996,
+      "ci95_low": -0.003597122302158251,
+      "ci95_high": 0.03597122302158273
+    },
+    "balanced_acc": {
+      "mean": 0.01704803230035626,
+      "std": 0.010451763969706982,
+      "ci95_low": -0.0034305187744391283,
+      "ci95_high": 0.035854737001500346
+    },
+    "macro_f1": {
+      "mean": 0.017556971194990043,
+      "std": 0.010657680810492252,
+      "ci95_low": -0.003038756839339052,
+      "ci95_high": 0.03714946727338322
+    },
+    "f1_label0": {
+      "mean": 0.02119055491278796,
+      "std": 0.01273797052574832,
+      "ci95_low": -0.003505891724580895,
+      "ci95_high": 0.045267288002420386
+    },
+    "f1_label1": {
+      "mean": 0.013923387477192118,
+      "std": 0.009271647571194775,
+      "ci95_low": -0.004804606471831016,
+      "ci95_high": 0.031377255797919314
+    },
+    "auc": {
+      "mean": 0.005226826433371829,
+      "std": 0.006019065540708574,
+      "ci95_low": -0.006822095265252592,
+      "ci95_high": 0.01665117547543783
+    }
+  },
+  "model_a_name": "Tri-view + Text",
+  "model_b_name": "Ours: Tri-view + Text + Prior v2",
+  "model_a_ckpt_dir": "tri_view_compat/outputs/checkpoints/triview_text_no_geo_bs256",
+  "model_b_ckpt_dir": "tri_view_compat/outputs/checkpoints/triview_text_prior_v2_lam02_bs256",
+  "val_csv": "tri_view_compat/outputs/splits/val.csv",
+  "test_csv": "tri_view_compat/outputs/splits_balanced/test_balanced_seed777.csv"
+}
+================================================================================
+FILE: tri_view_compat/outputs/bootstrap/bootstrap_original_triview_text_vs_ours.json
+================================================================================
+{
+  "n": 2402,
+  "n_boot": 1000,
+  "base_a": {
+    "acc": 0.8143213988343048,
+    "balanced_acc": 0.7572838803713259,
+    "macro_f1": 0.7480368222250446,
+    "f1_label0": 0.6188034188034188,
+    "f1_label1": 0.8772702256466703,
+    "auc": 0.8518116167954044
+  },
+  "base_b": {
+    "acc": 0.8193172356369692,
+    "balanced_acc": 0.7693320966195625,
+    "macro_f1": 0.7570541521360781,
+    "f1_label0": 0.6340640809443507,
+    "f1_label1": 0.8800442233278054,
+    "auc": 0.854542584783744
+  },
+  "base_diff_b_minus_a": {
+    "acc": 0.004995836802664466,
+    "balanced_acc": 0.012048216248236598,
+    "macro_f1": 0.009017329911033434,
+    "f1_label0": 0.015260662140931913,
+    "f1_label1": 0.0027739976811350653,
+    "auc": 0.0027309679883396054
+  },
+  "bootstrap_a": {
+    "acc": {
+      "mean": 0.8147064945878435,
+      "std": 0.008233015659710246,
+      "ci95_low": 0.7976582014987511,
+      "ci95_high": 0.8301415487094088
+    },
+    "balanced_acc": {
+      "mean": 0.7577380590821176,
+      "std": 0.01079537617264184,
+      "ci95_low": 0.7359656989337823,
+      "ci95_high": 0.778623574525289
+    },
+    "macro_f1": {
+      "mean": 0.7481657473841269,
+      "std": 0.010314221258166946,
+      "ci95_low": 0.7276924449650474,
+      "ci95_high": 0.7670824497116571
+    },
+    "f1_label0": {
+      "mean": 0.6187750085873948,
+      "std": 0.016468744556553862,
+      "ci95_low": 0.5853153730285168,
+      "ci95_high": 0.6489648485014614
+    },
+    "f1_label1": {
+      "mean": 0.8775564861808589,
+      "std": 0.006050695124509856,
+      "ci95_low": 0.8652547527550906,
+      "ci95_high": 0.8888280431701727
+    },
+    "auc": {
+      "mean": 0.8520881684793402,
+      "std": 0.008754630516595937,
+      "ci95_low": 0.8350521297440683,
+      "ci95_high": 0.8689293156257655
+    }
+  },
+  "bootstrap_b": {
+    "acc": {
+      "mean": 0.819473771856786,
+      "std": 0.008186663837323,
+      "ci95_low": 0.8034970857618651,
+      "ci95_high": 0.8351477935054121
+    },
+    "balanced_acc": {
+      "mean": 0.769343416260722,
+      "std": 0.010814966625164792,
+      "ci95_low": 0.7480409137434989,
+      "ci95_high": 0.7909364939064731
+    },
+    "macro_f1": {
+      "mean": 0.7568198999656577,
+      "std": 0.0102903402949885,
+      "ci95_low": 0.7369963043751878,
+      "ci95_high": 0.7774995499124814
+    },
+    "f1_label0": {
+      "mean": 0.6334435419604186,
+      "std": 0.016360230733873462,
+      "ci95_low": 0.6008844919786096,
+      "ci95_high": 0.6655433273558166
+    },
+    "f1_label1": {
+      "mean": 0.8801962579708967,
+      "std": 0.006005391762214069,
+      "ci95_low": 0.8677922630343937,
+      "ci95_high": 0.8918115965082997
+    },
+    "auc": {
+      "mean": 0.8546096632448164,
+      "std": 0.009055293562242647,
+      "ci95_low": 0.8363266984746024,
+      "ci95_high": 0.8713397859080012
+    }
+  },
+  "bootstrap_diff_b_minus_a": {
+    "acc": {
+      "mean": 0.004767277268942548,
+      "std": 0.0066268761707810615,
+      "ci95_low": -0.008742714404662788,
+      "ci95_high": 0.017069109075770195
+    },
+    "balanced_acc": {
+      "mean": 0.01160535717860446,
+      "std": 0.008899227761488097,
+      "ci95_low": -0.006119376207874568,
+      "ci95_high": 0.028560889458038065
+    },
+    "macro_f1": {
+      "mean": 0.008654152581530855,
+      "std": 0.008442170203421067,
+      "ci95_low": -0.008120571813546178,
+      "ci95_high": 0.02449621256040106
+    },
+    "f1_label0": {
+      "mean": 0.014668533373023887,
+      "std": 0.012691582906581072,
+      "ci95_low": -0.010778071204756,
+      "ci95_high": 0.03843718264543426
+    },
+    "f1_label1": {
+      "mean": 0.002639771790037818,
+      "std": 0.00460189594078389,
+      "ci95_low": -0.00673130460731281,
+      "ci95_high": 0.011281957927405911
+    },
+    "auc": {
+      "mean": 0.002521494765476157,
+      "std": 0.004616560697382586,
+      "ci95_low": -0.006315517355034364,
+      "ci95_high": 0.011686872770322793
+    }
+  },
+  "model_a_name": "Tri-view + Text",
+  "model_b_name": "Ours: Tri-view + Text + Prior v2",
+  "model_a_ckpt_dir": "tri_view_compat/outputs/checkpoints/triview_text_no_geo_bs256",
+  "model_b_ckpt_dir": "tri_view_compat/outputs/checkpoints/triview_text_prior_v2_lam02_bs256",
+  "val_csv": "tri_view_compat/outputs/splits/val.csv",
+  "test_csv": "tri_view_compat/outputs/splits/test.csv"
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/crop_only_bs256/test_metrics.json
+================================================================================
+{
+  "loss": 0.6322396239273554,
+  "acc": 0.7302248126561199,
+  "balanced_acc": 0.7170247550605237,
+  "macro_f1": 0.6758210402578609,
+  "f1_label0": 0.5430183356840621,
+  "f1_label1": 0.8086237448316598,
+  "auc": 0.7817485989539895,
+  "report": "              precision    recall  f1-score   support\n\n           0     0.4466    0.6924    0.5430       556\n           1     0.8890    0.7416    0.8086      1846\n\n    accuracy                         0.7302      2402\n   macro avg     0.6678    0.7170    0.6758      2402\nweighted avg     0.7866    0.7302    0.7471      2402\n"
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/crop_only_bs256/threshold_metrics.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/crop_only_bs256",
+  "model_type": "baseline",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.36000000000000004,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.71947125472094,
+    "balanced_acc": 0.6914365803689425,
+    "macro_f1": 0.6474618036806558,
+    "f1_label0": 0.48813169984686067,
+    "f1_label1": 0.8067919075144508,
+    "auc": 0.7510439548072503,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.3932    0.6435    0.4881      3963\n           1     0.8877    0.7394    0.8068     15101\n\n    accuracy                         0.7195     19064\n   macro avg     0.6404    0.6914    0.6475     19064\nweighted avg     0.7849    0.7195    0.7405     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.36000000000000004,
+    "acc": 0.7574485942089803,
+    "balanced_acc": 0.6715788181931793,
+    "macro_f1": 0.6579500677201309,
+    "f1_label0": 0.47346845820997496,
+    "f1_label1": 0.8424316772302869,
+    "auc": 0.7510439548072503,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4314    0.5246    0.4735      3963\n           1     0.8677    0.8186    0.8424     15101\n\n    accuracy                         0.7574     19064\n   macro avg     0.6496    0.6716    0.6580     19064\nweighted avg     0.7770    0.7574    0.7657     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.7302248126561199,
+    "balanced_acc": 0.7170247550605237,
+    "macro_f1": 0.6758210402578609,
+    "f1_label0": 0.5430183356840621,
+    "f1_label1": 0.8086237448316598,
+    "auc": 0.7817485989539895,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4466    0.6924    0.5430       556\n           1     0.8890    0.7416    0.8086      1846\n\n    accuracy                         0.7302      2402\n   macro avg     0.6678    0.7170    0.6758      2402\nweighted avg     0.7866    0.7302    0.7471      2402\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.36000000000000004,
+    "acc": 0.7577019150707743,
+    "balanced_acc": 0.6821135724140082,
+    "macro_f1": 0.6738362326414813,
+    "f1_label0": 0.5084459459459459,
+    "f1_label1": 0.8392265193370165,
+    "auc": 0.7817485989539895,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4793    0.5414    0.5084       556\n           1     0.8563    0.8229    0.8392      1846\n\n    accuracy                         0.7577      2402\n   macro avg     0.6678    0.6821    0.6738      2402\nweighted avg     0.7690    0.7577    0.7627      2402\n"
+  }
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/crop_only_bs256/threshold_metrics_original_test.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/crop_only_bs256",
+  "model_type": "baseline",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.36000000000000004,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.71947125472094,
+    "balanced_acc": 0.6914365803689425,
+    "macro_f1": 0.6474618036806558,
+    "f1_label0": 0.48813169984686067,
+    "f1_label1": 0.8067919075144508,
+    "auc": 0.7510439548072503,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.3932    0.6435    0.4881      3963\n           1     0.8877    0.7394    0.8068     15101\n\n    accuracy                         0.7195     19064\n   macro avg     0.6404    0.6914    0.6475     19064\nweighted avg     0.7849    0.7195    0.7405     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.36000000000000004,
+    "acc": 0.7574485942089803,
+    "balanced_acc": 0.6715788181931793,
+    "macro_f1": 0.6579500677201309,
+    "f1_label0": 0.47346845820997496,
+    "f1_label1": 0.8424316772302869,
+    "auc": 0.7510439548072503,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4314    0.5246    0.4735      3963\n           1     0.8677    0.8186    0.8424     15101\n\n    accuracy                         0.7574     19064\n   macro avg     0.6496    0.6716    0.6580     19064\nweighted avg     0.7770    0.7574    0.7657     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.7302248126561199,
+    "balanced_acc": 0.7170247550605237,
+    "macro_f1": 0.6758210402578609,
+    "f1_label0": 0.5430183356840621,
+    "f1_label1": 0.8086237448316598,
+    "auc": 0.7817485989539895,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4466    0.6924    0.5430       556\n           1     0.8890    0.7416    0.8086      1846\n\n    accuracy                         0.7302      2402\n   macro avg     0.6678    0.7170    0.6758      2402\nweighted avg     0.7866    0.7302    0.7471      2402\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.36000000000000004,
+    "acc": 0.7577019150707743,
+    "balanced_acc": 0.6821135724140082,
+    "macro_f1": 0.6738362326414813,
+    "f1_label0": 0.5084459459459459,
+    "f1_label1": 0.8392265193370165,
+    "auc": 0.7817485989539895,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4793    0.5414    0.5084       556\n           1     0.8563    0.8229    0.8392      1846\n\n    accuracy                         0.7577      2402\n   macro avg     0.6678    0.6821    0.6738      2402\nweighted avg     0.7690    0.7577    0.7627      2402\n"
+  }
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/full_only_bs256/test_metrics.json
+================================================================================
+{
+  "loss": 0.6176784847003038,
+  "acc": 0.7048293089092423,
+  "balanced_acc": 0.6734802840284652,
+  "macro_f1": 0.6415848139638596,
+  "f1_label0": 0.4910265613783202,
+  "f1_label1": 0.792143066549399,
+  "auc": 0.7272159520487618,
+  "report": "              precision    recall  f1-score   support\n\n           0     0.4086    0.6151    0.4910       556\n           1     0.8633    0.7319    0.7921      1846\n\n    accuracy                         0.7048      2402\n   macro avg     0.6359    0.6735    0.6416      2402\nweighted avg     0.7580    0.7048    0.7224      2402\n"
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/full_only_bs256/threshold_metrics.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/full_only_bs256",
+  "model_type": "baseline",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.42000000000000004,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.6865820394460763,
+    "balanced_acc": 0.6354078935203276,
+    "macro_f1": 0.6030078645306309,
+    "f1_label0": 0.42085877677619465,
+    "f1_label1": 0.7851569522850671,
+    "auc": 0.6950906206227216,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.3417    0.5478    0.4209      3963\n           1     0.8590    0.7230    0.7852     15101\n\n    accuracy                         0.6866     19064\n   macro avg     0.6003    0.6354    0.6030     19064\nweighted avg     0.7515    0.6866    0.7094     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.42000000000000004,
+    "acc": 0.7493705413344524,
+    "balanced_acc": 0.6142750346004828,
+    "macro_f1": 0.6154582294600703,
+    "f1_label0": 0.3885334015868953,
+    "f1_label1": 0.8423830573332454,
+    "auc": 0.6950906206227216,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.3942    0.3830    0.3885      3963\n           1     0.8393    0.8455    0.8424     15101\n\n    accuracy                         0.7494     19064\n   macro avg     0.6167    0.6143    0.6155     19064\nweighted avg     0.7468    0.7494    0.7480     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.7048293089092423,
+    "balanced_acc": 0.6734802840284652,
+    "macro_f1": 0.6415848139638596,
+    "f1_label0": 0.4910265613783202,
+    "f1_label1": 0.792143066549399,
+    "auc": 0.7272159520487618,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4086    0.6151    0.4910       556\n           1     0.8633    0.7319    0.7921      1846\n\n    accuracy                         0.7048      2402\n   macro avg     0.6359    0.6735    0.6416      2402\nweighted avg     0.7580    0.7048    0.7224      2402\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.42000000000000004,
+    "acc": 0.7585345545378851,
+    "balanced_acc": 0.6386655572616663,
+    "macro_f1": 0.6446024034669352,
+    "f1_label0": 0.44337811900191937,
+    "f1_label1": 0.845826687931951,
+    "auc": 0.7272159520487618,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4753    0.4155    0.4434       556\n           1     0.8304    0.8619    0.8458      1846\n\n    accuracy                         0.7585      2402\n   macro avg     0.6528    0.6387    0.6446      2402\nweighted avg     0.7482    0.7585    0.7527      2402\n"
+  }
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/full_only_bs256/threshold_metrics_original_test.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/full_only_bs256",
+  "model_type": "baseline",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.42000000000000004,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.6865820394460763,
+    "balanced_acc": 0.6354078935203276,
+    "macro_f1": 0.6030078645306309,
+    "f1_label0": 0.42085877677619465,
+    "f1_label1": 0.7851569522850671,
+    "auc": 0.6950906206227216,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.3417    0.5478    0.4209      3963\n           1     0.8590    0.7230    0.7852     15101\n\n    accuracy                         0.6866     19064\n   macro avg     0.6003    0.6354    0.6030     19064\nweighted avg     0.7515    0.6866    0.7094     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.42000000000000004,
+    "acc": 0.7493705413344524,
+    "balanced_acc": 0.6142750346004828,
+    "macro_f1": 0.6154582294600703,
+    "f1_label0": 0.3885334015868953,
+    "f1_label1": 0.8423830573332454,
+    "auc": 0.6950906206227216,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.3942    0.3830    0.3885      3963\n           1     0.8393    0.8455    0.8424     15101\n\n    accuracy                         0.7494     19064\n   macro avg     0.6167    0.6143    0.6155     19064\nweighted avg     0.7468    0.7494    0.7480     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.7048293089092423,
+    "balanced_acc": 0.6734802840284652,
+    "macro_f1": 0.6415848139638596,
+    "f1_label0": 0.4910265613783202,
+    "f1_label1": 0.792143066549399,
+    "auc": 0.7272159520487618,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4086    0.6151    0.4910       556\n           1     0.8633    0.7319    0.7921      1846\n\n    accuracy                         0.7048      2402\n   macro avg     0.6359    0.6735    0.6416      2402\nweighted avg     0.7580    0.7048    0.7224      2402\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.42000000000000004,
+    "acc": 0.7585345545378851,
+    "balanced_acc": 0.6386655572616663,
+    "macro_f1": 0.6446024034669352,
+    "f1_label0": 0.44337811900191937,
+    "f1_label1": 0.845826687931951,
+    "auc": 0.7272159520487618,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4753    0.4155    0.4434       556\n           1     0.8304    0.8619    0.8458      1846\n\n    accuracy                         0.7585      2402\n   macro avg     0.6528    0.6387    0.6446      2402\nweighted avg     0.7482    0.7585    0.7527      2402\n"
+  }
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/masked_only_bs256/test_metrics.json
+================================================================================
+{
+  "loss": 0.6542216358236429,
+  "acc": 0.6515403830141548,
+  "balanced_acc": 0.6124168920551533,
+  "macro_f1": 0.5844736429287578,
+  "f1_label0": 0.4175365344467641,
+  "f1_label1": 0.7514107514107514,
+  "auc": 0.6663225757422231,
+  "report": "              precision    recall  f1-score   support\n\n           0     0.3405    0.5396    0.4175       556\n           1     0.8317    0.6853    0.7514      1846\n\n    accuracy                         0.6515      2402\n   macro avg     0.5861    0.6124    0.5845      2402\nweighted avg     0.7180    0.6515    0.6741      2402\n"
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/masked_only_bs256/threshold_metrics.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/masked_only_bs256",
+  "model_type": "baseline",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.44,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.6455098615190936,
+    "balanced_acc": 0.6093894014635711,
+    "macro_f1": 0.5705214772743713,
+    "f1_label0": 0.39106145251396646,
+    "f1_label1": 0.7499815020347762,
+    "auc": 0.6483336450539118,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.3041    0.5476    0.3911      3963\n           1     0.8497    0.6712    0.7500     15101\n\n    accuracy                         0.6455     19064\n   macro avg     0.5769    0.6094    0.5705     19064\nweighted avg     0.7363    0.6455    0.6754     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.44,
+    "acc": 0.7132291229542593,
+    "balanced_acc": 0.5900661260357398,
+    "macro_f1": 0.5852102952791438,
+    "f1_label0": 0.3547739879617609,
+    "f1_label1": 0.8156466025965268,
+    "auc": 0.6483336450539118,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.3333    0.3793    0.3548      3963\n           1     0.8310    0.8009    0.8156     15101\n\n    accuracy                         0.7132     19064\n   macro avg     0.5821    0.5901    0.5852     19064\nweighted avg     0.7275    0.7132    0.7198     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.6515403830141548,
+    "balanced_acc": 0.6124168920551533,
+    "macro_f1": 0.5844736429287578,
+    "f1_label0": 0.4175365344467641,
+    "f1_label1": 0.7514107514107514,
+    "auc": 0.6663225757422231,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.3405    0.5396    0.4175       556\n           1     0.8317    0.6853    0.7514      1846\n\n    accuracy                         0.6515      2402\n   macro avg     0.5861    0.6124    0.5845      2402\nweighted avg     0.7180    0.6515    0.6741      2402\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.44,
+    "acc": 0.7060782681099084,
+    "balanced_acc": 0.5913407951861696,
+    "macro_f1": 0.5905248141462317,
+    "f1_label0": 0.37300177619893427,
+    "f1_label1": 0.8080478520935291,
+    "auc": 0.6663225757422231,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.3684    0.3777    0.3730       556\n           1     0.8111    0.8050    0.8080      1846\n\n    accuracy                         0.7061      2402\n   macro avg     0.5898    0.5913    0.5905      2402\nweighted avg     0.7087    0.7061    0.7073      2402\n"
+  }
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/masked_only_bs256/threshold_metrics_original_test.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/masked_only_bs256",
+  "model_type": "baseline",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.44,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.6455098615190936,
+    "balanced_acc": 0.6093894014635711,
+    "macro_f1": 0.5705214772743713,
+    "f1_label0": 0.39106145251396646,
+    "f1_label1": 0.7499815020347762,
+    "auc": 0.6483336450539118,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.3041    0.5476    0.3911      3963\n           1     0.8497    0.6712    0.7500     15101\n\n    accuracy                         0.6455     19064\n   macro avg     0.5769    0.6094    0.5705     19064\nweighted avg     0.7363    0.6455    0.6754     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.44,
+    "acc": 0.7132291229542593,
+    "balanced_acc": 0.5900661260357398,
+    "macro_f1": 0.5852102952791438,
+    "f1_label0": 0.3547739879617609,
+    "f1_label1": 0.8156466025965268,
+    "auc": 0.6483336450539118,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.3333    0.3793    0.3548      3963\n           1     0.8310    0.8009    0.8156     15101\n\n    accuracy                         0.7132     19064\n   macro avg     0.5821    0.5901    0.5852     19064\nweighted avg     0.7275    0.7132    0.7198     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.6515403830141548,
+    "balanced_acc": 0.6124168920551533,
+    "macro_f1": 0.5844736429287578,
+    "f1_label0": 0.4175365344467641,
+    "f1_label1": 0.7514107514107514,
+    "auc": 0.6663225757422231,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.3405    0.5396    0.4175       556\n           1     0.8317    0.6853    0.7514      1846\n\n    accuracy                         0.6515      2402\n   macro avg     0.5861    0.6124    0.5845      2402\nweighted avg     0.7180    0.6515    0.6741      2402\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.44,
+    "acc": 0.7060782681099084,
+    "balanced_acc": 0.5913407951861696,
+    "macro_f1": 0.5905248141462317,
+    "f1_label0": 0.37300177619893427,
+    "f1_label1": 0.8080478520935291,
+    "auc": 0.6663225757422231,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.3684    0.3777    0.3730       556\n           1     0.8111    0.8050    0.8080      1846\n\n    accuracy                         0.7061      2402\n   macro avg     0.5898    0.5913    0.5905      2402\nweighted avg     0.7087    0.7061    0.7073      2402\n"
+  }
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/sanity_triview_full/test_metrics.json
+================================================================================
+{
+  "loss": 0.6379786176681519,
+  "acc": 0.572,
+  "balanced_acc": 0.6411713286713286,
+  "macro_f1": 0.5419834257927539,
+  "f1_label0": 0.42473118279569894,
+  "f1_label1": 0.6592356687898089,
+  "auc": 0.7266171328671329,
+  "report": "              precision    recall  f1-score   support\n\n           0     0.2948    0.7596    0.4247       104\n           1     0.8922    0.5227    0.6592       396\n\n    accuracy                         0.5720       500\n   macro avg     0.5935    0.6412    0.5420       500\nweighted avg     0.7680    0.5720    0.6105       500\n"
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/sanity_triview_text_prior_lam01/test_metrics.json
+================================================================================
+{
+  "loss": 1.0346594905853272,
+  "ooc_loss": 0.6131374106407166,
+  "prior_loss": 4.215220539093018,
+  "acc": 0.636,
+  "balanced_acc": 0.692803731906428,
+  "macro_f1": 0.6059855556902614,
+  "f1_label0": 0.4972375690607735,
+  "f1_label1": 0.7147335423197492,
+  "auc": 0.7554137796986119,
+  "prior_top1": 0.0395132212433964,
+  "prior_top3": 0.07557091396301985,
+  "prior_top5": 0.1268028849735856,
+  "report": "              precision    recall  f1-score   support\n\n           0     0.3614    0.7965    0.4972       113\n           1     0.9084    0.5891    0.7147       387\n\n    accuracy                         0.6360       500\n   macro avg     0.6349    0.6928    0.6060       500\nweighted avg     0.7848    0.6360    0.6656       500\n"
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/sanity_triview_text_prior_v2_lam01/test_metrics.json
+================================================================================
+{
+  "loss": 1.0338767290115356,
+  "ooc_loss": 0.6113291020393372,
+  "prior_loss": 4.225476181030273,
+  "acc": 0.732,
+  "balanced_acc": 0.6921634538428116,
+  "macro_f1": 0.6631879511773341,
+  "f1_label0": 0.5109489051094891,
+  "f1_label1": 0.8154269972451791,
+  "auc": 0.7574032151105623,
+  "prior_top1": 0.0395132212433964,
+  "prior_top3": 0.07557091396301985,
+  "prior_top5": 0.1394230779260397,
+  "report": "              precision    recall  f1-score   support\n\n           0     0.4348    0.6195    0.5109       113\n           1     0.8732    0.7649    0.8154       387\n\n    accuracy                         0.7320       500\n   macro avg     0.6540    0.6922    0.6632       500\nweighted avg     0.7741    0.7320    0.7466       500\n"
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_geo_no_text_bs256/test_metrics.json
+================================================================================
+{
+  "loss": 0.5470523435209911,
+  "acc": 0.7385512073272273,
+  "balanced_acc": 0.7425514626218852,
+  "macro_f1": 0.6912700030536201,
+  "f1_label0": 0.5704514363885089,
+  "f1_label1": 0.8120885697187313,
+  "auc": 0.8118623194618736,
+  "report": "              precision    recall  f1-score   support\n\n           0     0.4603    0.7500    0.5705       556\n           1     0.9071    0.7351    0.8121      1846\n\n    accuracy                         0.7386      2402\n   macro avg     0.6837    0.7426    0.6913      2402\nweighted avg     0.8037    0.7386    0.7562      2402\n"
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_geo_text_bs256/test_metrics.json
+================================================================================
+{
+  "loss": 0.5058215533962456,
+  "acc": 0.7826810990840966,
+  "balanced_acc": 0.7643495171360204,
+  "macro_f1": 0.7291316877584263,
+  "f1_label0": 0.6086956521739131,
+  "f1_label1": 0.8495677233429395,
+  "auc": 0.84721875803799,
+  "report": "              precision    recall  f1-score   support\n\n           0     0.5219    0.7302    0.6087       556\n           1     0.9076    0.7985    0.8496      1846\n\n    accuracy                         0.7827      2402\n   macro avg     0.7147    0.7643    0.7291      2402\nweighted avg     0.8183    0.7827    0.7938      2402\n"
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_no_geo_text_bs256/test_metrics.json
+================================================================================
+{
+  "loss": 0.6297075336521413,
+  "acc": 0.7439633638634471,
+  "balanced_acc": 0.7265914245851424,
+  "macro_f1": 0.6883072655721351,
+  "f1_label0": 0.5565969718817592,
+  "f1_label1": 0.820017559262511,
+  "auc": 0.8022264745083673,
+  "report": "              precision    recall  f1-score   support\n\n           0     0.4645    0.6942    0.5566       556\n           1     0.8918    0.7589    0.8200      1846\n\n    accuracy                         0.7440      2402\n   macro avg     0.6781    0.7266    0.6883      2402\nweighted avg     0.7929    0.7440    0.7590      2402\n"
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_no_geo_text_bs256/threshold_metrics.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/triview_no_geo_text_bs256",
+  "model_type": "baseline",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.33,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.7327947964750314,
+    "balanced_acc": 0.6999396760943302,
+    "macro_f1": 0.6590104185656956,
+    "f1_label0": 0.5003923107100824,
+    "f1_label1": 0.8176285264213089,
+    "auc": 0.7723568613943597,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4093    0.6437    0.5004      3963\n           1     0.8900    0.7562    0.8176     15101\n\n    accuracy                         0.7328     19064\n   macro avg     0.6496    0.6999    0.6590     19064\nweighted avg     0.7900    0.7328    0.7517     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.33,
+    "acc": 0.7786928241712128,
+    "balanced_acc": 0.6784745603006206,
+    "macro_f1": 0.6733263957666236,
+    "f1_label0": 0.4877989559305572,
+    "f1_label1": 0.8588538356026898,
+    "auc": 0.7723568613943597,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4701    0.5069    0.4878      3963\n           1     0.8679    0.8500    0.8589     15101\n\n    accuracy                         0.7787     19064\n   macro avg     0.6690    0.6785    0.6733     19064\nweighted avg     0.7852    0.7787    0.7817     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.7439633638634471,
+    "balanced_acc": 0.7265914245851424,
+    "macro_f1": 0.6883072655721351,
+    "f1_label0": 0.5565969718817592,
+    "f1_label1": 0.820017559262511,
+    "auc": 0.8022264745083673,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4645    0.6942    0.5566       556\n           1     0.8918    0.7589    0.8200      1846\n\n    accuracy                         0.7440      2402\n   macro avg     0.6781    0.7266    0.6883      2402\nweighted avg     0.7929    0.7440    0.7590      2402\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.33,
+    "acc": 0.7805995004163198,
+    "balanced_acc": 0.6951253731575953,
+    "macro_f1": 0.6937768323921811,
+    "f1_label0": 0.5307212822796082,
+    "f1_label1": 0.8568323825047541,
+    "auc": 0.8022264745083673,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5256    0.5360    0.5307       556\n           1     0.8594    0.8543    0.8568      1846\n\n    accuracy                         0.7806      2402\n   macro avg     0.6925    0.6951    0.6938      2402\nweighted avg     0.7821    0.7806    0.7813      2402\n"
+  }
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_no_geo_text_bs256/threshold_metrics_original_test.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/triview_no_geo_text_bs256",
+  "model_type": "baseline",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.33,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.7327947964750314,
+    "balanced_acc": 0.6999396760943302,
+    "macro_f1": 0.6590104185656956,
+    "f1_label0": 0.5003923107100824,
+    "f1_label1": 0.8176285264213089,
+    "auc": 0.7723568613943597,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4093    0.6437    0.5004      3963\n           1     0.8900    0.7562    0.8176     15101\n\n    accuracy                         0.7328     19064\n   macro avg     0.6496    0.6999    0.6590     19064\nweighted avg     0.7900    0.7328    0.7517     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.33,
+    "acc": 0.7786928241712128,
+    "balanced_acc": 0.6784745603006206,
+    "macro_f1": 0.6733263957666236,
+    "f1_label0": 0.4877989559305572,
+    "f1_label1": 0.8588538356026898,
+    "auc": 0.7723568613943597,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4701    0.5069    0.4878      3963\n           1     0.8679    0.8500    0.8589     15101\n\n    accuracy                         0.7787     19064\n   macro avg     0.6690    0.6785    0.6733     19064\nweighted avg     0.7852    0.7787    0.7817     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.7439633638634471,
+    "balanced_acc": 0.7265914245851424,
+    "macro_f1": 0.6883072655721351,
+    "f1_label0": 0.5565969718817592,
+    "f1_label1": 0.820017559262511,
+    "auc": 0.8022264745083673,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4645    0.6942    0.5566       556\n           1     0.8918    0.7589    0.8200      1846\n\n    accuracy                         0.7440      2402\n   macro avg     0.6781    0.7266    0.6883      2402\nweighted avg     0.7929    0.7440    0.7590      2402\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.33,
+    "acc": 0.7805995004163198,
+    "balanced_acc": 0.6951253731575953,
+    "macro_f1": 0.6937768323921811,
+    "f1_label0": 0.5307212822796082,
+    "f1_label1": 0.8568323825047541,
+    "auc": 0.8022264745083673,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5256    0.5360    0.5307       556\n           1     0.8594    0.8543    0.8568      1846\n\n    accuracy                         0.7806      2402\n   macro avg     0.6925    0.6951    0.6938      2402\nweighted avg     0.7821    0.7806    0.7813      2402\n"
+  }
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_text_no_geo_bs256/test_metrics.json
+================================================================================
+{
+  "loss": 0.509194936333449,
+  "acc": 0.7805995004163198,
+  "balanced_acc": 0.769907908992416,
+  "macro_f1": 0.7298602644559034,
+  "f1_label0": 0.6127847171197649,
+  "f1_label1": 0.8469358117920418,
+  "auc": 0.8518116167954044,
+  "report": "              precision    recall  f1-score   support\n\n           0     0.5180    0.7500    0.6128       556\n           1     0.9130    0.7898    0.8469      1846\n\n    accuracy                         0.7806      2402\n   macro avg     0.7155    0.7699    0.7299      2402\nweighted avg     0.8215    0.7806    0.7927      2402\n"
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_text_no_geo_bs256/threshold_metrics.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/triview_text_no_geo_bs256",
+  "model_type": "baseline",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.38,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.7810008392782207,
+    "balanced_acc": 0.7515850419105018,
+    "macro_f1": 0.7120070126651719,
+    "f1_label0": 0.5710469536627967,
+    "f1_label1": 0.8529670716675471,
+    "auc": 0.838156647419195,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4816    0.7012    0.5710      3963\n           1     0.9109    0.8019    0.8530     15101\n\n    accuracy                         0.7810     19064\n   macro avg     0.6963    0.7516    0.7120     19064\nweighted avg     0.8217    0.7810    0.7944     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.38,
+    "acc": 0.8070184641208561,
+    "balanced_acc": 0.7303198500439374,
+    "macro_f1": 0.7197795981943801,
+    "f1_label0": 0.5634270796250148,
+    "f1_label1": 0.8761321167637454,
+    "auc": 0.838156647419195,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5318    0.5990    0.5634      3963\n           1     0.8912    0.8616    0.8761     15101\n\n    accuracy                         0.8070     19064\n   macro avg     0.7115    0.7303    0.7198     19064\nweighted avg     0.8165    0.8070    0.8111     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.7805995004163198,
+    "balanced_acc": 0.769907908992416,
+    "macro_f1": 0.7298602644559034,
+    "f1_label0": 0.6127847171197649,
+    "f1_label1": 0.8469358117920418,
+    "auc": 0.8518116167954044,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5180    0.7500    0.6128       556\n           1     0.9130    0.7898    0.8469      1846\n\n    accuracy                         0.7806      2402\n   macro avg     0.7155    0.7699    0.7299      2402\nweighted avg     0.8215    0.7806    0.7927      2402\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.38,
+    "acc": 0.8143213988343048,
+    "balanced_acc": 0.7572838803713259,
+    "macro_f1": 0.7480368222250446,
+    "f1_label0": 0.6188034188034188,
+    "f1_label1": 0.8772702256466703,
+    "auc": 0.8518116167954044,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5896    0.6511    0.6188       556\n           1     0.8915    0.8635    0.8773      1846\n\n    accuracy                         0.8143      2402\n   macro avg     0.7405    0.7573    0.7480      2402\nweighted avg     0.8216    0.8143    0.8174      2402\n"
+  }
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_text_no_geo_bs256/threshold_metrics_original_test.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/triview_text_no_geo_bs256",
+  "model_type": "baseline",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.38,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.7810008392782207,
+    "balanced_acc": 0.7515850419105018,
+    "macro_f1": 0.7120070126651719,
+    "f1_label0": 0.5710469536627967,
+    "f1_label1": 0.8529670716675471,
+    "auc": 0.838156647419195,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4816    0.7012    0.5710      3963\n           1     0.9109    0.8019    0.8530     15101\n\n    accuracy                         0.7810     19064\n   macro avg     0.6963    0.7516    0.7120     19064\nweighted avg     0.8217    0.7810    0.7944     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.38,
+    "acc": 0.8070184641208561,
+    "balanced_acc": 0.7303198500439374,
+    "macro_f1": 0.7197795981943801,
+    "f1_label0": 0.5634270796250148,
+    "f1_label1": 0.8761321167637454,
+    "auc": 0.838156647419195,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5318    0.5990    0.5634      3963\n           1     0.8912    0.8616    0.8761     15101\n\n    accuracy                         0.8070     19064\n   macro avg     0.7115    0.7303    0.7198     19064\nweighted avg     0.8165    0.8070    0.8111     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.7805995004163198,
+    "balanced_acc": 0.769907908992416,
+    "macro_f1": 0.7298602644559034,
+    "f1_label0": 0.6127847171197649,
+    "f1_label1": 0.8469358117920418,
+    "auc": 0.8518116167954044,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5180    0.7500    0.6128       556\n           1     0.9130    0.7898    0.8469      1846\n\n    accuracy                         0.7806      2402\n   macro avg     0.7155    0.7699    0.7299      2402\nweighted avg     0.8215    0.7806    0.7927      2402\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.38,
+    "acc": 0.8143213988343048,
+    "balanced_acc": 0.7572838803713259,
+    "macro_f1": 0.7480368222250446,
+    "f1_label0": 0.6188034188034188,
+    "f1_label1": 0.8772702256466703,
+    "auc": 0.8518116167954044,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5896    0.6511    0.6188       556\n           1     0.8915    0.8635    0.8773      1846\n\n    accuracy                         0.8143      2402\n   macro avg     0.7405    0.7573    0.7480      2402\nweighted avg     0.8216    0.8143    0.8174      2402\n"
+  }
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_text_prior_lam01_bs256/test_metrics.json
+================================================================================
+{
+  "loss": 0.699583543577758,
+  "ooc_loss": 0.4889484930296524,
+  "prior_loss": 2.1063504356031713,
+  "acc": 0.7726894254787677,
+  "balanced_acc": 0.7672753454874237,
+  "macro_f1": 0.7233960882505788,
+  "f1_label0": 0.6066282420749279,
+  "f1_label1": 0.8401639344262295,
+  "auc": 0.8530480057990444,
+  "prior_top1": 0.42139668166637423,
+  "prior_top3": 0.6617267191410064,
+  "prior_top5": 0.7518335461616517,
+  "report": "              precision    recall  f1-score   support\n\n           0     0.5060    0.7572    0.6066       556\n           1     0.9140    0.7774    0.8402      1846\n\n    accuracy                         0.7727      2402\n   macro avg     0.7100    0.7673    0.7234      2402\nweighted avg     0.8196    0.7727    0.7861      2402\n"
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_text_prior_lam01_bs256/threshold_metrics_balanced_test.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/triview_text_prior_lam01_bs256",
+  "model_type": "prior_v1",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.38,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.7713491397398238,
+    "balanced_acc": 0.75479839565581,
+    "macro_f1": 0.7067618068555066,
+    "f1_label0": 0.5691410497182959,
+    "f1_label1": 0.8443825639927172,
+    "auc": 0.8377096613310897,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4678    0.7265    0.5691      3963\n           1     0.9160    0.7831    0.8444     15101\n\n    accuracy                         0.7713     19064\n   macro avg     0.6919    0.7548    0.7068     19064\nweighted avg     0.8229    0.7713    0.7872     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.38,
+    "acc": 0.8058644565673521,
+    "balanced_acc": 0.731917837841234,
+    "macro_f1": 0.7198127999930553,
+    "f1_label0": 0.5645370043534533,
+    "f1_label1": 0.8750885956326572,
+    "auc": 0.8377096613310897,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5289    0.6053    0.5645      3963\n           1     0.8923    0.8585    0.8751     15101\n\n    accuracy                         0.8059     19064\n   macro avg     0.7106    0.7319    0.7198     19064\nweighted avg     0.8168    0.8059    0.8105     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.7553956834532374,
+    "balanced_acc": 0.7553956834532374,
+    "macro_f1": 0.755394892199201,
+    "f1_label0": 0.755834829443447,
+    "f1_label1": 0.7549549549549549,
+    "auc": 0.8350046581439884,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.7545    0.7572    0.7558       556\n           1     0.7563    0.7536    0.7550       556\n\n    accuracy                         0.7554      1112\n   macro avg     0.7554    0.7554    0.7554      1112\nweighted avg     0.7554    0.7554    0.7554      1112\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.38,
+    "acc": 0.7347122302158273,
+    "balanced_acc": 0.7347122302158273,
+    "macro_f1": 0.7321385556679674,
+    "f1_label0": 0.7058823529411765,
+    "f1_label1": 0.7583947583947583,
+    "auc": 0.8350046581439884,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.7919    0.6367    0.7059       556\n           1     0.6962    0.8327    0.7584       556\n\n    accuracy                         0.7347      1112\n   macro avg     0.7441    0.7347    0.7321      1112\nweighted avg     0.7441    0.7347    0.7321      1112\n"
+  }
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_text_prior_lam01_bs256/threshold_metrics.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/triview_text_prior_lam01_bs256",
+  "model_type": "prior_v1",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.38,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.7713491397398238,
+    "balanced_acc": 0.75479839565581,
+    "macro_f1": 0.7067618068555066,
+    "f1_label0": 0.5691410497182959,
+    "f1_label1": 0.8443825639927172,
+    "auc": 0.8377096613310897,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4678    0.7265    0.5691      3963\n           1     0.9160    0.7831    0.8444     15101\n\n    accuracy                         0.7713     19064\n   macro avg     0.6919    0.7548    0.7068     19064\nweighted avg     0.8229    0.7713    0.7872     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.38,
+    "acc": 0.8058644565673521,
+    "balanced_acc": 0.731917837841234,
+    "macro_f1": 0.7198127999930553,
+    "f1_label0": 0.5645370043534533,
+    "f1_label1": 0.8750885956326572,
+    "auc": 0.8377096613310897,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5289    0.6053    0.5645      3963\n           1     0.8923    0.8585    0.8751     15101\n\n    accuracy                         0.8059     19064\n   macro avg     0.7106    0.7319    0.7198     19064\nweighted avg     0.8168    0.8059    0.8105     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.7553956834532374,
+    "balanced_acc": 0.7553956834532374,
+    "macro_f1": 0.755394892199201,
+    "f1_label0": 0.755834829443447,
+    "f1_label1": 0.7549549549549549,
+    "auc": 0.8350046581439884,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.7545    0.7572    0.7558       556\n           1     0.7563    0.7536    0.7550       556\n\n    accuracy                         0.7554      1112\n   macro avg     0.7554    0.7554    0.7554      1112\nweighted avg     0.7554    0.7554    0.7554      1112\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.38,
+    "acc": 0.7347122302158273,
+    "balanced_acc": 0.7347122302158273,
+    "macro_f1": 0.7321385556679674,
+    "f1_label0": 0.7058823529411765,
+    "f1_label1": 0.7583947583947583,
+    "auc": 0.8350046581439884,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.7919    0.6367    0.7059       556\n           1     0.6962    0.8327    0.7584       556\n\n    accuracy                         0.7347      1112\n   macro avg     0.7441    0.7347    0.7321      1112\nweighted avg     0.7441    0.7347    0.7321      1112\n"
+  }
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_text_prior_lam02_bs256/test_metrics.json
+================================================================================
+{
+  "loss": 0.9236183070223297,
+  "ooc_loss": 0.5128094377267569,
+  "prior_loss": 2.0540443550637124,
+  "acc": 0.7722731057452124,
+  "balanced_acc": 0.7695181882662884,
+  "macro_f1": 0.7239474331658324,
+  "f1_label0": 0.6084466714387974,
+  "f1_label1": 0.8394481948928676,
+  "auc": 0.8523650202265056,
+  "prior_top1": 0.43927774131298064,
+  "prior_top3": 0.6718829691410064,
+  "prior_top5": 0.7602120518684388,
+  "report": "              precision    recall  f1-score   support\n\n           0     0.5054    0.7644    0.6084       556\n           1     0.9161    0.7746    0.8394      1846\n\n    accuracy                         0.7723      2402\n   macro avg     0.7107    0.7695    0.7239      2402\nweighted avg     0.8210    0.7723    0.7860      2402\n"
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_text_prior_lam02_bs256/threshold_metrics_balanced_test.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/triview_text_prior_lam02_bs256",
+  "model_type": "prior_v1",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.34,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.768569030633655,
+    "balanced_acc": 0.7546255081208348,
+    "macro_f1": 0.7048101272362106,
+    "f1_label0": 0.5676205409643277,
+    "f1_label1": 0.8419997135080934,
+    "auc": 0.8377349264886679,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4640    0.7308    0.5676      3963\n           1     0.9168    0.7785    0.8420     15101\n\n    accuracy                         0.7686     19064\n   macro avg     0.6904    0.7546    0.7048     19064\nweighted avg     0.8227    0.7686    0.7850     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.34,
+    "acc": 0.8049202685690307,
+    "balanced_acc": 0.729739887683341,
+    "macro_f1": 0.7180713017912245,
+    "f1_label0": 0.5615937757868679,
+    "f1_label1": 0.8745488277955811,
+    "auc": 0.8377349264886679,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5270    0.6011    0.5616      3963\n           1     0.8913    0.8584    0.8745     15101\n\n    accuracy                         0.8049     19064\n   macro avg     0.7091    0.7297    0.7181     19064\nweighted avg     0.8156    0.8049    0.8095     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.7607913669064749,
+    "balanced_acc": 0.7607913669064748,
+    "macro_f1": 0.7607882716768242,
+    "f1_label0": 0.7616487455197133,
+    "f1_label1": 0.759927797833935,
+    "auc": 0.8414743025723307,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.7589    0.7644    0.7616       556\n           1     0.7627    0.7572    0.7599       556\n\n    accuracy                         0.7608      1112\n   macro avg     0.7608    0.7608    0.7608      1112\nweighted avg     0.7608    0.7608    0.7608      1112\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.34,
+    "acc": 0.7526978417266187,
+    "balanced_acc": 0.7526978417266187,
+    "macro_f1": 0.7497346352370032,
+    "f1_label0": 0.722502522704339,
+    "f1_label1": 0.7769667477696675,
+    "auc": 0.8414743025723307,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.8230    0.6439    0.7225       556\n           1     0.7075    0.8615    0.7770       556\n\n    accuracy                         0.7527      1112\n   macro avg     0.7653    0.7527    0.7497      1112\nweighted avg     0.7653    0.7527    0.7497      1112\n"
+  }
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_text_prior_lam02_bs256/threshold_metrics.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/triview_text_prior_lam02_bs256",
+  "model_type": "prior_v1",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.34,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.768569030633655,
+    "balanced_acc": 0.7546255081208348,
+    "macro_f1": 0.7048101272362106,
+    "f1_label0": 0.5676205409643277,
+    "f1_label1": 0.8419997135080934,
+    "auc": 0.8377349264886679,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4640    0.7308    0.5676      3963\n           1     0.9168    0.7785    0.8420     15101\n\n    accuracy                         0.7686     19064\n   macro avg     0.6904    0.7546    0.7048     19064\nweighted avg     0.8227    0.7686    0.7850     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.34,
+    "acc": 0.8049202685690307,
+    "balanced_acc": 0.729739887683341,
+    "macro_f1": 0.7180713017912245,
+    "f1_label0": 0.5615937757868679,
+    "f1_label1": 0.8745488277955811,
+    "auc": 0.8377349264886679,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5270    0.6011    0.5616      3963\n           1     0.8913    0.8584    0.8745     15101\n\n    accuracy                         0.8049     19064\n   macro avg     0.7091    0.7297    0.7181     19064\nweighted avg     0.8156    0.8049    0.8095     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.7607913669064749,
+    "balanced_acc": 0.7607913669064748,
+    "macro_f1": 0.7607882716768242,
+    "f1_label0": 0.7616487455197133,
+    "f1_label1": 0.759927797833935,
+    "auc": 0.8414743025723307,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.7589    0.7644    0.7616       556\n           1     0.7627    0.7572    0.7599       556\n\n    accuracy                         0.7608      1112\n   macro avg     0.7608    0.7608    0.7608      1112\nweighted avg     0.7608    0.7608    0.7608      1112\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.34,
+    "acc": 0.7526978417266187,
+    "balanced_acc": 0.7526978417266187,
+    "macro_f1": 0.7497346352370032,
+    "f1_label0": 0.722502522704339,
+    "f1_label1": 0.7769667477696675,
+    "auc": 0.8414743025723307,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.8230    0.6439    0.7225       556\n           1     0.7075    0.8615    0.7770       556\n\n    accuracy                         0.7527      1112\n   macro avg     0.7653    0.7527    0.7497      1112\nweighted avg     0.7653    0.7527    0.7497      1112\n"
+  }
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_text_prior_v2_lam01_bs256/test_metrics.json
+================================================================================
+{
+  "loss": 0.7173632882119814,
+  "ooc_loss": 0.488961227331233,
+  "prior_loss": 2.284020629353964,
+  "acc": 0.7693588676103247,
+  "balanced_acc": 0.7764201423260091,
+  "macro_f1": 0.7244171520971259,
+  "f1_label0": 0.6131284916201117,
+  "f1_label1": 0.83570581257414,
+  "auc": 0.8550433759168181,
+  "prior_top1": 0.3846540182828903,
+  "prior_top3": 0.6282844364643096,
+  "prior_top5": 0.7143973171710968,
+  "report": "              precision    recall  f1-score   support\n\n           0     0.5011    0.7896    0.6131       556\n           1     0.9233    0.7633    0.8357      1846\n\n    accuracy                         0.7694      2402\n   macro avg     0.7122    0.7764    0.7244      2402\nweighted avg     0.8256    0.7694    0.7842      2402\n"
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_text_prior_v2_lam01_bs256/threshold_metrics.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/triview_text_prior_v2_lam01_bs256",
+  "model_type": "prior_v2",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.36000000000000004,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.7699328577423415,
+    "balanced_acc": 0.7629309106720777,
+    "macro_f1": 0.7089567160385588,
+    "f1_label0": 0.575739988392339,
+    "f1_label1": 0.8421734436847786,
+    "auc": 0.8457584938677603,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4668    0.7509    0.5757      3963\n           1     0.9222    0.7749    0.8422     15101\n\n    accuracy                         0.7699     19064\n   macro avg     0.6945    0.7629    0.7090     19064\nweighted avg     0.8275    0.7699    0.7868     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.36000000000000004,
+    "acc": 0.8100083927822073,
+    "balanced_acc": 0.7392794480659229,
+    "macro_f1": 0.7263211661476042,
+    "f1_label0": 0.5749823984980051,
+    "f1_label1": 0.8776599337972033,
+    "auc": 0.8457584938677603,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5374    0.6182    0.5750      3963\n           1     0.8957    0.8603    0.8777     15101\n\n    accuracy                         0.8100     19064\n   macro avg     0.7165    0.7393    0.7263     19064\nweighted avg     0.8212    0.8100    0.8147     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.7693588676103247,
+    "balanced_acc": 0.7764201423260091,
+    "macro_f1": 0.7244171520971259,
+    "f1_label0": 0.6131284916201117,
+    "f1_label1": 0.83570581257414,
+    "auc": 0.8550433759168181,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5011    0.7896    0.6131       556\n           1     0.9233    0.7633    0.8357      1846\n\n    accuracy                         0.7694      2402\n   macro avg     0.7122    0.7764    0.7244      2402\nweighted avg     0.8256    0.7694    0.7842      2402\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.36000000000000004,
+    "acc": 0.8176519567027477,
+    "balanced_acc": 0.7676202483300467,
+    "macro_f1": 0.7550924063645302,
+    "f1_label0": 0.6313131313131313,
+    "f1_label1": 0.8788716814159292,
+    "auc": 0.8550433759168181,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5934    0.6745    0.6313       556\n           1     0.8977    0.8608    0.8789      1846\n\n    accuracy                         0.8177      2402\n   macro avg     0.7455    0.7676    0.7551      2402\nweighted avg     0.8273    0.8177    0.8216      2402\n"
+  }
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_text_prior_v2_lam02_bs256/test_metrics.json
+================================================================================
+{
+  "loss": 0.917055765953191,
+  "ooc_loss": 0.4851294479004846,
+  "prior_loss": 2.159631528425574,
+  "acc": 0.7760199833472107,
+  "balanced_acc": 0.7763548641043828,
+  "macro_f1": 0.7290601064574753,
+  "f1_label0": 0.6162624821683309,
+  "f1_label1": 0.8418577307466196,
+  "auc": 0.854542584783744,
+  "prior_top1": 0.4009088009595871,
+  "prior_top3": 0.6474888384342193,
+  "prior_top5": 0.7358816921710968,
+  "report": "              precision    recall  f1-score   support\n\n           0     0.5106    0.7770    0.6163       556\n           1     0.9203    0.7757    0.8419      1846\n\n    accuracy                         0.7760      2402\n   macro avg     0.7155    0.7764    0.7291      2402\nweighted avg     0.8255    0.7760    0.7896      2402\n"
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_text_prior_v2_lam02_bs256/threshold_metrics_balanced_test.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/triview_text_prior_v2_lam02_bs256",
+  "model_type": "prior_v2",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.37,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.7734997901804448,
+    "balanced_acc": 0.7635073974025313,
+    "macro_f1": 0.7116363871104825,
+    "f1_label0": 0.5780730897009967,
+    "f1_label1": 0.8451996845199684,
+    "auc": 0.8446651909608953,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4717    0.7464    0.5781      3963\n           1     0.9214    0.7806    0.8452     15101\n\n    accuracy                         0.7735     19064\n   macro avg     0.6966    0.7635    0.7116     19064\nweighted avg     0.8279    0.7735    0.7897     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.37,
+    "acc": 0.8110050356693244,
+    "balanced_acc": 0.7406529987177097,
+    "macro_f1": 0.7276885308541277,
+    "f1_label0": 0.5770630355675549,
+    "f1_label1": 0.8783140261407004,
+    "auc": 0.8446651909608953,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5395    0.6202    0.5771      3963\n           1     0.8963    0.8611    0.8783     15101\n\n    accuracy                         0.8110     19064\n   macro avg     0.7179    0.7407    0.7277     19064\nweighted avg     0.8221    0.8110    0.8157     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.7571942446043165,
+    "balanced_acc": 0.7571942446043165,
+    "macro_f1": 0.7570991699432066,
+    "f1_label0": 0.7619047619047619,
+    "f1_label1": 0.7522935779816514,
+    "auc": 0.8405426737746493,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.7474    0.7770    0.7619       556\n           1     0.7678    0.7374    0.7523       556\n\n    accuracy                         0.7572      1112\n   macro avg     0.7576    0.7572    0.7571      1112\nweighted avg     0.7576    0.7572    0.7571      1112\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.37,
+    "acc": 0.7598920863309353,
+    "balanced_acc": 0.7598920863309353,
+    "macro_f1": 0.7582008233603036,
+    "f1_label0": 0.7379784102060843,
+    "f1_label1": 0.7784232365145228,
+    "auc": 0.8405426737746493,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.8121    0.6763    0.7380       556\n           1     0.7227    0.8435    0.7784       556\n\n    accuracy                         0.7599      1112\n   macro avg     0.7674    0.7599    0.7582      1112\nweighted avg     0.7674    0.7599    0.7582      1112\n"
+  }
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_text_prior_v2_lam02_bs256/threshold_metrics.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/triview_text_prior_v2_lam02_bs256",
+  "model_type": "prior_v2",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.37,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.7734997901804448,
+    "balanced_acc": 0.7635073974025313,
+    "macro_f1": 0.7116363871104825,
+    "f1_label0": 0.5780730897009967,
+    "f1_label1": 0.8451996845199684,
+    "auc": 0.8446651909608953,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4717    0.7464    0.5781      3963\n           1     0.9214    0.7806    0.8452     15101\n\n    accuracy                         0.7735     19064\n   macro avg     0.6966    0.7635    0.7116     19064\nweighted avg     0.8279    0.7735    0.7897     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.37,
+    "acc": 0.8110050356693244,
+    "balanced_acc": 0.7406529987177097,
+    "macro_f1": 0.7276885308541277,
+    "f1_label0": 0.5770630355675549,
+    "f1_label1": 0.8783140261407004,
+    "auc": 0.8446651909608953,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5395    0.6202    0.5771      3963\n           1     0.8963    0.8611    0.8783     15101\n\n    accuracy                         0.8110     19064\n   macro avg     0.7179    0.7407    0.7277     19064\nweighted avg     0.8221    0.8110    0.8157     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.7760199833472107,
+    "balanced_acc": 0.7763548641043828,
+    "macro_f1": 0.7290601064574753,
+    "f1_label0": 0.6162624821683309,
+    "f1_label1": 0.8418577307466196,
+    "auc": 0.854542584783744,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5106    0.7770    0.6163       556\n           1     0.9203    0.7757    0.8419      1846\n\n    accuracy                         0.7760      2402\n   macro avg     0.7155    0.7764    0.7291      2402\nweighted avg     0.8255    0.7760    0.7896      2402\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.37,
+    "acc": 0.8193172356369692,
+    "balanced_acc": 0.7693320966195625,
+    "macro_f1": 0.7570541521360781,
+    "f1_label0": 0.6340640809443507,
+    "f1_label1": 0.8800442233278054,
+    "auc": 0.854542584783744,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5968    0.6763    0.6341       556\n           1     0.8984    0.8624    0.8800      1846\n\n    accuracy                         0.8193      2402\n   macro avg     0.7476    0.7693    0.7571      2402\nweighted avg     0.8286    0.8193    0.8231      2402\n"
+  }
+}
+================================================================================
+FILE: tri_view_compat/outputs/checkpoints/triview_text_prior_v2_lam02_bs256/threshold_metrics_original_test.json
+================================================================================
+{
+  "ckpt_dir": "tri_view_compat/outputs/checkpoints/triview_text_prior_v2_lam02_bs256",
+  "model_type": "prior_v2",
+  "selected_metric": "macro_f1",
+  "best_threshold_from_val": 0.37,
+  "val_default": {
+    "threshold": 0.5,
+    "acc": 0.7734997901804448,
+    "balanced_acc": 0.7635073974025313,
+    "macro_f1": 0.7116363871104825,
+    "f1_label0": 0.5780730897009967,
+    "f1_label1": 0.8451996845199684,
+    "auc": 0.8446651909608953,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.4717    0.7464    0.5781      3963\n           1     0.9214    0.7806    0.8452     15101\n\n    accuracy                         0.7735     19064\n   macro avg     0.6966    0.7635    0.7116     19064\nweighted avg     0.8279    0.7735    0.7897     19064\n"
+  },
+  "val_best": {
+    "threshold": 0.37,
+    "acc": 0.8110050356693244,
+    "balanced_acc": 0.7406529987177097,
+    "macro_f1": 0.7276885308541277,
+    "f1_label0": 0.5770630355675549,
+    "f1_label1": 0.8783140261407004,
+    "auc": 0.8446651909608953,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5395    0.6202    0.5771      3963\n           1     0.8963    0.8611    0.8783     15101\n\n    accuracy                         0.8110     19064\n   macro avg     0.7179    0.7407    0.7277     19064\nweighted avg     0.8221    0.8110    0.8157     19064\n"
+  },
+  "test_default": {
+    "threshold": 0.5,
+    "acc": 0.7760199833472107,
+    "balanced_acc": 0.7763548641043828,
+    "macro_f1": 0.7290601064574753,
+    "f1_label0": 0.6162624821683309,
+    "f1_label1": 0.8418577307466196,
+    "auc": 0.854542584783744,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5106    0.7770    0.6163       556\n           1     0.9203    0.7757    0.8419      1846\n\n    accuracy                         0.7760      2402\n   macro avg     0.7155    0.7764    0.7291      2402\nweighted avg     0.8255    0.7760    0.7896      2402\n"
+  },
+  "test_calibrated": {
+    "threshold": 0.37,
+    "acc": 0.8193172356369692,
+    "balanced_acc": 0.7693320966195625,
+    "macro_f1": 0.7570541521360781,
+    "f1_label0": 0.6340640809443507,
+    "f1_label1": 0.8800442233278054,
+    "auc": 0.854542584783744,
+    "report": "              precision    recall  f1-score   support\n\n           0     0.5968    0.6763    0.6341       556\n           1     0.8984    0.8624    0.8800      1846\n\n    accuracy                         0.8193      2402\n   macro avg     0.7476    0.7693    0.7571      2402\nweighted avg     0.8286    0.8193    0.8231      2402\n"
+  }
+}
