@@ -69,8 +69,8 @@ Important terminology:
 ├── coinco_v1_baselines/             # COinCO-style cached-feature baselines
 ├── MCP_TCL_core/                    # Compact code/results snapshot for paper review
 ├── paper_audit/final_results/       # Final table sources and manifest
-├── requirements.txt
-├── environment.yaml
+├── envs/requirements_coinco_lock.txt
+├── envs/environment_coinco_full.yml
 └── README.md
 ```
 
@@ -135,14 +135,14 @@ We used Python 3.10 and PyTorch with CUDA support.
 Create an environment from the provided file:
 
 ```bash
-conda env create -f environment.yaml
+conda env create -f envs/environment_coinco_full.yml
 conda activate coinco
 ```
 
 Or install the minimal dependencies:
 
 ```bash
-pip install -r requirements.txt
+See envs/requirements_coinco_lock.txt for pip package versions.
 ```
 
 You also need a local CLIP ViT-B/32 checkpoint or a HuggingFace-compatible CLIP directory. In our scripts this is passed through `--clip_name`.
