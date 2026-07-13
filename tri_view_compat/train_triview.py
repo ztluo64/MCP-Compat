@@ -121,6 +121,7 @@ def main():
     parser.add_argument("--num_workers", type=int, default=4)
     parser.add_argument("--lr", type=float, default=1e-3)
     parser.add_argument("--weight_decay", type=float, default=1e-4)
+    parser.add_argument("--dropout", type=float, default=0.2)
     parser.add_argument("--seed", type=int, default=777)
 
     parser.add_argument("--max_train_samples", type=int, default=0)
@@ -184,6 +185,7 @@ def main():
 
     model = CLIPTriViewBaseline(
         clip_name=args.clip_name,
+        dropout=args.dropout,
         use_full=not args.no_full,
         use_crop=not args.no_crop,
         use_masked=not args.no_masked,

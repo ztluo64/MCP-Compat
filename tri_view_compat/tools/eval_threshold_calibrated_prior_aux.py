@@ -120,10 +120,39 @@ def metrics_from_probs(labels, probs, threshold):
 def search_best_threshold(labels, probs, metric="macro_f1"):
     thresholds = np.linspace(0.01, 0.99, 99)
     best = None
+    eps = 1e-12
+
+    def get_bal_acc(m):
+        if "balanced_acc" in m:
+            return m["balanced_acc"]
+        if "bal_acc" in m:
+            return m["bal_acc"]
+        return 0.0
+
     for t in thresholds:
         m = metrics_from_probs(labels, probs, float(t))
-        if best is None or m[metric] > best[metric]:
+
+        if best is None:
             best = m
+            continue
+
+        # Primary criterion: target metric, usually Macro-F1
+        if m[metric] > best[metric] + eps:
+            best = m
+            continue
+
+        # Tie-break 1: Balanced Accuracy
+        if abs(m[metric] - best[metric]) <= eps:
+            if get_bal_acc(m) > get_bal_acc(best) + eps:
+                best = m
+                continue
+
+            # Tie-break 2: Accuracy
+            if abs(get_bal_acc(m) - get_bal_acc(best)) <= eps:
+                if m.get("acc", 0.0) > best.get("acc", 0.0) + eps:
+                    best = m
+                    continue
+
     return best
 
 
