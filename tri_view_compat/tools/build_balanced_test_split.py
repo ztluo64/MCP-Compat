@@ -1,54 +1,72 @@
-import os
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+
 import pandas as pd
 
-SEED = 777
 
-def build_one(in_csv, out_csv):
-    df = pd.read_csv(in_csv)
+def build_balanced_test(df: pd.DataFrame, seed: int) -> pd.DataFrame:
+    if "label" not in df.columns:
+        raise KeyError("Input CSV must contain a 'label' column.")
 
-    print("\nInput:", in_csv)
-    print("shape:", df.shape)
-    print("label counts:")
-    print(df["label"].value_counts().sort_index())
+    in_context = df[df["label"] == 0]
+    out_context = df[df["label"] == 1]
 
-    df0 = df[df["label"] == 0]
-    df1 = df[df["label"] == 1]
+    if len(in_context) == 0 or len(out_context) == 0:
+        raise ValueError("Both label 0 and label 1 samples are required.")
 
-    n = min(len(df0), len(df1))
+    n = min(len(in_context), len(out_context))
+    out_sampled = out_context.sample(n=n, random_state=seed)
 
-    df0_bal = df0.sample(n=n, random_state=SEED)
-    df1_bal = df1.sample(n=n, random_state=SEED)
+    balanced = pd.concat([in_context, out_sampled], axis=0)
+    balanced = balanced.sample(frac=1.0, random_state=seed).reset_index(drop=True)
 
-    out = pd.concat([df0_bal, df1_bal], axis=0)
-    out = out.sample(frac=1.0, random_state=SEED).reset_index(drop=True)
-
-    os.makedirs(os.path.dirname(out_csv), exist_ok=True)
-    out.to_csv(out_csv, index=False)
-
-    print("Output:", out_csv)
-    print("shape:", out.shape)
-    print("label counts:")
-    print(out["label"].value_counts().sort_index())
+    return balanced
 
 
-def main():
-    build_one(
-        "tri_view_compat/outputs/splits/test.csv",
-        "tri_view_compat/outputs/splits_balanced/test_balanced_seed777.csv",
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Build a balanced test subset from the replacement-aware test CSV."
     )
+    parser.add_argument(
+        "--test_csv",
+        type=Path,
+        default=Path("tri_view_compat/outputs/splits/test.csv"),
+        help="Input test CSV.",
+    )
+    parser.add_argument(
+        "--output_csv",
+        type=Path,
+        default=Path("tri_view_compat/outputs/splits_balanced/test_balanced_seed777.csv"),
+        help="Output balanced test CSV.",
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=777,
+        help="Random seed for sampling out-of-context samples.",
+    )
+    return parser.parse_args()
 
-    # 如果 Qwen tri-view / canvas split 已存在，也顺手生成对应 balanced split。
-    if os.path.exists("qwen_lora/outputs/splits_triview/test.csv"):
-        build_one(
-            "qwen_lora/outputs/splits_triview/test.csv",
-            "qwen_lora/outputs/splits_triview/test_balanced_seed777.csv",
-        )
 
-    if os.path.exists("qwen_lora/outputs/splits_canvas/test.csv"):
-        build_one(
-            "qwen_lora/outputs/splits_canvas/test.csv",
-            "qwen_lora/outputs/splits_canvas/test_balanced_seed777.csv",
-        )
+def main() -> None:
+    args = parse_args()
+
+    if not args.test_csv.exists():
+        raise FileNotFoundError(f"Missing test CSV: {args.test_csv}")
+
+    df = pd.read_csv(args.test_csv)
+    balanced = build_balanced_test(df, args.seed)
+
+    args.output_csv.parent.mkdir(parents=True, exist_ok=True)
+    balanced.to_csv(args.output_csv, index=False)
+
+    print(f"saved: {args.output_csv}")
+    print(f"shape: {balanced.shape}")
+    print("label counts:")
+    print(balanced["label"].value_counts().sort_index())
+    print(f"seed: {args.seed}")
 
 
 if __name__ == "__main__":

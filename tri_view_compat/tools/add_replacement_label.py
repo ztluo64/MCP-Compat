@@ -1,71 +1,92 @@
-import os
-import pandas as pd
+from __future__ import annotations
+
+import argparse
 from pathlib import Path
 
-split_dir = Path("tri_view_compat/outputs/splits")
-splits = ["train", "val", "test"]
+import pandas as pd
 
 
-def norm_name(x):
-    return str(x).strip().lower()
+COCO_CLASSES = [
+    "person", "bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck",
+    "boat", "traffic light", "fire hydrant", "stop sign", "parking meter", "bench",
+    "bird", "cat", "dog", "horse", "sheep", "cow", "elephant", "bear", "zebra",
+    "giraffe", "backpack", "umbrella", "handbag", "tie", "suitcase", "frisbee",
+    "skis", "snowboard", "sports ball", "kite", "baseball bat", "baseball glove",
+    "skateboard", "surfboard", "tennis racket", "bottle", "wine glass", "cup",
+    "fork", "knife", "spoon", "bowl", "banana", "apple", "sandwich", "orange",
+    "broccoli", "carrot", "hot dog", "pizza", "donut", "cake", "chair", "couch",
+    "potted plant", "bed", "dining table", "toilet", "tv", "laptop", "mouse",
+    "remote", "keyboard", "cell phone", "microwave", "oven", "toaster", "sink",
+    "refrigerator", "book", "clock", "vase", "scissors", "teddy bear", "hair drier",
+    "toothbrush",
+]
+
+CLASS_TO_IDX = {name: idx for idx, name in enumerate(COCO_CLASSES)}
 
 
-# Build class_name -> prior_label mapping from TRAIN split only.
-train_path = split_dir / "train.csv"
-train_df = pd.read_csv(train_path)
-train_df["class_name_norm"] = train_df["class_name"].apply(norm_name)
+def normalize_name(name: str) -> str:
+    return str(name).strip().lower()
 
-mapping = {}
-conflicts = []
 
-for _, row in train_df.iterrows():
-    name = row["class_name_norm"]
-    label = int(row["prior_label"])
+def add_replacement_label(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
 
-    if name in mapping and mapping[name] != label:
-        conflicts.append((name, mapping[name], label))
+    if "replacement_object" not in df.columns:
+        raise KeyError("CSV must contain a 'replacement_object' column.")
 
-    mapping[name] = label
-
-print("num class_name mappings from train:", len(mapping))
-
-if conflicts:
-    print("WARNING: conflicting mappings found:")
-    for c in conflicts[:20]:
-        print(c)
-    raise RuntimeError("Conflicting class_name -> prior_label mappings in train split.")
-
-if len(mapping) != 80:
-    raise RuntimeError(f"Expected 80 COCO class mappings, got {len(mapping)}.")
-
-total_mismatch = 0
-
-for s in splits:
-    path = split_dir / f"{s}.csv"
-    df = pd.read_csv(path)
-
-    repl_norm = df["replacement_object"].apply(norm_name)
-    missing = sorted(set(repl_norm) - set(mapping.keys()))
-
-    print(f"{s}: missing replacement names = {len(missing)}")
+    names = df["replacement_object"].map(normalize_name)
+    missing = sorted(set(names) - set(CLASS_TO_IDX))
     if missing:
-        print("missing examples:", missing[:20])
-        raise RuntimeError(f"Missing replacement names in {s}: {missing[:20]}")
+        raise ValueError(f"Unknown replacement object names: {missing}")
 
-    new_label = repl_norm.apply(lambda x: mapping[x]).astype(int)
+    df["replacement_label"] = names.map(CLASS_TO_IDX).astype(int)
+    return df
 
-    if "replacement_label" in df.columns:
-        mismatch = (df["replacement_label"].astype(int) != new_label).sum()
-        print(f"{s}: mismatch with existing replacement_label = {mismatch}")
-        total_mismatch += int(mismatch)
 
-    df["replacement_label"] = new_label
-    df.to_csv(path, index=False)
-    print(f"saved {path}, shape={df.shape}")
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Add replacement_label to tri-view split CSV files."
+    )
+    parser.add_argument(
+        "--input_dir",
+        type=Path,
+        default=Path("tri_view_compat/outputs/splits"),
+        help="Directory containing train.csv, val.csv, and test.csv.",
+    )
+    parser.add_argument(
+        "--output_dir",
+        type=Path,
+        default=Path("tri_view_compat/outputs/splits"),
+        help="Directory to save CSV files with replacement_label.",
+    )
+    parser.add_argument(
+        "--splits",
+        nargs="+",
+        default=["train", "val", "test"],
+        help="Split names to process.",
+    )
+    return parser.parse_args()
 
-print("total mismatch with existing labels:", total_mismatch)
 
-if total_mismatch != 0:
-    raise RuntimeError("Train-only mapping differs from existing replacement_label values.")
+def main() -> None:
+    args = parse_args()
+    args.output_dir.mkdir(parents=True, exist_ok=True)
 
-print("Done. Replacement labels are generated using train-only class mapping.")
+    for split in args.splits:
+        in_path = args.input_dir / f"{split}.csv"
+        out_path = args.output_dir / f"{split}.csv"
+
+        if not in_path.exists():
+            raise FileNotFoundError(f"Missing split CSV: {in_path}")
+
+        df = pd.read_csv(in_path)
+        df = add_replacement_label(df)
+        df.to_csv(out_path, index=False)
+
+        print(f"{split}: saved {out_path}, shape={df.shape}, replacement_label unique={df['replacement_label'].nunique()}")
+
+    print("Done.")
+
+
+if __name__ == "__main__":
+    main()

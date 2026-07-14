@@ -335,13 +335,22 @@ python -m tri_view_compat.tools.eval_threshold_calibrated \
   --seed 777
 ```
 
-Available `model_type` values include:
+Available `model_type` values for `eval_threshold_calibrated.py` include:
 
 ```text
 baseline
-prior
-prior_aux
+prior_v1
 prior_v2
+
+For Decoupled Prior, use the separate evaluator:
+
+python -m tri_view_compat.tools.eval_threshold_calibrated_prior_aux \
+  --ckpt_dir tri_view_compat/outputs/checkpoints/triview_text_prior_aux_lam02_bs256 \
+  --val_csv tri_view_compat/outputs/splits/val.csv \
+  --test_csv tri_view_compat/outputs/splits_balanced/test_balanced_seed777.csv \
+  --batch_size 256 \
+  --num_workers 8 \
+  --seed 777
 ```
 
 ## COinCO-style Baselines
