@@ -28,8 +28,8 @@ checkpoints
 checkpoints/
 COinCO-resources/
 COinCO-dataset/
-dataset/
-datasets/
+/dataset/
+/datasets/
 
 # Large images / masks / archives
 images/
@@ -78,3 +78,8 @@ MCP_TCL_core/checkpoints_selected/
 
 # Backup files
 *.bak
+
+
+# Keep source-code dataset modules tracked
+!/tri_view_compat/datasets/
+!/tri_view_compat/datasets/**
