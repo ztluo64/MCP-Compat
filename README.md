@@ -157,13 +157,58 @@ task_data/
 └── cache/
 ```
 
-The code also requires a local CLIP ViT-B/32 checkpoint or a Hugging Face CLIP model path. In the commands below, replace:
+## Backbones and Model Downloads
 
-```text
-/path/to/clip-vit-base-patch32
+### MCP-Base / MCP-Compat
+
+Our models use **OpenAI CLIP ViT-B/32** as the shared image-text backbone. The CLIP image encoder is used for the three visual views, and the CLIP text encoder is used for the replacement-object prompt. Both encoders are frozen during training.
+
+- **Backbone:** `openai/clip-vit-base-patch32`
+- **Download / model page:** https://huggingface.co/openai/clip-vit-base-patch32
+
+The training scripts accept either the Hugging Face model identifier or a local snapshot path, for example:
+
+```bash
+export CLIP_PATH=openai/clip-vit-base-patch32
 ```
 
-with your actual CLIP path.
+or
+
+```bash
+export CLIP_PATH=/path/to/clip-vit-base-patch32
+```
+
+Optional local download with the Hugging Face CLI:
+
+```bash
+hf download openai/clip-vit-base-patch32 \
+  --local-dir models/clip-vit-base-patch32
+```
+
+### Released COinCO Specialist Baselines
+
+The released COinCO specialists used in our Table 2 comparison are based on **Qwen2.5-VL-3B-Instruct**. The base processor/backbone and the three released specialist checkpoints are available from Hugging Face:
+
+- **Qwen2.5-VL-3B-Instruct:** https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct
+- **Co-occurrence specialist:** https://huggingface.co/COinCO/Qwen2.5-VL-3B-Co_occurrence
+- **Location specialist:** https://huggingface.co/COinCO/Qwen2.5-VL-3B-Location
+- **Size specialist:** https://huggingface.co/COinCO/Qwen2.5-VL-3B-Size
+
+Optional local downloads:
+
+```bash
+hf download Qwen/Qwen2.5-VL-3B-Instruct \
+  --local-dir models/Qwen2.5-VL-3B-Instruct
+
+hf download COinCO/Qwen2.5-VL-3B-Co_occurrence \
+  --local-dir models/Qwen2.5-VL-3B-Co_occurrence
+
+hf download COinCO/Qwen2.5-VL-3B-Location \
+  --local-dir models/Qwen2.5-VL-3B-Location
+
+hf download COinCO/Qwen2.5-VL-3B-Size \
+  --local-dir models/Qwen2.5-VL-3B-Size
+```
 
 ## Environment
 
