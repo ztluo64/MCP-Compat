@@ -87,6 +87,7 @@ The original-object category is used only during training to supervise the maske
 │   │   ├── clip_triview_baseline.py
 │   │   ├── clip_triview_text_prior.py
 │   │   ├── clip_triview_text_prior_aux.py
+│   │   ├── clip_triview_text_prior_explicit_only.py
 │   │   └── clip_triview_text_prior_v2.py
 │   │
 │   ├── tools/
@@ -95,6 +96,7 @@ The original-object category is used only during training to supervise the maske
 │   │   ├── add_replacement_label.py
 │   │   ├── eval_threshold_calibrated.py
 │   │   ├── eval_threshold_calibrated_prior_aux.py
+│   │   ├── eval_threshold_calibrated_explicit_only.py
 │   │   ├── audit_paper_tables.py
 │   │   ├── check_paper_table_values.py
 │   │   ├── bootstrap_ci.py
@@ -105,7 +107,14 @@ The original-object category is used only during training to supervise the maske
 │   ├── train_triview.py
 │   ├── train_triview_prior.py
 │   ├── train_triview_prior_aux.py
+│   ├── train_triview_prior_explicit_only.py
 │   └── train_triview_prior_v2.py
+│
+├── baselines/
+│   └── coinco_specialists/
+│       ├── run_specialist_scores.py
+│       ├── evaluate_specialist_scores.py
+│       └── evaluate_fusion_val_threshold.py
 │
 ├── coinco_v1_baselines/
 │   └── train_cached_context_baseline.py
@@ -123,7 +132,7 @@ The original-object category is used only during training to supervise the maske
 
 ## Data Preparation
 
-This repository does **not** include COinCO images, masks, official cached features, or model checkpoints.
+This repository does **not** include COinCO images, masks, official cached features, released specialist checkpoints, or our trained checkpoints.
 
 Prepare the official COinCO resources following the COinCO dataset instructions, then create symbolic links or place the data under the project root as follows:
 
@@ -221,7 +230,9 @@ Set your CLIP path:
 export CLIP_PATH=/path/to/clip-vit-base-patch32
 ```
 
-### Tri-view + Text Baseline
+### MCP-Base
+
+The paper-facing MCP-Base corresponds to the tri-view + replacement-text baseline without geometry features.
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python -m tri_view_compat.train_triview \
@@ -229,13 +240,13 @@ CUDA_VISIBLE_DEVICES=0 python -m tri_view_compat.train_triview \
   --val_csv tri_view_compat/outputs/splits/val.csv \
   --test_csv tri_view_compat/outputs/splits/test.csv \
   --clip_name "$CLIP_PATH" \
-  --output_dir tri_view_compat/outputs/checkpoints/triview_text_no_geo_dropout01_bs256 \
+  --output_dir tri_view_compat/outputs/checkpoints/triview_text_no_geo_bs256 \
   --epochs 10 \
   --batch_size 256 \
-  --num_workers 4 \
+  --num_workers 8 \
   --lr 1e-3 \
   --weight_decay 1e-4 \
-  --dropout 0.1 \
+  --dropout 0.2 \
   --no_geo \
   --seed 777
 ```
@@ -251,6 +262,27 @@ CUDA_VISIBLE_DEVICES=0 python -m tri_view_compat.train_triview_prior_aux \
   --test_csv tri_view_compat/outputs/splits/test.csv \
   --clip_name "$CLIP_PATH" \
   --output_dir tri_view_compat/outputs/checkpoints/triview_text_prior_aux_lam02_bs256 \
+  --epochs 10 \
+  --batch_size 256 \
+  --num_workers 8 \
+  --lr 1e-3 \
+  --weight_decay 1e-4 \
+  --prior_loss_weight 0.2 \
+  --no_geo \
+  --seed 777
+```
+
+### Explicit Compatibility Only
+
+This ablation retains prior prediction and the explicit scalar compatibility cues while removing the latent prior-text interaction. Its training script reuses the full-model training protocol and only swaps the model class.
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python -m tri_view_compat.train_triview_prior_explicit_only \
+  --train_csv tri_view_compat/outputs/splits/train.csv \
+  --val_csv tri_view_compat/outputs/splits/val.csv \
+  --test_csv tri_view_compat/outputs/splits/test.csv \
+  --clip_name "$CLIP_PATH" \
+  --output_dir tri_view_compat/outputs/checkpoints/triview_text_prior_explicit_only_lam02_bs256 \
   --epochs 10 \
   --batch_size 256 \
   --num_workers 8 \
@@ -280,7 +312,7 @@ CUDA_VISIBLE_DEVICES=0 python -m tri_view_compat.train_triview_prior \
   --seed 777
 ```
 
-### Full Model
+### MCP-Compat
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python -m tri_view_compat.train_triview_prior_v2 \
@@ -301,15 +333,15 @@ CUDA_VISIBLE_DEVICES=0 python -m tri_view_compat.train_triview_prior_v2 \
 
 ## Evaluation
 
-The evaluation protocol first selects the best checkpoint by validation Macro-F1 using the default argmax rule. Then it calibrates the decision threshold on the validation set over:
+The evaluation protocol first selects the best checkpoint by validation Macro-F1 using the default argmax rule. It then calibrates the decision threshold on the validation set over:
 
 ```text
 {0.01, 0.02, ..., 0.99}
 ```
 
-The threshold is selected by maximizing validation Macro-F1, breaking ties by Balanced Accuracy and then Accuracy. The selected threshold is fixed for both the original test set and the balanced test subset.
+The threshold is selected by maximizing validation Macro-F1, breaking ties by Balanced Accuracy and then Accuracy. The selected threshold is fixed for both the original test set and the balanced test subset. Test labels are never used for checkpoint selection or threshold calibration.
 
-### Original Test Set
+### MCP-Compat: Original Test Set
 
 ```bash
 python -m tri_view_compat.tools.eval_threshold_calibrated \
@@ -322,7 +354,7 @@ python -m tri_view_compat.tools.eval_threshold_calibrated \
   --seed 777
 ```
 
-### Balanced Test Subset
+### MCP-Compat: Balanced Test Subset
 
 ```bash
 python -m tri_view_compat.tools.eval_threshold_calibrated \
@@ -341,9 +373,11 @@ Available `model_type` values for `eval_threshold_calibrated.py` include:
 baseline
 prior_v1
 prior_v2
+```
 
-For Decoupled Prior, use the separate evaluator:
+For Decoupled Prior, use:
 
+```bash
 python -m tri_view_compat.tools.eval_threshold_calibrated_prior_aux \
   --ckpt_dir tri_view_compat/outputs/checkpoints/triview_text_prior_aux_lam02_bs256 \
   --val_csv tri_view_compat/outputs/splits/val.csv \
@@ -353,15 +387,110 @@ python -m tri_view_compat.tools.eval_threshold_calibrated_prior_aux \
   --seed 777
 ```
 
-## COinCO-style Baselines
+For Explicit Compatibility Only, use:
 
-The reimplemented COinCO-style baselines use the released cached features:
+```bash
+python -m tri_view_compat.tools.eval_threshold_calibrated_explicit_only \
+  --ckpt_dir tri_view_compat/outputs/checkpoints/triview_text_prior_explicit_only_lam02_bs256 \
+  --val_csv tri_view_compat/outputs/splits/val.csv \
+  --test_csv tri_view_compat/outputs/splits_balanced/test_balanced_seed777.csv \
+  --batch_size 256 \
+  --num_workers 8 \
+  --seed 777
+```
+
+## Released COinCO Specialist Baselines
+
+The current paper comparison includes a score-based reevaluation of the released COinCO Qwen2.5-VL-3B specialist checkpoints:
+
+- **Co-occurrence**
+- **Location**
+- **Size**
+
+This is a score-based reevaluation of the released specialist checkpoints under our replacement-aware evaluation protocol; it is not a claim that the original COinCO paper used this exact inference procedure.
+
+`run_specialist_scores.py` draws the target box, applies the specialist-specific prompt, and extracts a continuous OOC score from the first discriminative decision token (`In-context` versus `Out-of-context`). The released specialist models are evaluated in BF16. `evaluate_specialist_scores.py` selects each specialist threshold on the full validation set using Macro-F1, with Balanced Accuracy and Accuracy as tie-breakers, then applies the fixed threshold to both test sets.
+
+The input CSVs for specialist scoring must contain:
+
+```text
+coco_index
+label
+replacement_object
+image_path
+mask_path
+```
+
+Set the released model paths and an output directory:
+
+```bash
+export QWEN_BASE=/path/to/Qwen2.5-VL-3B-Instruct
+export CO_MODEL=/path/to/Qwen2.5-VL-3B-Co_occurrence
+export LOC_MODEL=/path/to/Qwen2.5-VL-3B-Location
+export SIZE_MODEL=/path/to/Qwen2.5-VL-3B-Size
+export SPECIALIST_RESULTS=baselines/coinco_specialists/results
+mkdir -p "$SPECIALIST_RESULTS"
+```
+
+Generate validation and test scores for Co-occurrence:
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python baselines/coinco_specialists/run_specialist_scores.py \
+  --specialist cooccurrence \
+  --model_path "$CO_MODEL" \
+  --processor_path "$QWEN_BASE" \
+  --csv tri_view_compat/outputs/splits/val.csv \
+  --output "$SPECIALIST_RESULTS/cooccurrence_val_scores.jsonl"
+
+CUDA_VISIBLE_DEVICES=0 python baselines/coinco_specialists/run_specialist_scores.py \
+  --specialist cooccurrence \
+  --model_path "$CO_MODEL" \
+  --processor_path "$QWEN_BASE" \
+  --csv tri_view_compat/outputs/splits/test.csv \
+  --output "$SPECIALIST_RESULTS/cooccurrence_test_scores.jsonl"
+```
+
+Repeat the same two commands for `location` and `size`, changing `--specialist`, `--model_path`, and the output filenames to:
+
+```text
+location_val_scores.jsonl
+location_test_scores.jsonl
+size_val_scores.jsonl
+size_test_scores.jsonl
+```
+
+Evaluate each specialist with a validation-selected threshold:
+
+```bash
+for s in cooccurrence location size; do
+  python baselines/coinco_specialists/evaluate_specialist_scores.py \
+    --val "$SPECIALIST_RESULTS/${s}_val_scores.jsonl" \
+    --test "$SPECIALIST_RESULTS/${s}_test_scores.jsonl" \
+    --balanced_csv tri_view_compat/outputs/splits_balanced/test_balanced_seed777.csv \
+    --output "$SPECIALIST_RESULTS/${s}_score_metrics.json"
+done
+```
+
+### Score Fusion
+
+Our **Score Fusion** is not an author-released fourth specialist. It is our calibrated fusion of the three released specialist scores. Each specialist score is first aligned relative to its own validation-selected threshold in logit space; the maximum aligned specialist response is then converted back to a continuous fusion score. A final fusion threshold is selected on the full validation set using the same Macro-F1 / BAcc / Acc rule.
+
+```bash
+python baselines/coinco_specialists/evaluate_fusion_val_threshold.py \
+  --results_dir "$SPECIALIST_RESULTS" \
+  --balanced_csv tri_view_compat/outputs/splits_balanced/test_balanced_seed777.csv \
+  --output "$SPECIALIST_RESULTS/coinco_fusion_val_calibrated_metrics.json"
+```
+
+## Additional Cached-Feature Baselines
+
+The repository also retains our earlier COinCO-style cached-feature baselines:
 
 - `COinCO-VisualNet*`: VAE latent features
 - `COinCO-SemanticNet*`: surrounding-object and replacement-object embeddings
 - `COinCO-VisSemanticNet*`: concatenation of visual and semantic features
 
-Run:
+Run, for example:
 
 ```bash
 python coinco_v1_baselines/train_cached_context_baseline.py \
@@ -373,52 +502,49 @@ python coinco_v1_baselines/train_cached_context_baseline.py \
   --output_dir coinco_v1_baselines/outputs/semantic
 ```
 
-Replace `--mode semantic` with:
-
-```text
-visual
-vissemantic
-```
-
-for the other two baselines.
-
-The asterisk `*` in the paper denotes our reimplementation using released COinCO cached features under the unified replacement-aware protocol. Published COinCO numbers are not directly comparable because of different task definitions, sample construction, and evaluation protocols.
+Replace `--mode semantic` with `visual` or `vissemantic` for the other two variants. These cached-feature reimplementations are retained for additional analysis and are separate from the released-specialist score reevaluation used in the current main comparison.
 
 ## Main Results
 
 ### Original Test Set
 
-| Method | Th. | Acc | BAcc | M-F1 | F1-0 | F1-1 | AUC |
+| Method | Th. | Acc | BAcc | M-F1 | F1-IC | F1-OOC | AUC |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| COinCO-VisualNet* | 0.45 | 68.69 | 55.94 | 55.95 | 32.25 | 79.64 | 62.49 |
-| COinCO-SemanticNet* | 0.37 | 76.94 | 68.22 | 67.99 | 51.06 | 84.91 | 78.60 |
-| COinCO-VisSemanticNet* | 0.42 | 74.65 | 68.67 | 67.06 | 51.24 | 82.87 | 76.59 |
-| Tri-view + Text | 0.38 | 80.93 | 75.59 | 74.39 | 61.45 | 87.33 | 84.94 |
-| Ours | 0.37 | 81.93 | 76.93 | 75.71 | 63.41 | 88.00 | 85.45 |
+| Co-occurrence† | 0.93 | 77.06 | 71.44 | 69.88 | 55.17 | 84.59 | 79.27 |
+| Location† | 0.90 | 75.77 | 69.22 | 67.96 | 52.14 | 83.78 | 78.98 |
+| Size† | 0.68 | 75.44 | 66.42 | 66.11 | 48.34 | 83.89 | 74.88 |
+| Score Fusion† | 0.71 | 75.56 | 69.40 | 67.94 | 52.32 | 83.57 | 76.59 |
+| MCP-Base | 0.38 | 81.43 | 75.73 | 74.80 | 61.88 | 87.73 | 85.18 |
+| **MCP-Compat** | **0.37** | **81.93** | **76.93** | **75.71** | **63.41** | **88.00** | **85.45** |
 
 ### Balanced Test Subset
 
 Balanced-set Balanced Accuracy equals Accuracy and is omitted.
 
-| Method | Acc | M-F1 | F1-0 | F1-1 | AUC |
+| Method | Acc | M-F1 | F1-IC | F1-OOC | AUC |
 |---|---:|---:|---:|---:|---:|
-| COinCO-VisualNet* | 56.65 | 53.90 | 42.62 | 65.17 | 63.69 |
-| COinCO-SemanticNet* | 68.35 | 67.47 | 62.15 | 72.80 | 77.86 |
-| COinCO-VisSemanticNet* | 68.08 | 67.72 | 64.32 | 71.11 | 75.19 |
-| Tri-view + Text | 74.37 | 74.17 | 71.92 | 76.43 | 83.48 |
-| Ours | 75.99 | 75.82 | 73.80 | 77.84 | 84.05 |
+| Co-occurrence† | 71.85 | 71.52 | 68.42 | 74.61 | 79.03 |
+| Location† | 70.23 | 69.70 | 65.70 | 73.71 | 79.29 |
+| Size† | 67.00 | 65.97 | 60.07 | 71.88 | 75.64 |
+| Score Fusion† | 69.69 | 69.27 | 65.65 | 72.89 | 77.11 |
+| MCP-Base | 74.28 | 74.06 | 71.68 | 76.44 | 83.52 |
+| **MCP-Compat** | **75.99** | **75.82** | **73.80** | **77.84** | 84.05 |
+
+† Score-based reevaluation of the released COinCO specialist checkpoints. Score Fusion is our threshold-aligned calibrated fusion of the three specialist scores.
 
 ## Ablation Results
 
 Ablation on the balanced test subset:
 
-| Variant | Th. | Acc | M-F1 | F1-0 | F1-1 | AUC |
+| Variant | Th. | Acc | M-F1 | F1-IC | F1-OOC | AUC |
 |---|---:|---:|---:|---:|---:|---:|
-| Tri-view + Text | 0.38 | 74.37 | 74.17 | 71.92 | 76.43 | 83.48 |
+| MCP-Base | 0.38 | 74.28 | 74.06 | 71.68 | 76.44 | 83.52 |
 | Decoupled Prior | 0.33 | 73.83 | 73.60 | 71.16 | 76.05 | 82.65 |
-| Latent, λ = 0.1 | 0.38 | 73.47 | 73.21 | 70.59 | 75.84 | 83.50 |
-| Latent, λ = 0.2 | 0.34 | 75.27 | 74.97 | 72.25 | 77.70 | 84.15 |
-| Ours, λ = 0.2 | 0.37 | 75.99 | 75.82 | 73.80 | 77.84 | 84.05 |
+| Explicit | 0.33 | 73.56 | 73.41 | 71.40 | 75.42 | 81.62 |
+| Latent | 0.34 | 75.27 | 74.97 | 72.25 | 77.70 | **84.15** |
+| **MCP-Compat** | **0.37** | **75.99** | **75.82** | **73.80** | **77.84** | 84.05 |
+
+All prior-based rows in this table use `lambda_prior = 0.2`. Decoupled Prior supervises the masked-context prior without feeding it to the classifier; Explicit uses only the explicit scalar compatibility embedding; Latent uses only latent prior-text compatibility; MCP-Compat combines latent and explicit compatibility.
 
 ## Qualitative Figure
 
@@ -440,7 +566,7 @@ python -m tri_view_compat.tools.render_qualitative_figure \
   --fig_h 3.05
 ```
 
-The figure demonstrates two cases where the Tri-view + Text baseline fails but the full prior-guided model succeeds:
+The figure demonstrates two cases where MCP-Base fails but MCP-Compat succeeds:
 
 - an out-of-context replacement with negligible prior support,
 - an in-context replacement that matches the top context expectation.
@@ -465,11 +591,13 @@ Trainable ratio:        1.37%
 
 - All internal tri-view variants use frozen CLIP ViT-B/32.
 - All internal tri-view variants use seed 777.
-- The paper-facing Tri-view + Text baseline uses dropout 0.1.
-- The full model uses `lambda_prior = 0.2`.
+- The reported MCP-Base checkpoint uses dropout 0.2; the prior-based variants use dropout 0.1.
+- The reported prior-based variants use `lambda_prior = 0.2` unless explicitly stated otherwise.
+- Best checkpoints are selected by validation Macro-F1 before threshold calibration.
 - Test labels are never used for checkpoint selection or threshold calibration.
-- AUC is computed from predicted probabilities and is threshold-independent.
+- AUC is computed from continuous predicted scores and is threshold-independent.
 - The original-object category is used only for training the prior branch and is not used at inference.
+- Released COinCO specialist checkpoints are evaluated with BF16 first-decision-token scoring in the specialist pipeline above.
 
 ## License
 
