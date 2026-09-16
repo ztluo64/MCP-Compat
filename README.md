@@ -1,4 +1,4 @@
-# Masked-Context Prior-Guided Object–Scene Compatibility Reasoning
+# MCP-Compat: Masked-Context Prior-Guided Object–Scene Compatibility Reasoning for Inpainted Images
 
 This repository contains the implementation of **Masked-Context Prior-Guided Object--Scene Compatibility Reasoning for Inpainted Images**.
 
