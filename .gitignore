@@ -59,26 +59,16 @@ masks/
 clip-vit-base-patch32/
 Qwen2.5-VL-3B-Instruct/
 
-# Experiment outputs that may contain checkpoints or generated figures
+# Experiment outputs
 tri_view_compat/outputs/
 tri_view_compat/logs/
-coinco_v1_baselines/outputs/
-coinco_v1_baselines/logs/
-
-# Keep final paper audit sources
-!paper_audit/
-!paper_audit/final_results/
-!paper_audit/final_results/**
+baselines/coinco_specialists/results/
 
 # Qwen LoRA experiments / checkpoints / adapters
 qwen_lora/
 
-# Selected checkpoints copied for internal reference
-MCP_TCL_core/checkpoints_selected/
-
 # Backup files
 *.bak
-
 
 # Keep source-code dataset modules tracked
 !/tri_view_compat/datasets/
