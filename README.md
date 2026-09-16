@@ -134,7 +134,29 @@ The original-object category is used only during training to supervise the maske
 
 This repository does **not** include COinCO images, masks, official cached features, released specialist checkpoints, or our trained checkpoints.
 
-Prepare the official COinCO resources following the COinCO dataset instructions, then create symbolic links or place the data under the project root as follows:
+### Official COinCO downloads
+
+Please obtain the original data and released resources from the official COinCO project:
+
+- **COinCO dataset:** https://huggingface.co/datasets/COinCO/COinCO-dataset
+- **COinCO resources / checkpoints:** https://huggingface.co/datasets/COinCO/COinCO-resources
+- **Official COinCO repository:** https://github.com/YangTianze009/COinCO
+
+The dataset and resources are distributed separately. Follow the official COinCO instructions to download and prepare them before running the scripts in this repository.
+
+Optional downloads with the Hugging Face CLI:
+
+```bash
+hf download COinCO/COinCO-dataset \
+  --repo-type dataset \
+  --local-dir COinCO-dataset
+
+hf download COinCO/COinCO-resources \
+  --repo-type dataset \
+  --local-dir COinCO-resources
+```
+
+After preparing the official resources, create symbolic links or place the processed data under the project root as follows:
 
 ```text
 task_data/
@@ -650,14 +672,21 @@ This repository is released under the license specified in `LICENSE`.
 
 ## Citation
 
-If you find this work useful, please cite:
+If you find this work useful, please cite the manuscript:
+
+**Masked-Context Prior-Guided Object--Scene Compatibility Reasoning for Inpainted Images**  
+Zetong Luo$^{1}$, Chen Wan$^{1}$*, Wentao Zhang$^{1}$, Zichun Wu$^{1}$, Lifeng Huang$^{2}$
+
+$^{1}$ Department of Computer Science and Technology, Shantou University, Shantou, China  
+$^{2}$ College of Mathematics and Informatics, South China Agricultural University, Guangzhou, China  
+*Corresponding author: Chen Wan.*
 
 ```bibtex
-@inproceedings{luo2026maskedcontext,
-  title     = {Masked-Context Prior-Guided Object--Scene Compatibility Reasoning for Inpainted Images},
-  author    = {Luo, Zetong and Wan, Chen},
-  booktitle = {ICASSP},
-  year      = {2026}
+@misc{luo2026maskedcontext,
+  title  = {Masked-Context Prior-Guided Object--Scene Compatibility Reasoning for Inpainted Images},
+  author = {Luo, Zetong and Wan, Chen and Zhang, Wentao and Wu, Zichun and Huang, Lifeng},
+  year   = {2026},
+  note   = {Manuscript}
 }
 ```
 
