@@ -381,6 +381,10 @@ All prior-based variants use `lambda_prior = 0.2`. The reported MCP-Base checkpo
 - AUC is computed from continuous OOC scores.
 - The original-object category is used only as training supervision for the prior branch.
 
+## Acknowledgements
+
+We sincerely thank the authors of [COinCO](https://github.com/YangTianze009/COinCO) for releasing the COinCO dataset, pretrained resources, and open-source code. Their public resources made this study possible and substantially facilitated reproducible research on object--scene compatibility reasoning in inpainted images.
+
 ## License
 
 See `LICENSE`.
